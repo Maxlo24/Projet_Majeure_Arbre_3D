@@ -18,6 +18,7 @@
 #include <iostream>
 
 #include "./Tree/tree.hpp"
+#include "structure/structure_tree_choice.hpp"
 #include "vec2.hpp"
 
 

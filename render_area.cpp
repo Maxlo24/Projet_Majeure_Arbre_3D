@@ -34,9 +34,18 @@ void render_area::init_fig()
 
     brush_size = 2;
     algo_iter = 4;
-
+    
+    //moi
     node *n1 = new node({0,0});
     n1->Parent()=n1;
+    //____
+
+    //toi
+    node *n1 = new node(X,M_PI/6);
+    n1->Parent()=n1;
+    structure_tree_choice treeStructure;
+    L_system lSys = treeStructure.fractal_plant();
+    //____
 
     tree tree(n1,M_PI/4,50);
 
