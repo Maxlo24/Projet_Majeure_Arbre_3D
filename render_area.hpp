@@ -63,6 +63,9 @@ protected:
 private slots:
     // functions called by the GUI
     void update_brush_size(int size);
+    void update_tree_size(int size);
+    void update_segment_size(int size);
+    void update_angle(int size);
     void update_algo_select(int select);
     void update_algo_speed(int speed);
     void reset_grid();

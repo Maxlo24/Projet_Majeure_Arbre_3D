@@ -24,6 +24,9 @@ public:
 private:
     vector<node*> data;
     int data_size;
+    int nbr_iter;
+    float control_angle;
+    float segment_size;
 
 };
 
