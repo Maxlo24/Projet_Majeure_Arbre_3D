@@ -77,7 +77,7 @@ private: //attributes
 
     void cleanGrid();
 
-    int graph_brush_size;
+    float brush_size;
 
     int algo_select;
 

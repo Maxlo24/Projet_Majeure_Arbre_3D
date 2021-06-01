@@ -32,6 +32,14 @@ node::node(vec2 coord,lType l_type, node *parent)
     this->angle = 0;
     this->parent = parent;
 }
+node::node(vec2 coord,lType l_type,float angle , node *parent)
+{
+    this->coord = coord;
+    this->l_type = l_type;
+    this->angle = angle;
+    this->parent = parent;
+}
+
 
 
 vec2 node::Coord() const

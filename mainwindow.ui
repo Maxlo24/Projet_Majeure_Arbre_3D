@@ -181,7 +181,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <number>1</number>
     </property>
     <property name="maximum">
-     <number>3</number>
+     <number>5</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
