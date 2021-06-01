@@ -17,7 +17,7 @@ using std::vector;
  * oRp : restaurer la dernière position
  */
 
-enum lType {A,B,F,oG,oD,oPb,oPh,oRG,oRD,oT,oSp,oRp};
+enum lType {A,B,X,F,oG,oD,oPb,oPh,oRG,oRD,oT,oSp,oRp};
 class Rules
 {
 private:
@@ -26,11 +26,14 @@ private:
 public:
     /** Constructor */
     Rules();
+    Rules(float);
     Rules(float,vector<lType>);
 
     /** Methods */
     float getProba();
     vector<lType> getRule();
+    void addElement(lType);
+
 
 };
 

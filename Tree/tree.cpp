@@ -57,7 +57,7 @@ void tree::incrementTree(L_system lSystem,node *parentNode){
     node *currentNode = parentNode;
     last_data.clear();
     for (lType type:rules.getRule()){
-        if (type == A || type == B){
+        if (type == A || type == B || type == X || type == F){
             float dangle = angle-currentNode->Angle();
             vec2 dP = vec2(paramLength*sin(dangle),paramLength*cos(dangle));
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);

@@ -31,7 +31,7 @@ void render_area::init_fig()
 
     this->setCursor(Qt::CrossCursor);
 
-    node *n1 = new node({0,0});
+    node *n1 = new node(X,M_PI/6);
     n1->Parent()=n1;
     structure_tree_choice treeStructure;
     L_system lSys = treeStructure.fractal_plant();
