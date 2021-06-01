@@ -18,6 +18,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     //slider brush size
     connect(ui->brush_Size_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_brush_size(int)));
+    //slider tree size
+    connect(ui->tree_Size_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_tree_size(int)));
+    //slider segment size
+    connect(ui->segment_Size_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_segment_size(int)));
+    //slider angle
+    connect(ui->angle_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_angle(int)));
+
+
     //button reset
     connect(ui->resetButton,SIGNAL(clicked()), this->render, SLOT(reset_grid()));
     //button search

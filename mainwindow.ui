@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>903</width>
-    <height>552</height>
+    <width>1045</width>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,8 +24,8 @@ color: rgb(43, 43, 43);</string>
    <widget class="QPushButton" name="quitButton">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>460</y>
+      <x>820</x>
+      <y>530</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -44,8 +44,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>640</width>
-      <height>481</height>
+      <width>791</width>
+      <height>551</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="main_Layout"/>
@@ -53,9 +53,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <widget class="QLabel" name="Partie_Algo">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>230</y>
-      <width>201</width>
+      <x>820</x>
+      <y>330</y>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
@@ -65,14 +65,14 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Exploration algorithms</string>
+     <string>Algorithm selection</string>
     </property>
    </widget>
    <widget class="QPushButton" name="searchButton">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>300</y>
+      <x>820</x>
+      <y>400</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -83,7 +83,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
 </string>
     </property>
     <property name="text">
-     <string>Generate</string>
+     <string>Select</string>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -92,8 +92,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <widget class="QComboBox" name="Algo_select">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>270</y>
+      <x>820</x>
+      <y>370</y>
       <width>191</width>
       <height>24</height>
      </rect>
@@ -103,14 +103,24 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <item>
      <property name="text">
-      <string>SOL-Systems</string>
+      <string>Algae</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Fractal tree</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Fractal plant</string>
      </property>
     </item>
    </widget>
    <widget class="QLabel" name="Partie_Env">
     <property name="geometry">
      <rect>
-      <x>690</x>
+      <x>820</x>
       <y>10</y>
       <width>201</width>
       <height>31</height>
@@ -126,10 +136,13 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
    </widget>
    <widget class="QSlider" name="speedSlider">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>350</y>
+      <x>820</x>
+      <y>450</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -151,10 +164,13 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
    </widget>
    <widget class="QLabel" name="Partie_Algo_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>330</y>
+      <x>820</x>
+      <y>430</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -171,8 +187,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <widget class="QSlider" name="brush_Size_Slider">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>70</y>
+      <x>820</x>
+      <y>100</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -182,6 +198,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <property name="maximum">
      <number>5</number>
+    </property>
+    <property name="value">
+     <number>2</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -196,8 +215,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <widget class="QLabel" name="taillePinceauLabel">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>50</y>
+      <x>820</x>
+      <y>80</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -214,8 +233,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <widget class="QPushButton" name="resetButton">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>170</y>
+      <x>820</x>
+      <y>270</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -234,8 +253,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>9</x>
       <y>9</y>
-      <width>643</width>
-      <height>483</height>
+      <width>793</width>
+      <height>553</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -244,11 +263,11 @@ color: rgb(43, 43, 43);</string>
     </property>
     <layout class="QVBoxLayout" name="main_Layout_2"/>
    </widget>
-   <widget class="QSlider" name="brush_Size_Slider_2">
+   <widget class="QSlider" name="tree_Size_Slider">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>110</y>
+      <x>820</x>
+      <y>140</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -257,7 +276,10 @@ color: rgb(43, 43, 43);</string>
      <number>1</number>
     </property>
     <property name="maximum">
-     <number>3</number>
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>5</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -272,8 +294,8 @@ color: rgb(43, 43, 43);</string>
    <widget class="QLabel" name="taillePinceauLabel_2">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>90</y>
+      <x>820</x>
+      <y>120</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -285,6 +307,161 @@ color: rgb(43, 43, 43);</string>
     </property>
     <property name="text">
      <string>Tree size</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="segment_Size_Slider">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>180</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>6</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_3">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>160</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Segment size</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="angle_Slider">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>220</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <strikeout>false</strikeout>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>-45</number>
+    </property>
+    <property name="maximum">
+     <number>45</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="tracking">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_4">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>200</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Angle</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_5">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>240</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>-45°</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_6">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>240</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>45°</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_7">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>240</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0°</string>
     </property>
    </widget>
    <zorder>verticalFrame_2</zorder>
@@ -299,15 +476,22 @@ color: rgb(43, 43, 43);</string>
    <zorder>brush_Size_Slider</zorder>
    <zorder>taillePinceauLabel</zorder>
    <zorder>resetButton</zorder>
-   <zorder>brush_Size_Slider_2</zorder>
+   <zorder>tree_Size_Slider</zorder>
    <zorder>taillePinceauLabel_2</zorder>
+   <zorder>segment_Size_Slider</zorder>
+   <zorder>taillePinceauLabel_3</zorder>
+   <zorder>angle_Slider</zorder>
+   <zorder>taillePinceauLabel_4</zorder>
+   <zorder>taillePinceauLabel_5</zorder>
+   <zorder>taillePinceauLabel_6</zorder>
+   <zorder>taillePinceauLabel_7</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>903</width>
+     <width>1045</width>
      <height>20</height>
     </rect>
    </property>

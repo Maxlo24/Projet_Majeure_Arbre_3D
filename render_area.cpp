@@ -4,11 +4,13 @@
 render_area::render_area(QWidget *parent)
     :QWidget(parent),mouse_point(),is_left_clicked(),is_right_clicked()
 {
-    this->width = this->size().width();
-    this->height = this->size().height();
+    this->width = 790; //this->size().width();
+    this->height = 550;//this->size().height();
 
+    std::cout<<width<<std::endl;
+    std::cout<<height<<std::endl;
 
-    this->brush_size = 1;
+    this->brush_size = 2;
 
 
     this->running = false;
@@ -156,6 +158,25 @@ void render_area::update_brush_size(int size){
     std::cout<<"Brush size : "<<this->brush_size<<std::endl;
     repaint();
 }
+
+void render_area::update_tree_size(int size){
+
+    std::cout<<"Tree size : "<<size<<std::endl;
+    repaint();
+}
+
+void render_area::update_segment_size(int size){
+
+    std::cout<<"Segment size : "<<size<<std::endl;
+    repaint();
+}
+
+void render_area::update_angle(int size){
+
+    std::cout<<"Angle : "<<size<<std::endl;
+    repaint();
+}
+
 
 void render_area::update_algo_select(int select){
     this->algo_select = select;

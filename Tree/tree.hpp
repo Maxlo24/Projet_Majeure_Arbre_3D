@@ -37,6 +37,9 @@ private:
 
     float paramAlpha = M_PI/10;
     float paramLength = 40;
+    int nbr_iter;
+    float control_angle;
+    float segment_size;
 
 };
 
