@@ -31,11 +31,12 @@ void render_area::init_fig()
 
     node *n1 = new node({0,0});
     n1->Parent()=n1;
-    vector<lType> alphabet = {A,B};
+    vector<lType> alphabet = {A};
     map<lType,vector<Rules>> rules;
     rules[A] = {Rules(1.0,{oSp,oG,A,oRp,oD,A})};
-    rules[B] = {Rules(1.0,{A})};
     L_system lSys(alphabet,A,rules);
+
+    //rules[B] = {Rules(1.0,{A})};
     /*node *n2 = new node({0,50});
     node *n3 = new node({-25,75});
     node *n4 = new node({25,75});
