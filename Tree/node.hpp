@@ -14,6 +14,7 @@ public:
     node(vec2 coord);
     node(lType l_type,float angle,node *parent);
     node(vec2 coord,lType l_type, node *parent);
+    node(vec2 coord,lType l_type,float angle, node *parent);
 
     //Methodes
     vec2 Coord() const;

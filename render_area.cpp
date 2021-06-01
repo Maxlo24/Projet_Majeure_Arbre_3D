@@ -7,7 +7,7 @@ render_area::render_area(QWidget *parent)
     this->height = this->size().height();
 
 
-    this->graph_brush_size = 1;
+    this->brush_size = 1;
 
 
     this->running = false;
@@ -60,7 +60,7 @@ void render_area::paintEvent(QPaintEvent*)
 
     QPen pen;
 
-    pen.setWidth(1.0);
+    pen.setWidth(brush_size);
     pen.setColor(Qt::black);
     painter.setPen(pen);
 
@@ -134,8 +134,9 @@ void render_area::update_algo_speed(int speed){
 
 void render_area::update_brush_size(int size){
 
-    this->graph_brush_size = size;
-    std::cout<<"Brush size : "<<this->graph_brush_size<<std::endl;
+    this->brush_size = size;
+    std::cout<<"Brush size : "<<this->brush_size<<std::endl;
+    repaint();
 }
 
 void render_area::update_algo_select(int select){
