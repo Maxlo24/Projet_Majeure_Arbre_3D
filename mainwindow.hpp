@@ -23,8 +23,7 @@ private:
     Ui::MainWindow *ui;
     render_area *render;
 
-private slots:
-    void get_groupBox_select();
+
 
 };
 #endif // MAINWINDOW_H

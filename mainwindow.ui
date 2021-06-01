@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>903</width>
-    <height>619</height>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>540</y>
+      <y>460</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -45,7 +45,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <x>10</x>
       <y>10</y>
       <width>640</width>
-      <height>480</height>
+      <height>481</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="main_Layout"/>
@@ -83,7 +83,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
 </string>
     </property>
     <property name="text">
-     <string>Search</string>
+     <string>Generate</string>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -103,24 +103,14 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <item>
      <property name="text">
-      <string>Parcours en largeur</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Parcours en profondeur -&gt; A* </string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Algorithme de Dijkstra</string>
+      <string>SOL-Systems</string>
      </property>
     </item>
    </widget>
    <widget class="QLabel" name="Partie_Env">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>690</x>
       <y>10</y>
       <width>201</width>
       <height>31</height>
@@ -132,7 +122,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Environement creation</string>
+     <string>2D Tree generator</string>
     </property>
    </widget>
    <widget class="QSlider" name="speedSlider">
@@ -175,14 +165,14 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Search delay</string>
+     <string>Generation delay</string>
     </property>
    </widget>
    <widget class="QSlider" name="brush_Size_Slider">
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>120</y>
+      <y>70</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -207,7 +197,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>100</y>
+      <y>50</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -219,61 +209,6 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <property name="text">
      <string>Brush size</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="mazeButton">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>140</y>
-      <width>191</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{border: 1px solid grey;}
-QPushButton::pressed{border: 1px solid blue;color: blue;};
-</string>
-    </property>
-    <property name="text">
-     <string>Generate maze</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Partie_Env_2">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>390</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Informations</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Partie_Algo_4">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>440</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <stylestrategy>PreferDefault</stylestrategy>
-     </font>
-    </property>
-    <property name="text">
-     <string>Cycle number :</string>
     </property>
    </widget>
    <widget class="QPushButton" name="resetButton">
@@ -294,198 +229,6 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <string>Reset</string>
     </property>
    </widget>
-   <widget class="QLabel" name="tailleGrilleLabel">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>510</y>
-      <width>81</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <stylestrategy>PreferDefault</stylestrategy>
-     </font>
-    </property>
-    <property name="text">
-     <string>Grid size</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="gridSideSlider">
-    <property name="geometry">
-     <rect>
-      <x>119</x>
-      <y>510</y>
-      <width>181</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="maximum">
-     <number>4</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="tickPosition">
-     <enum>QSlider::TicksBothSides</enum>
-    </property>
-    <property name="tickInterval">
-     <number>1</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="taillePinceauLabel_2">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>50</y>
-      <width>181</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Draw : Left click</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="taillePinceauLabel_3">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>70</y>
-      <width>191</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Erase : Right click</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="BrushgroupBox">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>500</y>
-      <width>301</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Brush type</string>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-    <widget class="QRadioButton" name="ObstacleradioButton">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>84</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Obstacles</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="StartradioButton">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>20</y>
-       <width>61</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Start</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="EndradioButton">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>20</y>
-       <width>61</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>End</string>
-     </property>
-    </widget>
-    <widget class="QFrame" name="Obstacleframe">
-     <property name="geometry">
-      <rect>
-       <x>9</x>
-       <y>40</y>
-       <width>81</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
-    <widget class="QFrame" name="Obstacleframe_2">
-     <property name="geometry">
-      <rect>
-       <x>109</x>
-       <y>40</y>
-       <width>81</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(181,230,29);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
-    <widget class="QFrame" name="Obstacleframe_3">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>40</y>
-       <width>81</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255,91,91);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
-   </widget>
    <widget class="QFrame" name="verticalFrame_2">
     <property name="geometry">
      <rect>
@@ -501,25 +244,47 @@ color: rgb(43, 43, 43);</string>
     </property>
     <layout class="QVBoxLayout" name="main_Layout_2"/>
    </widget>
-   <widget class="QLabel" name="cycle_nbr_txt">
+   <widget class="QSlider" name="brush_Size_Slider_2">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>440</y>
-      <width>71</width>
+      <x>690</x>
+      <y>110</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>3</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>90</y>
+      <width>121</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
     <property name="text">
-     <string>0</string>
+     <string>Tree size</string>
     </property>
    </widget>
    <zorder>verticalFrame_2</zorder>
@@ -533,16 +298,9 @@ color: rgb(43, 43, 43);</string>
    <zorder>Partie_Algo_2</zorder>
    <zorder>brush_Size_Slider</zorder>
    <zorder>taillePinceauLabel</zorder>
-   <zorder>mazeButton</zorder>
-   <zorder>Partie_Env_2</zorder>
-   <zorder>Partie_Algo_4</zorder>
    <zorder>resetButton</zorder>
-   <zorder>tailleGrilleLabel</zorder>
-   <zorder>gridSideSlider</zorder>
+   <zorder>brush_Size_Slider_2</zorder>
    <zorder>taillePinceauLabel_2</zorder>
-   <zorder>taillePinceauLabel_3</zorder>
-   <zorder>BrushgroupBox</zorder>
-   <zorder>cycle_nbr_txt</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
