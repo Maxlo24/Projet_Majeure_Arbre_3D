@@ -33,10 +33,8 @@ void render_area::init_fig()
 
     node *n1 = new node({0,0});
     n1->Parent()=n1;
-    vector<lType> alphabet = {A};
-    map<lType,vector<Rules>> rules;
-    rules[A] = {Rules(1.0,{oSp,oG,A,oRp,oD,A})};
-    L_system lSys(alphabet,A,rules);
+    structure_tree_choice treeStructure;
+    L_system lSys = treeStructure.fractal_plant();
 
     //rules[B] = {Rules(1.0,{A})};
     /*node *n2 = new node({0,50});
