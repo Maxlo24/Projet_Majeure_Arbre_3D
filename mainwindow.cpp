@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->segment_Size_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_segment_size(int)));
     //slider angle
     connect(ui->angle_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_angle(int)));
+    //slider ratio
+    connect(ui->ratio_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_ratio(int)));
 
 
     //button reset

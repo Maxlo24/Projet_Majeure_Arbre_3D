@@ -14,14 +14,24 @@ class tree
 public:
     tree();
     tree(vector<node*> data);
+    tree(node *root,float paramAlpha,float paramLength);
 
     node* operator()(int index) const;
     node*& operator()(int index);
 
+    void setAngle(float angle);
+    void setLength(float length);
+    void setRatio(float ratio);
+    void setAlphabet(vector<lType> alphabet);
+    void setRules(lType key, vector<Rules> velue);
 
     void add_node(node *n);
     void add_node_last_data(node *n);
     void incrementTree(L_system lSystem,node *parentNode);
+
+    void reset();
+
+    void generateNextLayer();
 
     int size() const;
 
@@ -35,11 +45,16 @@ private:
     vector<node*> last_data;
     int last_data_size;
 
+    node *tree_root;
+
+    vector<lType> tree_alphabet;
+    map<lType,vector<Rules>> tree_rules;
+
     float paramAlpha = M_PI/10;
     float paramLength = 40;
-    int nbr_iter;
-    float control_angle;
-    float segment_size;
+
+    int nbr_iter=0;
+    float reduction_ration=0.5;
 
 };
 

@@ -15,6 +15,7 @@ render_area::render_area(QWidget *parent)
 
     this->running = false;
     this->algo_select = 0;
+    this->algo_iter=4;
     this->algo_delay = -1;
 
     init_fig();
@@ -31,35 +32,19 @@ void render_area::init_fig()
 
     this->setCursor(Qt::CrossCursor);
 
+    brush_size = 2;
+    algo_iter = 4;
+
     node *n1 = new node({0,0});
     n1->Parent()=n1;
-    vector<lType> alphabet = {A};
-    map<lType,vector<Rules>> rules;
-    rules[A] = {Rules(1.0,{oSp,oG,A,oRp,oD,A})};
-    L_system lSys(alphabet,A,rules);
 
-    //rules[B] = {Rules(1.0,{A})};
-    /*node *n2 = new node({0,50});
-    node *n3 = new node({-25,75});
-    node *n4 = new node({25,75});
+    tree tree(n1,M_PI/4,50);
 
-    n1->Parent()=n1;
-    n2->Parent()=n1;
-    n3->Parent()=n2;
-    n4->Parent()=n2;
-
-    vector<node*> vec = {n1,n2,n3,n4};
-    this->render_tree = tree(vec);*/
-    tree tree({n1});
-    tree.incrementTree(lSys,n1);
-    vector<node*> lastDataCopy = tree.getLastData();
-    for (node * lnode: lastDataCopy)
-    {
-        tree.incrementTree(lSys,lnode);
-    }
-
+    tree.setAlphabet({A});
+    tree.setRules(A, {Rules(1.0,{oSp,oG,A,oRp,oD,A})});
 
     this->render_tree = tree;
+    draw_tree();
 
     std::cout<<"Init OK"<<std::endl;
 
@@ -95,8 +80,16 @@ void render_area::paintEvent(QPaintEvent*)
 
 void render_area::paint_segment(QPainter *painter,vec2 p1, vec2 p2){
 //    std::cout<<p1<<p2<<std::endl;
-    painter->drawLine(this->width/2+p1.x,this->height-50-p1.y,this->width/2+p2.x,this->height-50-p2.y);
+    painter->drawLine(this->width/2+p1.x,this->height-20-p1.y,this->width/2+p2.x,this->height-20-p2.y);
 
+}
+
+void render_area::draw_tree()
+{
+    render_tree.reset();
+    for(int i=0;i<algo_iter;i++){
+        render_tree.generateNextLayer();
+    }
 }
 
 void render_area::cleanGrid() {
@@ -161,19 +154,33 @@ void render_area::update_brush_size(int size){
 
 void render_area::update_tree_size(int size){
 
+    this->algo_iter=size;
     std::cout<<"Tree size : "<<size<<std::endl;
+    draw_tree();
     repaint();
 }
 
 void render_area::update_segment_size(int size){
 
+    render_tree.setLength(10*size);
     std::cout<<"Segment size : "<<size<<std::endl;
+    draw_tree();
     repaint();
 }
 
-void render_area::update_angle(int size){
+void render_area::update_angle(int angle){
 
-    std::cout<<"Angle : "<<size<<std::endl;
+    render_tree.setAngle((float(angle)/45)*M_PI/2);
+    std::cout<<"Angle : "<<angle<<std::endl;
+    draw_tree();
+    repaint();
+}
+
+void render_area::update_ratio(int ratio)
+{
+    render_tree.setRatio(float(ratio)/20);
+    std::cout<<"Ratio : "<<float(ratio)/20<<std::endl;
+    draw_tree();
     repaint();
 }
 

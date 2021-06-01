@@ -55,6 +55,8 @@ protected:
     /** Function called in render_area */
     void paint_segment(QPainter *painter,vec2 p1,vec2 p2);
 
+    void draw_tree();
+
     /** Function to get the cell wher the mouse is*/
     void paint();
 
@@ -66,6 +68,7 @@ private slots:
     void update_tree_size(int size);
     void update_segment_size(int size);
     void update_angle(int size);
+    void update_ratio(int ratio);
     void update_algo_select(int select);
     void update_algo_speed(int speed);
     void reset_grid();
@@ -83,7 +86,7 @@ private: //attributes
     float brush_size;
 
     int algo_select;
-
+    int algo_iter;
     int algo_delay;
 
     bool running;
