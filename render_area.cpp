@@ -41,8 +41,8 @@ void render_area::init_fig()
     //____
 
     //toi
-    node *n1 = new node(X,M_PI/6);
-    n1->Parent()=n1;
+    node *n2 = new node(X,M_PI/6);
+    n2->Parent()=n2;
     structure_tree_choice treeStructure;
     L_system lSys = treeStructure.fractal_plant();
     //____
