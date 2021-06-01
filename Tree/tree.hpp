@@ -1,6 +1,9 @@
 #ifndef TREE_HPP
 #define TREE_HPP
 #include "../Tree/node.hpp"
+
+#define _USE_MATH_DEFINES // for C++
+#include <cmath>
 #include <vector>
 
 
@@ -17,6 +20,7 @@ public:
 
 
     void add_node(node *n);
+    void incrementTree(L_system lSystem,node parentNode);
 
     int size() const;
 
@@ -24,6 +28,9 @@ public:
 private:
     vector<node*> data;
     int data_size;
+
+    float paramAlpha;
+    float paramLength;
 
 };
 
