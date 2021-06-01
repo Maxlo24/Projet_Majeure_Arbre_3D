@@ -55,6 +55,16 @@ lType& node::Type()
     return this->l_type;
 }
 
+float node::Angle() const
+{
+    return this->angle;
+}
+
+float& node::Angle()
+{
+    return this->angle;
+}
+
 const node* node::Parent() const
 {
     return this->parent;

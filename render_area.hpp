@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <iostream>
 
+#include "./Tree/tree.hpp"
 #include "vec2.hpp"
 
 
@@ -94,6 +95,8 @@ private: //attributes
     bool is_right_clicked;
 
     QLabel *cpt_label;
+
+    tree render_tree;
 
 };
 
