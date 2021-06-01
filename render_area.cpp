@@ -28,6 +28,19 @@ void render_area::init_fig()
 
     this->setCursor(Qt::CrossCursor);
 
+    node *n1 = new node({0,0});
+    node *n2 = new node({0,50});
+    node *n3 = new node({-25,75});
+    node *n4 = new node({25,75});
+
+    n1->Parent()=n1;
+    n2->Parent()=n1;
+    n3->Parent()=n2;
+    n4->Parent()=n2;
+
+    vector<node*> vec = {n1,n2,n3,n4};
+    this->render_tree = tree(vec);
+
     std::cout<<"Init OK"<<std::endl;
 
 }
@@ -52,11 +65,18 @@ void render_area::paintEvent(QPaintEvent*)
     painter.setPen(pen);
 
     painter.setBrush(brush);
-    paint_segment(&painter,vec2(0,0),vec2(0,50));
+    for(int i = 0;i<render_tree.size();i++)
+    {
+        paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
+    }
+
+
 }
 
 void render_area::paint_segment(QPainter *painter,vec2 p1, vec2 p2){
+//    std::cout<<p1<<p2<<std::endl;
     painter->drawLine(this->width/2+p1.x,this->height-50-p1.y,this->width/2+p2.x,this->height-50-p2.y);
+
 }
 
 void render_area::cleanGrid() {
