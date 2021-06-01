@@ -52,9 +52,12 @@ void render_area::paintEvent(QPaintEvent*)
     painter.setPen(pen);
 
     painter.setBrush(brush);
-    painter.drawLine(this->width/2,this->width/8,this->width/2,this->width/8+width/8);
+    paint_segment(&painter,vec2(0,0),vec2(0,50));
 }
 
+void render_area::paint_segment(QPainter *painter,vec2 p1, vec2 p2){
+    painter->drawLine(this->width/2+p1.x,this->height-50-p1.y,this->width/2+p2.x,this->height-50-p2.y);
+}
 
 void render_area::cleanGrid() {
 

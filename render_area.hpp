@@ -52,6 +52,8 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
     /** Function called in render_area */
+    void paint_segment(QPainter *painter,vec2 p1,vec2 p2);
+
     /** Function to get the cell wher the mouse is*/
     void paint();
 
