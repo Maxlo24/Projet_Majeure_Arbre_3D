@@ -5,7 +5,7 @@ node::node()
 {
     this->coord = vec2(0,0);
     this->l_type = lType(A);
-    this->parent = nullptr;
+    this->parent = this;
 }
 
 node::node(vec2 coord)
@@ -13,7 +13,7 @@ node::node(vec2 coord)
     this->coord = coord;
     this->l_type = lType(A);
     this->angle = 0;
-    this->parent = nullptr;
+    this->parent = this;
 }
 
 node::node(lType l_type,float angle, node* parent)
