@@ -1,4 +1,5 @@
 #include "render_area.hpp"
+#include <QDebug>
 
 render_area::render_area(QWidget *parent)
     :QWidget(parent),mouse_point(),is_left_clicked(),is_right_clicked()
@@ -29,7 +30,13 @@ void render_area::init_fig()
     this->setCursor(Qt::CrossCursor);
 
     node *n1 = new node({0,0});
-    node *n2 = new node({0,50});
+    n1->Parent()=n1;
+    vector<lType> alphabet = {A,B};
+    map<lType,vector<Rules>> rules;
+    rules[A] = {Rules(1.0,{oSp,oG,A,oRp,oD,A})};
+    rules[B] = {Rules(1.0,{A})};
+    L_system lSys(alphabet,A,rules);
+    /*node *n2 = new node({0,50});
     node *n3 = new node({-25,75});
     node *n4 = new node({25,75});
 
@@ -39,7 +46,17 @@ void render_area::init_fig()
     n4->Parent()=n2;
 
     vector<node*> vec = {n1,n2,n3,n4};
-    this->render_tree = tree(vec);
+    this->render_tree = tree(vec);*/
+    tree tree({n1});
+    tree.incrementTree(lSys,n1);
+    vector<node*> lastDataCopy = tree.getLastData();
+    for (node * lnode: lastDataCopy)
+    {
+        tree.incrementTree(lSys,lnode);
+    }
+
+
+    this->render_tree = tree;
 
     std::cout<<"Init OK"<<std::endl;
 

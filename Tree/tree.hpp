@@ -20,17 +20,23 @@ public:
 
 
     void add_node(node *n);
-    void incrementTree(L_system lSystem,node parentNode);
+    void add_node_last_data(node *n);
+    void incrementTree(L_system lSystem,node *parentNode);
 
     int size() const;
 
 
+    vector<node *> getData() const;
+    vector<node *> getLastData() const;
+
 private:
     vector<node*> data;
     int data_size;
+    vector<node*> last_data;
+    int last_data_size;
 
-    float paramAlpha;
-    float paramLength;
+    float paramAlpha = M_PI/10;
+    float paramLength = 40;
 
 };
 
