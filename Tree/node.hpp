@@ -4,7 +4,7 @@
 #include<string>
 #include <iostream>
 #include "../vec2.hpp"
-#include "../L_system/l_system.h"
+#include "../L_system/l_system.hpp"
 
 class node
 {
