@@ -42,6 +42,10 @@ void render_area::init_fig()
     this->render_tree = tree;
     draw_tree();
 
+    mat_rotation = mat3(std::cos(0),0,std::sin(0),
+                       0,1,0,
+                       -std::sin(0),0,std::cos(0));
+
     std::cout<<"Init OK"<<std::endl;
 
 }
@@ -100,7 +104,13 @@ void render_area::paintEvent(QPaintEvent*)
 
 void render_area::paint_segment(QPainter *painter,vec2 p1, vec2 p2){
 //    std::cout<<p1<<p2<<std::endl;
-    painter->drawLine(this->width/2+p1.x,this->height-20-p1.y,this->width/2+p2.x,this->height-20-p2.y);
+    vec3 p13 = vec3(p1.x,p1.y,0);
+    vec3 p23 = vec3(p2.x,p2.y,0);
+
+    vec3 np1 = mat_rotation*p13;
+    vec3 np2 = mat_rotation*p23;
+
+    painter->drawLine(this->width/2+np1.x(),this->height-20-np1.y(),this->width/2+np2.x(),this->height-20-np2.y());
 
 }
 
@@ -163,6 +173,17 @@ void render_area::mouseReleaseEvent(QMouseEvent*)
 void render_area::update_algo_speed(int speed){
     this->algo_delay = 40*(speed-2);
     std::cout<<"Algo delay : "<<this->algo_delay<<std::endl;
+}
+
+void render_area::update_rotation(int angle)
+{
+    rotation_theta = (float(angle)/180)*M_PI;
+    std::cout<<"Angle de rotation : "<<angle<<std::endl;
+    mat_rotation = mat3(std::cos(rotation_theta),0,std::sin(rotation_theta),
+                       0,1,0,
+                       -std::sin(rotation_theta),0,std::cos(rotation_theta));
+    repaint();
+
 }
 
 void render_area::update_brush_size(int size){
@@ -237,8 +258,8 @@ void render_area::reset_grid(){
 
 // function called whe user is painting with the mouse
 void render_area::paint(){
-    int i = mouse_point.x/dx;
-    int j = mouse_point.y/dy;
+//    int i = mouse_point.x/dx;
+//    int j = mouse_point.y/dy;
 
 }
 
