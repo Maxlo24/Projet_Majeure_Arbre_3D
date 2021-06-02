@@ -104,6 +104,7 @@ private: //attributes
     QLabel *cpt_label;
 
     tree render_tree;
+    structure_tree_choice treeStructure;
 
 };
 

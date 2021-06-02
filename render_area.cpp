@@ -35,15 +35,11 @@ void render_area::init_fig()
     brush_size = 2;
     algo_iter = 4;
     
-    //moi
     node *n1 = new node({0,0});
     n1->Parent()=n1;
-    //____
 
-    structure_tree_choice treeStructure;
     tree tree(n1,M_PI/4,50);
-    tree.setTree_l_system(treeStructure.fractal_stick());
-
+    tree.setTree_l_system(treeStructure.binary_tree());
 
 
     this->render_tree = tree;
@@ -191,6 +187,20 @@ void render_area::update_ratio(int ratio)
 void render_area::update_algo_select(int select){
     this->algo_select = select;
     std::cout<<"Algo selected : "<<this->algo_select<<std::endl;
+
+    switch(algo_select){
+        case 0:
+            render_tree.setTree_l_system(treeStructure.binary_tree());
+            break;
+        case 1:
+            render_tree.setTree_l_system(treeStructure.fractal_stick());
+            break;
+        case 2:
+            render_tree.setTree_l_system(treeStructure.fractal_plant());
+            break;
+    };
+    draw_tree();
+    repaint();
 }
 
 void render_area::reset_grid(){

@@ -103,12 +103,12 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <item>
      <property name="text">
-      <string>Algae</string>
+      <string>Binary tree</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Fractal tree</string>
+      <string>Fractal stick</string>
      </property>
     </item>
     <item>
