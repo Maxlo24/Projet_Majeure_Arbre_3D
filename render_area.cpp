@@ -36,7 +36,7 @@ void render_area::init_fig()
     algo_iter = 4;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_bush());
+    tree.setTree_l_system(treeStructure.fractal_sym());
 
 
     this->render_tree = tree;

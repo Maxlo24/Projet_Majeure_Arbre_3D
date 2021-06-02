@@ -38,3 +38,23 @@ Rules L_system::getOneRuleOfType(lType type){
 vector<lType> L_system::getAlphabet(){ return alphabet;}
 
 lType L_system::getAxiom(){ return axiom;}
+
+vector<lType> L_system::getPhraseN(int n)
+{
+    vector<lType> pseudoPhrases = {axiom};
+    vector<lType> pseudoPhrases1 = {};
+    for (int i = 0; i < n+1; i++){
+        pseudoPhrases1 = pseudoPhrases;
+        pseudoPhrases = {};
+        for (std::vector<lType>::iterator it = pseudoPhrases1.begin() ; it != pseudoPhrases1.end(); ++it){
+            if (std::find(alphabet.begin(), alphabet.end(),*it)!=alphabet.end()){
+                vector<lType> paragraph = getOneRuleOfType(*it).getRule();
+                pseudoPhrases.insert(pseudoPhrases.end(),paragraph.begin(),paragraph.end());
+            } else{
+                pseudoPhrases.push_back(*it);
+            }
+        }
+    }
+    return pseudoPhrases;
+
+}
