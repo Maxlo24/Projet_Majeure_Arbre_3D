@@ -66,15 +66,30 @@ void render_area::paintEvent(QPaintEvent*)
 
     pen.setWidth(brush_size);
 
+    //couleur de départ
+        int r1 = 91;
+        int g1 = 32;
+        int b1 = 0;
+    //couleur d'arrivée
+        int r2 = 0;
+        int g2 = 174;
+        int b2 = 6;
 
+        int nbVal = render_tree.size();
+    //pour chaque canal, calcul du différenciel entre chaque teinte (nbVal est le nombre de teintes du dégradé)
+        int dr = int((r2 - r1) / nbVal);
+        int dg = int((g2 - g1) / nbVal);
+        int db = int((b2 - b1) / nbVal);
 
+    pen.setColor(Qt::black);
+    painter.setPen(pen);
 
     painter.setBrush(brush);
     for(int i = 0;i<render_tree.size();i++)
     {
-
-        pen.setColor(QColor(qrand()%255, qrand()%255, qrand()%255));
+        pen.setColor(QColor(r1+i*dr, g1+i*dg, b1+i*db));
         painter.setPen(pen);
+
         paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
     }
 
