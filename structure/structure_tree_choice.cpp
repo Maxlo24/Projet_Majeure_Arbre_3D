@@ -75,3 +75,4 @@ L_system structure_tree_choice::fractal_complex1()
     rules[X] = {decryptRule("FF+[+F-F-F][-F+F+F]")};
     return L_system(alphabet,F,rules);
 }
+
