@@ -20,6 +20,8 @@
 #include "./Tree/tree.hpp"
 #include "structure/structure_tree_choice.hpp"
 #include "vec2.hpp"
+#include "3D/vec3.hpp"
+#include "3D/mat3.hpp"
 
 
 using std::vector;
@@ -54,7 +56,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
     /** Function called in render_area */
-    void paint_segment(QPainter *painter,vec2 p1,vec2 p2);
+    void paint_segment(QPainter *painter,vec3 p1,vec3 p2);
 
     void draw_tree();
 
@@ -72,6 +74,7 @@ private slots:
     void update_ratio(int ratio);
     void update_algo_select(int select);
     void update_algo_speed(int speed);
+    void update_rotation(int angle);
     void reset_grid();
     void launch_algo();
 
@@ -85,6 +88,7 @@ private: //attributes
     void cleanGrid();
 
     float brush_size;
+    float rotation_theta;
 
     int algo_select;
     int algo_iter;
@@ -92,11 +96,14 @@ private: //attributes
 
     bool running;
 
-    int dx;
-    int dy;
+    float dx;
+    float dy;
 
     /** The current position of the click of the mouse */
     vec2 mouse_point;
+
+    mat3 mat_rotation;
+
     /** Indicates if the mouse is currently clicked or not */
     bool is_left_clicked;
     bool is_right_clicked;

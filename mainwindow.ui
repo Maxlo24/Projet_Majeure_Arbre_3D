@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1045</width>
-    <height>611</height>
+    <height>646</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -589,6 +589,106 @@ color: rgb(43, 43, 43);</string>
      <string> 0.5</string>
     </property>
    </widget>
+   <widget class="QLabel" name="taillePinceauLabel_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>570</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Rotation</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="rotation_Slider">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>570</y>
+      <width>721</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-180</number>
+    </property>
+    <property name="maximum">
+     <number>180</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_13">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>590</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>-180°</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_14">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>590</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>180°</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="taillePinceauLabel_15">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>590</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0°</string>
+    </property>
+   </widget>
    <zorder>verticalFrame_2</zorder>
    <zorder>quitButton</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -615,6 +715,11 @@ color: rgb(43, 43, 43);</string>
    <zorder>ratio_Slider</zorder>
    <zorder>taillePinceauLabel_11</zorder>
    <zorder>taillePinceauLabel_12</zorder>
+   <zorder>taillePinceauLabel_8</zorder>
+   <zorder>rotation_Slider</zorder>
+   <zorder>taillePinceauLabel_13</zorder>
+   <zorder>taillePinceauLabel_14</zorder>
+   <zorder>taillePinceauLabel_15</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

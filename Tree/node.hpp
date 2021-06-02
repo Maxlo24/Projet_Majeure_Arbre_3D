@@ -4,6 +4,7 @@
 #include<string>
 #include <iostream>
 #include "../vec2.hpp"
+#include "../3D/vec3.hpp"
 #include "../L_system/l_system.hpp"
 
 class node
@@ -11,15 +12,15 @@ class node
 public:
     //constructor
     node();
-    node(vec2 coord);
+    node(vec3 coord);
     node(lType l_type,float angle);
     node(lType l_type,float angle,node *parent);
-    node(vec2 coord,lType l_type, node *parent);
-    node(vec2 coord,lType l_type,float angle, node *parent);
+    node(vec3 coord,lType l_type, node *parent);
+    node(vec3 coord,lType l_type,float angle, node *parent);
 
     //Methodes
-    vec2 Coord() const;
-    vec2& Coord();
+    vec3 Coord() const;
+    vec3& Coord();
 
     lType Type() const;
     lType& Type();
@@ -39,7 +40,7 @@ public:
     bool getVisible_node() const;
 
 private:
-    vec2 coord;
+    vec3 coord;
     lType l_type;
     node *parent;
     float angle;

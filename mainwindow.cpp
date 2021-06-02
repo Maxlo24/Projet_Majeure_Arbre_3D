@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->angle_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_angle(int)));
     //slider ratio
     connect(ui->ratio_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_ratio(int)));
+    //Rotation
+    connect(ui->rotation_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_rotation(int)));
+
 
 
     //button reset
