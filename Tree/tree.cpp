@@ -91,6 +91,15 @@ int tree::getNbrIter() const
     return nbr_iter;
 }
 
+int tree::getMaxNbrParent() const
+{
+    int max_parent = 0;
+    for(node *n : data){
+        if(n->getNb_parent()>max_parent) max_parent = n->getNb_parent();
+    }
+    return max_parent;
+}
+
 void tree::reset()
 {
     data = {tree_root};

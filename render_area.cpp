@@ -72,7 +72,7 @@ void render_area::paintEvent(QPaintEvent*)
         int g2 = 174;
         int b2 = 6;
 
-        int nbVal = render_tree.size();
+        int nbVal = render_tree.getMaxNbrParent();
     //pour chaque canal, calcul du différenciel entre chaque teinte (nbVal est le nombre de teintes du dégradé)
         int dr = int((r2 - r1) / nbVal);
         int dg = int((g2 - g1) / nbVal);
@@ -86,7 +86,8 @@ void render_area::paintEvent(QPaintEvent*)
     {
         if (render_tree(i)->getVisible_node())
         {
-            pen.setColor(QColor(r1+i*dr, g1+i*dg, b1+i*db));
+            int nbrParent = render_tree(i)->getNb_parent();
+            pen.setColor(QColor(r1+nbrParent*dr, g1+nbrParent*dg, b1+nbrParent*db));
             painter.setPen(pen);
 
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
