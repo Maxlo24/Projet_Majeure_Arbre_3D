@@ -102,9 +102,18 @@ int tree::getMaxNbrParent() const
 
 void tree::reset()
 {
+    clearData();
     data = {tree_root};
     last_data = {tree_root};
     nbr_iter=0;
+}
+
+void tree::clearData()
+{
+    for(int i = 1; i < data.size();i++){
+        delete data[i];
+    }
+
 }
 
 void tree::generateNextLayer()

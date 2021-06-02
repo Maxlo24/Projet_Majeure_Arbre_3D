@@ -32,6 +32,7 @@ public:
     void incrementTree(L_system lSystem,node *parentNode);
 
     void reset();
+    void clearData();
 
     void generateNextLayer();
 
