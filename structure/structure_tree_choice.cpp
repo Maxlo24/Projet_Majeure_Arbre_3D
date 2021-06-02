@@ -29,7 +29,7 @@ L_system structure_tree_choice::binary_tree()
 {
     vector<lType> alphabet = {F};
     map<lType,vector<Rules>> rules;
-    rules[F] = {Rules(1.0,{oSp,oG,F,oRp,oD,F})};
+    rules[F] = {decryptRule("[-F]+F")};
     return L_system(alphabet,F,rules);
 }
 
@@ -61,6 +61,14 @@ L_system structure_tree_choice::fractal_sym()
 }
 
 L_system structure_tree_choice::fractal_bush()
+{
+    vector<lType> alphabet = {F};
+    map<lType,vector<Rules>> rules;
+    rules[F] = {decryptRule("FF+[+F-F-F][-F+F+F]")};
+    return L_system(alphabet,F,rules);
+}
+
+L_system structure_tree_choice::fractal_leaf()
 {
     vector<lType> alphabet = {F};
     map<lType,vector<Rules>> rules;
