@@ -37,7 +37,11 @@ void render_area::init_fig()
     slow_draw = false;
     
     tree tree;
+<<<<<<< HEAD
+    tree.setTree_l_system(treeStructure.fractal_sym());
+=======
     tree.setTree_l_system(treeStructure.binary_tree());
+>>>>>>> 2050ec64d0065c98d18097e44eedba182e04926c
 
 
     this->render_tree = tree;

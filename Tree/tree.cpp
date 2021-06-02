@@ -113,7 +113,6 @@ void tree::clearData()
     for(auto i = 1; i < data.size();i++){
         delete data[i];
     }
-
 }
 
 void tree::generateNextLayer()
@@ -128,6 +127,7 @@ void tree::generateNextLayer()
 }
 
 void tree::incrementTree(L_system lSystem,node *parentNode){
+    vector<lType> phrase =  lSystem.getPhraseN(2);
     Rules rules = lSystem.getOneRuleOfType(parentNode->Type());
     float segment_length;
     float angle = parentNode->Angle();

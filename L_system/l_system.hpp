@@ -17,6 +17,7 @@ private:
     vector<lType> alphabet;
     lType axiom;
     map<lType,vector<Rules>> rules;
+    vector<lType> Phrase = {};
 
 
 public:
@@ -30,6 +31,8 @@ public:
     Rules getOneRuleOfType(lType);
     vector<lType> getAlphabet();
     lType getAxiom();
+
+    vector<lType> getPhraseN(int n);
 };
 
 #endif // L_SYSTEM_H
