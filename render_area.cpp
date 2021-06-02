@@ -36,11 +36,8 @@ void render_area::init_fig()
     algo_iter = 4;
     
     tree tree;
-<<<<<<< HEAD
     tree.setTree_l_system(treeStructure.fractal_sym());
-=======
-    tree.setTree_l_system(treeStructure.binary_tree());
->>>>>>> 2050ec64d0065c98d18097e44eedba182e04926c
+
 
 
     this->render_tree = tree;
@@ -119,9 +116,8 @@ void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
 void render_area::draw_tree()
 {
     render_tree.reset();
-    for(int i=0;i<algo_iter;i++){
-        render_tree.generateNextLayer();
-    }
+    render_tree.generateNextLayer(algo_iter);
+
 }
 
 void render_area::cleanGrid() {

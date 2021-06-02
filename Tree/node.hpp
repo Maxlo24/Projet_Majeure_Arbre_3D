@@ -13,6 +13,7 @@ public:
     //constructor
     node();
     node(vec3 coord);
+    node(lType l_type);
     node(lType l_type,float angle);
     node(lType l_type,float angle,node *parent);
     node(vec3 coord,lType l_type, node *parent);
@@ -43,7 +44,7 @@ private:
     vec3 coord;
     lType l_type;
     node *parent;
-    float angle;
+    float angle = 0.f;
     int nb_parent = 1;
     bool visible_node = false;
 

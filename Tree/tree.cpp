@@ -115,29 +115,29 @@ void tree::clearData()
     }
 }
 
-void tree::generateNextLayer()
+void tree::generateNextLayer(int iter)
 {
     vector<node*> lastDataCopy = this->last_data;
     last_data.clear();
-    for (node * lnode: lastDataCopy)
-    {
-        this->incrementTree(tree_l_system,lnode);
-    }
+    generateTree(tree_l_system,iter);
     nbr_iter+=1;
 }
 
-void tree::incrementTree(L_system lSystem,node *parentNode){
-    vector<lType> phrase =  lSystem.getPhraseN(2);
-    Rules rules = lSystem.getOneRuleOfType(parentNode->Type());
+void tree::generateTree(L_system lSystem,int n){
+    vector<lType> phrase =  lSystem.getPhraseN(n);
+    node *newN = new node(phrase[0]);
+    node *parentNode = newN;
+    add_node(newN);
+    add_node_last_data(newN);
     float segment_length;
     float angle = parentNode->Angle();
     vector<node*> queueNode;
     node *currentNode = parentNode;
-    for (lType type:rules.getRule()){
+    for (lType type:phrase){
         if (type == A || type == B || type == F){
             segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
             vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
-            node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
+            newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             newN->visibleTrue();
             newN->incrementNb_parent();
             add_node(newN);

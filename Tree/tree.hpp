@@ -29,12 +29,12 @@ public:
 
     void add_node(node *n);
     void add_node_last_data(node *n);
-    void incrementTree(L_system lSystem,node *parentNode);
+    void generateTree(L_system lSystem,int n);
 
     void reset();
     void clearData();
 
-    void generateNextLayer();
+    void generateNextLayer(int iter);
 
     int size() const;
 

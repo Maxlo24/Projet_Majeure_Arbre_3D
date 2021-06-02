@@ -8,6 +8,13 @@ node::node()
     this->parent = this;
 }
 
+node::node(lType l_type)
+{
+    this->coord = vec3(0,0,0);
+    this->l_type = l_type;
+    this->parent = this;
+}
+
 node::node(vec3 coord)
 {
     this->coord = coord;
