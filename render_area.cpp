@@ -34,6 +34,7 @@ void render_area::init_fig()
 
     brush_size = 2;
     algo_iter = 4;
+    slow_draw = false;
     
     tree tree;
     tree.setTree_l_system(treeStructure.fractal_sym());
@@ -87,7 +88,13 @@ void render_area::paintEvent(QPaintEvent*)
     painter.setPen(pen);
 
     painter.setBrush(brush);
-    for(int i = 0;i<render_tree.size();i++)
+
+    if(slow_draw){
+        slow_draw_iter+=1;
+    }else{
+        slow_draw_iter = render_tree.getData().size();
+    }
+    for(int i = 0;i<slow_draw_iter;i++)
     {
         if (render_tree(i)->getVisible_node())
         {
@@ -132,7 +139,16 @@ void render_area::launch_algo(){
     this->setCursor(Qt::ForbiddenCursor);
     std::cout<<"Algo selected : "<<this->algo_select<<std::endl;
     std::cout<<"Searching ..."<<std::endl;
+    slow_draw = true;
 
+    slow_draw_iter = 0;
+    if(this->algo_delay >= 0){
+        for (int i=0;i<render_tree.getData().size() ;i++ ) {
+            repaint();
+            Sleep(this->algo_delay);
+        }
+    }
+    slow_draw = false;
     std::cout<<"End"<<std::endl;
     this->running = false;
     this->setCursor(Qt::CrossCursor);
@@ -169,7 +185,7 @@ void render_area::mouseReleaseEvent(QMouseEvent*)
 
 
 void render_area::update_algo_speed(int speed){
-    this->algo_delay = 40*(speed-2);
+    this->algo_delay = 20*(speed-2);
     std::cout<<"Algo delay : "<<this->algo_delay<<std::endl;
 }
 

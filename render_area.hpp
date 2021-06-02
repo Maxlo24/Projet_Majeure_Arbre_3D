@@ -108,6 +108,9 @@ private: //attributes
     bool is_left_clicked;
     bool is_right_clicked;
 
+    bool slow_draw;
+    int slow_draw_iter;
+
     QLabel *cpt_label;
 
     tree render_tree;
