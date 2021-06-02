@@ -65,12 +65,16 @@ void render_area::paintEvent(QPaintEvent*)
     QPen pen;
 
     pen.setWidth(brush_size);
-    pen.setColor(Qt::black);
-    painter.setPen(pen);
+
+
+
 
     painter.setBrush(brush);
     for(int i = 0;i<render_tree.size();i++)
     {
+
+        pen.setColor(QColor(qrand()%255, qrand()%255, qrand()%255));
+        painter.setPen(pen);
         paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
     }
 
