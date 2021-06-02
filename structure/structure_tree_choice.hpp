@@ -18,6 +18,7 @@ public:
     L_system fractal_stick();
     L_system fractal_sym();
     L_system fractal_bush();
+    L_system fractal_leaf();
     L_system fractal_complex1();
 
 
