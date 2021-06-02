@@ -141,7 +141,6 @@ void tree::generateTree(L_system lSystem,int n){
             newN->visibleTrue();
             newN->incrementNb_parent();
             add_node(newN);
-            add_node_last_data(newN);
             currentNode = newN;
         }
 
@@ -150,7 +149,6 @@ void tree::generateTree(L_system lSystem,int n){
             newN->visibleFalse();
             newN->incrementNb_parent();
             add_node(newN);
-            add_node_last_data(newN);
             currentNode = newN;
         }else if (type == oG){
             angle += paramAlpha;
