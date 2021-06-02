@@ -92,3 +92,18 @@ node*& node::Parent()
     return this->parent;
 }
 
+int node::getNb_parent() const
+{
+    return nb_parent;
+}
+
+void node::setNb_parent(int value)
+{
+    nb_parent = value;
+}
+
+void node::incrementNb_parent()
+{
+    nb_parent = parent->getNb_parent() +1;
+}
+
