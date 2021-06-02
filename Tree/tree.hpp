@@ -24,6 +24,7 @@ public:
     void setRatio(float ratio);
     void setAlphabet(vector<lType> alphabet);
     void setRules(lType key, vector<Rules> velue);
+    int getNbrIter() const;
 
     void add_node(node *n);
     void add_node_last_data(node *n);

@@ -92,6 +92,11 @@ void tree::setRules(lType key, vector<Rules> value)
     this->tree_rules[key]=value;
 }
 
+int tree::getNbrIter() const
+{
+    return nbr_iter;
+}
+
 void tree::reset()
 {
     node *n1 = new node({tree_root->Coord().x,tree_root->Coord().y+paramLength});
