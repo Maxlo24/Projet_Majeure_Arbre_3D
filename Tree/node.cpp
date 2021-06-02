@@ -3,12 +3,12 @@
 
 node::node()
 {
-    this->coord = vec2(0,0);
+    this->coord = vec3(0,0,0);
     this->l_type = lType(X);
     this->parent = this;
 }
 
-node::node(vec2 coord)
+node::node(vec3 coord)
 {
     this->coord = coord;
     this->l_type = lType(X);
@@ -18,7 +18,7 @@ node::node(vec2 coord)
 
 node::node(lType l_type,float angle)
 {
-    this->coord = vec2(0,0);
+    this->coord = vec3(0,0,0);
     this->l_type = l_type;
     this->angle = angle;
     this->parent = this;
@@ -27,21 +27,21 @@ node::node(lType l_type,float angle)
 
 node::node(lType l_type,float angle, node* parent)
 {
-    this->coord = vec2(0,0);
+    this->coord = vec3(0,0,0);
     this->l_type = l_type;
     this->angle = angle;
     this->parent = parent;
 
 }
 
-node::node(vec2 coord,lType l_type, node *parent)
+node::node(vec3 coord,lType l_type, node *parent)
 {
     this->coord = coord;
     this->l_type = l_type;
     this->angle = 0;
     this->parent = parent;
 }
-node::node(vec2 coord,lType l_type,float angle , node *parent)
+node::node(vec3 coord,lType l_type,float angle , node *parent)
 {
     this->coord = coord;
     this->l_type = l_type;
@@ -51,12 +51,12 @@ node::node(vec2 coord,lType l_type,float angle , node *parent)
 
 
 
-vec2 node::Coord() const
+vec3 node::Coord() const
 {
     return this->coord;
 }
 
-vec2& node::Coord()
+vec3& node::Coord()
 {
     return this->coord;
 }

@@ -2,7 +2,7 @@
 
 tree::tree()
 {
-    node *root= new node({0.f,0.f+paramLength});
+    node *root= new node({0.f,0.f+paramLength,0});
     this->tree_root = root;
     this->data = {root};
     this->last_data = {root};
@@ -136,7 +136,7 @@ void tree::incrementTree(L_system lSystem,node *parentNode){
     for (lType type:rules.getRule()){
         if (type == A || type == B || type == F){
             segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
-            vec2 dP = vec2(segment_length*sin(angle),segment_length*cos(angle));
+            vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),0);
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             newN->visibleTrue();
             newN->incrementNb_parent();

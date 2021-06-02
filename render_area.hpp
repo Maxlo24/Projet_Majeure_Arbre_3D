@@ -56,7 +56,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
     /** Function called in render_area */
-    void paint_segment(QPainter *painter,vec2 p1,vec2 p2);
+    void paint_segment(QPainter *painter,vec3 p1,vec3 p2);
 
     void draw_tree();
 

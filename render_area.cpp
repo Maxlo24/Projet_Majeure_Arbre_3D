@@ -36,7 +36,7 @@ void render_area::init_fig()
     algo_iter = 4;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_bush());
+    tree.setTree_l_system(treeStructure.binary_tree());
 
 
     this->render_tree = tree;
@@ -102,13 +102,11 @@ void render_area::paintEvent(QPaintEvent*)
 
 }
 
-void render_area::paint_segment(QPainter *painter,vec2 p1, vec2 p2){
+void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
 //    std::cout<<p1<<p2<<std::endl;
-    vec3 p13 = vec3(p1.x,p1.y,0);
-    vec3 p23 = vec3(p2.x,p2.y,0);
 
-    vec3 np1 = mat_rotation*p13;
-    vec3 np2 = mat_rotation*p23;
+    vec3 np1 = mat_rotation*p1;
+    vec3 np2 = mat_rotation*p2;
 
     painter->drawLine(this->width/2+np1.x(),this->height-20-np1.y(),this->width/2+np2.x(),this->height-20-np2.y());
 
