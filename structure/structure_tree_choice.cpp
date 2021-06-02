@@ -27,10 +27,10 @@ Rules structure_tree_choice::decryptRule(std::string rule,float proba){
 
 L_system structure_tree_choice::binary_tree()
 {
-    vector<lType> alphabet = {X};
+    vector<lType> alphabet = {F};
     map<lType,vector<Rules>> rules;
-    rules[X] = {Rules(1.0,{oSp,oG,X,oRp,oD,X})};
-    return L_system(alphabet,X,rules);
+    rules[F] = {Rules(1.0,{oSp,oG,F,oRp,oD,F})};
+    return L_system(alphabet,F,rules);
 }
 
 L_system structure_tree_choice::fractal_plant()
@@ -46,8 +46,8 @@ L_system structure_tree_choice::fractal_stick()
 {
     vector<lType> alphabet = {X,F};
     map<lType,vector<Rules>> rules;
-    rules[X] = {decryptRule("F[+X]F[-X]+X")};
-    rules[F] = {decryptRule("")};
+    rules[X] = {decryptRule("[+X]F[-X]+X")};
+    rules[F] = {decryptRule("FF")};
     return L_system(alphabet,X,rules);
 }
 
@@ -56,6 +56,22 @@ L_system structure_tree_choice::fractal_sym()
     vector<lType> alphabet = {X,F};
     map<lType,vector<Rules>> rules;
     rules[X] = {decryptRule("[-FX]+FX")};
-    rules[F] = {decryptRule("")};
+    rules[F] = {decryptRule("FF")};
     return L_system(alphabet,X,rules);
+}
+
+L_system structure_tree_choice::fractal_bush()
+{
+    vector<lType> alphabet = {F};
+    map<lType,vector<Rules>> rules;
+    rules[F] = {decryptRule("FF+[+F-F-X][-F+F+F]")};
+    return L_system(alphabet,F,rules);
+}
+
+L_system structure_tree_choice::fractal_complex1()
+{
+    vector<lType> alphabet = {F};
+    map<lType,vector<Rules>> rules;
+    rules[X] = {decryptRule("FF+[+F-F-F][-F+F+F]")};
+    return L_system(alphabet,F,rules);
 }

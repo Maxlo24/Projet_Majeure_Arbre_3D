@@ -116,6 +116,16 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <string>Fractal plant</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Fractal symétrique</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Buisson</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="Partie_Env">
     <property name="geometry">

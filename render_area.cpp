@@ -35,11 +35,10 @@ void render_area::init_fig()
     brush_size = 2;
     algo_iter = 4;
     
-    node *n1 = new node({0,0});
-    n1->Parent()=n1;
 
-    tree tree(n1,M_PI/4,50);
-    tree.setTree_l_system(treeStructure.binary_tree());
+
+    tree tree;
+    tree.setTree_l_system(treeStructure.fractal_stick());
 
 
     this->render_tree = tree;
@@ -72,10 +71,12 @@ void render_area::paintEvent(QPaintEvent*)
     painter.setBrush(brush);
     for(int i = 0;i<render_tree.size();i++)
     {
-
-        pen.setColor(QColor(qrand()%255, qrand()%255, qrand()%255));
-        painter.setPen(pen);
-        paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
+        if (render_tree(i)->getVisible_node()  || true)
+        {
+            pen.setColor(QColor(qrand()%255, qrand()%255, qrand()%255));
+            painter.setPen(pen);
+            paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
+        }
     }
 
 
@@ -201,6 +202,12 @@ void render_area::update_algo_select(int select){
             break;
         case 2:
             render_tree.setTree_l_system(treeStructure.fractal_plant());
+            break;
+        case 3:
+            render_tree.setTree_l_system(treeStructure.fractal_sym());
+            break;
+        case 4:
+            render_tree.setTree_l_system(treeStructure.fractal_bush());
             break;
     };
     draw_tree();

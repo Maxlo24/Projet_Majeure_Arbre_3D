@@ -17,6 +17,9 @@ public:
     L_system fractal_plant();
     L_system fractal_stick();
     L_system fractal_sym();
+    L_system fractal_bush();
+    L_system fractal_complex1();
+
 
 private:
     L_system tree_choice;

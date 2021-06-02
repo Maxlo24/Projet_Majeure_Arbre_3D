@@ -107,3 +107,18 @@ void node::incrementNb_parent()
     nb_parent = parent->getNb_parent() +1;
 }
 
+void node::visibleTrue()
+{
+    visible_node = true;
+}
+
+void node::visibleFalse()
+{
+    visible_node = false;
+}
+
+bool node::getVisible_node() const
+{
+    return visible_node;
+}
+

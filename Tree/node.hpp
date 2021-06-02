@@ -33,6 +33,10 @@ public:
     int getNb_parent() const;
     void setNb_parent(int value);
     void incrementNb_parent();
+    void visibleTrue();
+    void visibleFalse();
+
+    bool getVisible_node() const;
 
 private:
     vec2 coord;
@@ -40,6 +44,7 @@ private:
     node *parent;
     float angle;
     int nb_parent = 1;
+    bool visible_node = false;
 
 };
 

@@ -43,9 +43,7 @@ public:
 
 private:
     vector<node*> data;
-    int data_size;
     vector<node*> last_data;
-    int last_data_size;
 
     node *tree_root;
 
@@ -55,10 +53,10 @@ private:
     L_system tree_l_system;
 
     float paramAlpha = M_PI/10;
-    float paramLength = 40;
+    float paramLength = 50;
 
     int nbr_iter=0;
-    float reduction_ration=0.5;
+    float reduction_ratio=0.5;
 
 };
 

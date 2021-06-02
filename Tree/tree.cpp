@@ -2,26 +2,28 @@
 
 tree::tree()
 {
-    this->data = {};
-    this->data_size = 0;
+    node *root= new node({0.f,0.f+paramLength});
+    root->Type() = F;
+    this->tree_root = root;
+    node *n1 = new node({root->Coord().x,root->Coord().y+paramLength});
+    n1->Parent()=root;
+    this->data = {root,n1};
+    this->last_data = {n1};
 }
 
 tree::tree(vector<node*> data)
 {
     this->data = data;
-    this->data_size = data.size();
     this->last_data = data;
-    this->last_data_size = last_data.size();
 }
 
 tree::tree(node *root,float paramAlpha,float paramLength){
     this->tree_root = root;
+    root->Type() = A;
     node *n1 = new node({root->Coord().x,root->Coord().y+paramLength});
     n1->Parent()=root;
     this->data = {root,n1};
-    this->data_size = data.size();
     this->last_data = {n1};
-    this->last_data_size = last_data.size();
     this->paramAlpha = paramAlpha;
     this->paramLength = paramLength;
 }
@@ -45,24 +47,22 @@ void tree::setLength(float length)
 
 void tree::setRatio(float ratio)
 {
-    this->reduction_ration = ratio;
+    this->reduction_ratio = ratio;
 }
 
 void tree::add_node(node *n)
 {
     this->data.push_back(n);
-    this->data_size+=1;
 }
 
 void tree::add_node_last_data(node *n)
 {
     this->last_data.push_back(n);
-    this->last_data_size+=1;
 }
 
 int tree::size() const
 {
-    return this->data_size;
+    return this->data.size();
 }
 
 vector<node *> tree::getData() const
@@ -78,6 +78,8 @@ vector<node *> tree::getLastData() const
 void tree::setTree_l_system(const L_system &value)
 {
     tree_l_system = value;
+    data[1]->Type() = tree_l_system.getAxiom();
+
 }
 
 void tree::setAlphabet(vector<lType> alphabet)
@@ -96,8 +98,6 @@ void tree::reset()
     n1->Parent()=tree_root;
     data = {tree_root,n1};
     last_data = {n1};
-    data_size=1;
-    last_data_size=1;
     nbr_iter=0;
 }
 
@@ -114,17 +114,18 @@ void tree::generateNextLayer()
 
 void tree::incrementTree(L_system lSystem,node *parentNode){
     Rules rules = lSystem.getOneRuleOfType(parentNode->Type());
-    float segment_length = (paramLength/(1+nbr_iter*reduction_ration));
-    //segment_length = (paramLength/pow(2.0,nbr_iter));
+    float segment_length = (paramLength/(1+nbr_iter*reduction_ratio));
     float angle = parentNode->Angle();
     vector<node*> queueNode;
     node *currentNode = parentNode;
     for (lType type:rules.getRule()){
         if (type == A || type == B || type == X || type == F){
-            segment_length = paramLength/pow(1.1f,currentNode->getNb_parent());
-            vec2 dP = vec2(segment_length*sin(angle),segment_length*cos(angle));
+            segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
+            vec2 dP = vec2(-segment_length*sin(angle),segment_length*cos(angle));
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             newN->incrementNb_parent();
+            if (type == X) newN->visibleFalse();
+            else newN->visibleTrue();
             add_node(newN);
             add_node_last_data(newN);
             currentNode = newN;
