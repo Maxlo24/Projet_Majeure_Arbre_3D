@@ -41,9 +41,8 @@ void render_area::init_fig()
     //____
 
     structure_tree_choice treeStructure;
-    L_system lSys = treeStructure.fractal_plant();
     tree tree(n1,M_PI/4,50);
-    tree.setTree_l_system(treeStructure.fractal_plant());
+    tree.setTree_l_system(treeStructure.fractal_stick());
 
 
 

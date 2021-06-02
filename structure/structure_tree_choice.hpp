@@ -16,6 +16,7 @@ public:
     L_system binary_tree();
     L_system fractal_plant();
     L_system fractal_stick();
+    L_system fractal_sym();
 
 private:
     L_system tree_choice;
