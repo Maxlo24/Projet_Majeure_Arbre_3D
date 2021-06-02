@@ -35,10 +35,8 @@ void render_area::init_fig()
     brush_size = 2;
     algo_iter = 4;
     
-
-
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_stick());
+    tree.setTree_l_system(treeStructure.fractal_bush());
 
 
     this->render_tree = tree;
@@ -86,7 +84,7 @@ void render_area::paintEvent(QPaintEvent*)
     painter.setBrush(brush);
     for(int i = 0;i<render_tree.size();i++)
     {
-        if (render_tree(i)->getVisible_node()  || true)
+        if (render_tree(i)->getVisible_node())
         {
             pen.setColor(QColor(r1+i*dr, g1+i*dg, b1+i*db));
             painter.setPen(pen);

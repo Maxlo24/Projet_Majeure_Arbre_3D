@@ -3,12 +3,9 @@
 tree::tree()
 {
     node *root= new node({0.f,0.f+paramLength});
-    root->Type() = F;
     this->tree_root = root;
-    node *n1 = new node({root->Coord().x,root->Coord().y+paramLength});
-    n1->Parent()=root;
-    this->data = {root,n1};
-    this->last_data = {n1};
+    this->data = {root};
+    this->last_data = {root};
 }
 
 tree::tree(vector<node*> data)
@@ -19,11 +16,8 @@ tree::tree(vector<node*> data)
 
 tree::tree(node *root,float paramAlpha,float paramLength){
     this->tree_root = root;
-    root->Type() = A;
-    node *n1 = new node({root->Coord().x,root->Coord().y+paramLength});
-    n1->Parent()=root;
-    this->data = {root,n1};
-    this->last_data = {n1};
+    this->data = {root};
+    this->last_data = {root};
     this->paramAlpha = paramAlpha;
     this->paramLength = paramLength;
 }
@@ -78,7 +72,7 @@ vector<node *> tree::getLastData() const
 void tree::setTree_l_system(const L_system &value)
 {
     tree_l_system = value;
-    data[1]->Type() = tree_l_system.getAxiom();
+    data[0]->Type() = tree_l_system.getAxiom();
 
 }
 
@@ -99,10 +93,8 @@ int tree::getNbrIter() const
 
 void tree::reset()
 {
-    node *n1 = new node({tree_root->Coord().x,tree_root->Coord().y+paramLength});
-    n1->Parent()=tree_root;
-    data = {tree_root,n1};
-    last_data = {n1};
+    data = {tree_root};
+    last_data = {tree_root};
     nbr_iter=0;
 }
 
@@ -119,18 +111,26 @@ void tree::generateNextLayer()
 
 void tree::incrementTree(L_system lSystem,node *parentNode){
     Rules rules = lSystem.getOneRuleOfType(parentNode->Type());
-    float segment_length = (paramLength/(1+nbr_iter*reduction_ratio));
+    float segment_length;
     float angle = parentNode->Angle();
     vector<node*> queueNode;
     node *currentNode = parentNode;
     for (lType type:rules.getRule()){
-        if (type == A || type == B || type == X || type == F){
+        if (type == A || type == B || type == F){
             segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
-            vec2 dP = vec2(-segment_length*sin(angle),segment_length*cos(angle));
+            vec2 dP = vec2(segment_length*sin(angle),segment_length*cos(angle));
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
+            newN->visibleTrue();
             newN->incrementNb_parent();
-            if (type == X) newN->visibleFalse();
-            else newN->visibleTrue();
+            add_node(newN);
+            add_node_last_data(newN);
+            currentNode = newN;
+        }
+
+        else if (type == X){
+            node *newN = new node(currentNode->Coord(),type,angle,currentNode);
+            newN->visibleFalse();
+            newN->incrementNb_parent();
             add_node(newN);
             add_node_last_data(newN);
             currentNode = newN;

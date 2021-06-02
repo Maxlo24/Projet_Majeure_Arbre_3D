@@ -1,7 +1,9 @@
 #include "rules.hpp"
 
 Rules::Rules()
-{}
+{
+    proba = 1;
+}
 Rules::Rules(float proba)
     :proba(proba)
 { rule = {};}
