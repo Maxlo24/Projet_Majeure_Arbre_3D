@@ -75,6 +75,11 @@ vector<node *> tree::getLastData() const
     return last_data;
 }
 
+void tree::setTree_l_system(const L_system &value)
+{
+    tree_l_system = value;
+}
+
 void tree::setAlphabet(vector<lType> alphabet)
 {
     this->tree_alphabet = alphabet;
@@ -98,12 +103,11 @@ void tree::reset()
 
 void tree::generateNextLayer()
 {
-    L_system lSys(tree_alphabet,A,tree_rules);
     vector<node*> lastDataCopy = this->last_data;
     last_data.clear();
     for (node * lnode: lastDataCopy)
     {
-        this->incrementTree(lSys,lnode);
+        this->incrementTree(tree_l_system,lnode);
     }
     nbr_iter+=1;
 }
@@ -117,7 +121,7 @@ void tree::incrementTree(L_system lSystem,node *parentNode){
     for (lType type:rules.getRule()){
         if (type == A || type == B || type == X || type == F){
             float dangle = angle-currentNode->Angle();
-            vec2 dP = vec2(segment_length*sin(dangle),segment_length*cos(dangle));
+            vec2 dP = vec2(segment_length*sin(angle),segment_length*cos(angle));
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             add_node(newN);
             add_node_last_data(newN);

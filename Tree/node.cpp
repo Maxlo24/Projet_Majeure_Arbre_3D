@@ -4,14 +4,14 @@
 node::node()
 {
     this->coord = vec2(0,0);
-    this->l_type = lType(A);
+    this->l_type = lType(X);
     this->parent = this;
 }
 
 node::node(vec2 coord)
 {
     this->coord = coord;
-    this->l_type = lType(A);
+    this->l_type = lType(X);
     this->angle = 0;
     this->parent = this;
 }

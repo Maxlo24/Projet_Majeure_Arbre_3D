@@ -39,6 +39,8 @@ public:
     vector<node *> getData() const;
     vector<node *> getLastData() const;
 
+    void setTree_l_system(const L_system &value);
+
 private:
     vector<node*> data;
     int data_size;
@@ -49,6 +51,8 @@ private:
 
     vector<lType> tree_alphabet;
     map<lType,vector<Rules>> tree_rules;
+
+    L_system tree_l_system;
 
     float paramAlpha = M_PI/10;
     float paramLength = 40;

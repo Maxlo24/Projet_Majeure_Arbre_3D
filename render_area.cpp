@@ -40,17 +40,12 @@ void render_area::init_fig()
     n1->Parent()=n1;
     //____
 
-    //toi
-    node *n2 = new node(X,M_PI/6);
-    n2->Parent()=n2;
     structure_tree_choice treeStructure;
     L_system lSys = treeStructure.fractal_plant();
-    //____
-
     tree tree(n1,M_PI/4,50);
+    tree.setTree_l_system(treeStructure.fractal_plant());
 
-    tree.setAlphabet({A});
-    tree.setRules(A, {Rules(1.0,{oSp,oG,A,oRp,oD,A})});
+
 
     this->render_tree = tree;
     draw_tree();

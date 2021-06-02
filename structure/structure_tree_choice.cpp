@@ -27,10 +27,10 @@ Rules structure_tree_choice::decryptRule(std::string rule,float proba){
 
 L_system structure_tree_choice::binary_tree()
 {
-    vector<lType> alphabet = {A};
+    vector<lType> alphabet = {X};
     map<lType,vector<Rules>> rules;
-    rules[A] = {Rules(1.0,{oSp,oG,A,oRp,oD,A})};
-    return L_system(alphabet,A,rules);
+    rules[A] = {Rules(1.0,{oSp,oG,X,oRp,oD,X})};
+    return L_system(alphabet,X,rules);
 }
 
 L_system structure_tree_choice::fractal_plant()
@@ -38,6 +38,15 @@ L_system structure_tree_choice::fractal_plant()
     vector<lType> alphabet = {X,F};
     map<lType,vector<Rules>> rules;
     rules[X] = {decryptRule("F+[[X]-X]-F[-FX]+X")};
+    rules[F] = {decryptRule("FF")};
+    return L_system(alphabet,X,rules);
+}
+
+L_system structure_tree_choice::fractal_stick()
+{
+    vector<lType> alphabet = {X,F};
+    map<lType,vector<Rules>> rules;
+    rules[X] = {decryptRule("F[+X]F[-X]+X")};
     rules[F] = {decryptRule("FF")};
     return L_system(alphabet,X,rules);
 }
