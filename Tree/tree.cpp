@@ -136,7 +136,7 @@ void tree::incrementTree(L_system lSystem,node *parentNode){
     for (lType type:rules.getRule()){
         if (type == A || type == B || type == F){
             segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
-            vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),0);
+            vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             newN->visibleTrue();
             newN->incrementNb_parent();
