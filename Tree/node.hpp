@@ -30,11 +30,16 @@ public:
     const node* Parent() const;
     node*& Parent();
 
+    int getNb_parent() const;
+    void setNb_parent(int value);
+    void incrementNb_parent();
+
 private:
     vec2 coord;
     lType l_type;
     node *parent;
     float angle;
+    int nb_parent = 1;
 
 };
 

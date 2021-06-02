@@ -115,14 +115,16 @@ void tree::generateNextLayer()
 void tree::incrementTree(L_system lSystem,node *parentNode){
     Rules rules = lSystem.getOneRuleOfType(parentNode->Type());
     float segment_length = (paramLength/(1+nbr_iter*reduction_ration));
-    segment_length = (paramLength/pow(2.0,nbr_iter));
+    //segment_length = (paramLength/pow(2.0,nbr_iter));
     float angle = parentNode->Angle();
     vector<node*> queueNode;
     node *currentNode = parentNode;
     for (lType type:rules.getRule()){
         if (type == A || type == B || type == X || type == F){
+            segment_length = paramLength/pow(1.1f,currentNode->getNb_parent());
             vec2 dP = vec2(segment_length*sin(angle),segment_length*cos(angle));
             node *newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
+            newN->incrementNb_parent();
             add_node(newN);
             add_node_last_data(newN);
             currentNode = newN;
