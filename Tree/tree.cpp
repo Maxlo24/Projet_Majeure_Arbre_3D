@@ -110,7 +110,7 @@ void tree::reset()
 
 void tree::clearData()
 {
-    for(int i = 1; i < data.size();i++){
+    for(auto i = 1; i < data.size();i++){
         delete data[i];
     }
 
