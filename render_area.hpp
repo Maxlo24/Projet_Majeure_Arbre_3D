@@ -100,6 +100,12 @@ private: //attributes
     float dx;
     float dy;
 
+    float dx_prec;
+    float dy_prec;
+
+    int clickpos_x;
+    int clickpos_y;
+
     /** The current position of the click of the mouse */
     vec2 mouse_point;
 

@@ -36,6 +36,11 @@ void render_area::init_fig()
     algo_iter = 4;
     slow_draw = false;
     scale = 4;
+
+    dx=0;
+    dy=0;
+    dx_prec =0;
+    dy_prec =0;
     
     tree tree;
     tree.setTree_l_system(treeStructure.fractal_fir());
@@ -119,7 +124,7 @@ void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
     vec3 np1 = scale*mat_rotation*p1;
     vec3 np2 = scale*mat_rotation*p2;
 
-    painter->drawLine(this->width/2+np1.x(),this->height-20-np1.y(),this->width/2+np2.x(),this->height-20-np2.y());
+    painter->drawLine(this->width/2+np1.x()+dx,this->height-20-np1.y()+dy,this->width/2+np2.x()+dx,this->height-20-np2.y()+dy);
 
 }
 
@@ -169,13 +174,13 @@ void render_area::mousePressEvent(QMouseEvent *event)
 {
     mouse_point=vec2(event->x(),event->y());
 
+    paint();
     if(event->button() == Qt::LeftButton){
         is_left_clicked=true;
     }
     if (event->button() == Qt::RightButton){
         is_right_clicked=true;
     }
-    paint();
     repaint();
 }
 
@@ -183,6 +188,9 @@ void render_area::mouseReleaseEvent(QMouseEvent*)
 {
     is_left_clicked=false;
     is_right_clicked=false;
+    dx_prec = dx;
+    dy_prec = dy;
+//    paint();
     repaint();
 }
 
@@ -247,9 +255,11 @@ void render_area::update_algo_select(int select){
     this->algo_select = select;
     std::cout<<"Algo selected : "<<this->algo_select<<std::endl;
 
+    init_fig();
     switch(algo_select){
         case 0:
             render_tree.setTree_l_system(treeStructure.binary_tree());
+            scale=20;
             break;
         case 1:
             render_tree.setTree_l_system(treeStructure.fractal_stick());
@@ -268,6 +278,7 @@ void render_area::update_algo_select(int select){
             break;
         case 6:
             render_tree.setTree_l_system(treeStructure.fractal_fir());
+            scale=20;
             break;
     };
     draw_tree();
@@ -281,8 +292,28 @@ void render_area::reset_grid(){
 
 // function called whe user is painting with the mouse
 void render_area::paint(){
-//    int i = mouse_point.x/dx;
-//    int j = mouse_point.y/dy;
+    int i = mouse_point.x;
+    int j = mouse_point.y;
+
+    if(is_left_clicked==false){
+        if(i==clickpos_x && j==clickpos_y){
+            dx_prec=0;
+            dy_prec=0;
+            dx=0;
+            dy=0;
+        }
+        clickpos_x = i;
+        clickpos_y = j;
+//        std::cout<<i<<";"<<j<<std::endl;
+    }
+    if(is_left_clicked==true){
+        dx = i-clickpos_x+dx_prec;
+        dy = j-clickpos_y+dy_prec;
+//        std::cout<<i<<";"<<j<<std::endl;
+    }
+
+
+
 
 }
 
