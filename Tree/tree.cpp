@@ -119,7 +119,7 @@ void tree::generateTree(L_system lSystem,int n){
     vector<node*> queueNode;
     for (lType type:phrase){
         if (type == A || type == B || type == F){
-            segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
+            segment_length = paramLength/(1.0f+reduction_ratio*currentNode->getNb_parent());
             vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
             newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             newN->visibleTrue();
