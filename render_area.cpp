@@ -43,7 +43,7 @@ void render_area::init_fig()
     dy_prec =0;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_complex1());
+    tree.setTree_l_system(treeStructure.fractal_3D_tree());
 
 
 
@@ -303,6 +303,9 @@ void render_area::update_algo_select(int select){
             break;
         case 9:
             render_tree.setTree_l_system(treeStructure.fractal_complex2());
+            break;
+        case 10:
+            render_tree.setTree_l_system(treeStructure.fractal_3D_tree());
             break;
     };
     draw_tree();

@@ -19,11 +19,11 @@ node::node(vec3 coord)
 {
     this->coord = coord;
     this->l_type = lType(F);
-    this->angle = 0;
+    this->angle = {0,0,0};
     this->parent = this;
 }
 
-node::node(lType l_type,float angle)
+node::node(lType l_type,vec3 angle)
 {
     this->coord = vec3(0,0,0);
     this->l_type = l_type;
@@ -32,7 +32,7 @@ node::node(lType l_type,float angle)
 
 }
 
-node::node(lType l_type,float angle, node* parent)
+node::node(lType l_type,vec3 angle, node* parent)
 {
     this->coord = vec3(0,0,0);
     this->l_type = l_type;
@@ -45,10 +45,10 @@ node::node(vec3 coord,lType l_type, node *parent)
 {
     this->coord = coord;
     this->l_type = l_type;
-    this->angle = 0;
+    this->angle = {0,0,0};
     this->parent = parent;
 }
-node::node(vec3 coord,lType l_type,float angle , node *parent)
+node::node(vec3 coord,lType l_type,vec3 angle , node *parent)
 {
     this->coord = coord;
     this->l_type = l_type;
@@ -79,12 +79,12 @@ lType& node::Type()
     return this->l_type;
 }
 
-float node::Angle() const
+vec3 node::Angle() const
 {
     return this->angle;
 }
 
-float& node::Angle()
+vec3& node::Angle()
 {
     return this->angle;
 }

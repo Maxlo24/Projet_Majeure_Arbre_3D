@@ -5,6 +5,7 @@
 #include <iostream>
 #include "../vec2.hpp"
 #include "../3D/vec3.hpp"
+#include "../3D/mat3.hpp"
 #include "../L_system/l_system.hpp"
 
 class node
@@ -14,10 +15,10 @@ public:
     node();
     node(vec3 coord);
     node(lType l_type);
-    node(lType l_type,float angle);
-    node(lType l_type,float angle,node *parent);
+    node(lType l_type,vec3 angle);
+    node(lType l_type,vec3 angle,node *parent);
     node(vec3 coord,lType l_type, node *parent);
-    node(vec3 coord,lType l_type,float angle, node *parent);
+    node(vec3 coord,lType l_type,vec3 angle, node *parent);
 
     //Methodes
     vec3 Coord() const;
@@ -26,8 +27,8 @@ public:
     lType Type() const;
     lType& Type();
 
-    float Angle() const;
-    float& Angle();
+    vec3 Angle() const;
+    vec3& Angle();
 
     const node* Parent() const;
     node*& Parent();
@@ -44,7 +45,7 @@ private:
     vec3 coord;
     lType l_type;
     node *parent;
-    float angle = 0.f;
+    vec3 angle = {0,0,0};
     int nb_parent = 1;
     bool visible_node = false;
 

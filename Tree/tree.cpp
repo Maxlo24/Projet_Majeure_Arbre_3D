@@ -115,38 +115,55 @@ void tree::generateTree(L_system lSystem,int n){
     node *currentNode = tree_root;
     //add_node(newN);
     float segment_length;
-    float angle = currentNode->Angle();
+    vec3 angle = currentNode->Angle();
     vector<node*> queueNode;
     for (lType type:phrase){
-        if (type == A || type == B || type == F){
+        if (type == A || type == B || type == C || type == D || type == E || type == F){
             segment_length = paramLength/(1.0f+reduction_ratio*currentNode->getNb_parent());
-            vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
+            //vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
+            mat3 mat_Rz = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
+                               -sin(angle.z()),cos(angle.z()) ,0         ,
+                               0              ,0              ,1         );
+
+            mat3 mat_Rx = mat3(1          ,0              ,0              ,
+                               0          ,cos(angle.x()) ,-sin(angle.x()),
+                               0          ,sin(angle.x()) ,cos(angle.x()) );
+
+            mat3 mat_Ry = mat3(cos(angle.y()) ,0            ,sin(angle.y()) ,
+                               0              ,1            ,0              ,
+                               -sin(angle.y()),0            ,cos(angle.y()) );
+
+            vec3 dP = mat_Rz*mat_Rx*mat_Ry*vec3(0,segment_length,0);
             newN = new node(currentNode->Coord()+dP,type,angle,currentNode);
             newN->visibleTrue();
             newN->incrementNb_parent();
             add_node(newN);
             currentNode = newN;
         }
-        else if (type == X || type == Y || type == Z || type == V || type == W){
+        else if (type == X || type == Y || type == Z || type == U || type == V || type == W){
             node *newN = new node(currentNode->Coord(),type,angle,currentNode);
             newN->visibleFalse();
             newN->incrementNb_parent();
             add_node(newN);
             currentNode = newN;
         }else if (type == oG){
-            angle += paramAlpha;
+            angle.z() += paramAlpha;
         }else if (type == oD){
-            angle -= paramAlpha;
+            angle.z() -= paramAlpha;
         }else if (type == oPb){
-
+            angle.y() -= paramAlpha;
         }else if (type == oPh){
-
+            angle.y() += paramAlpha;
         }else if (type == oRG){
-
+            angle.x() -= paramAlpha;
         }else if (type == oRD){
+            angle.x() += paramAlpha;
+        }else if (type == oBd){
+
+        }else if (type == oBg){
 
         }else if (type == oT){
-            angle += M_PI;
+            angle.z() += M_PI;
         }else if (type == oSp){
             queueNode.push_back(currentNode);
         }else if (type == oRp){
