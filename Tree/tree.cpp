@@ -61,7 +61,7 @@ vector<node *> tree::getData() const
 void tree::setTree_l_system(const L_system &value)
 {
     tree_l_system = value;
-    data[0]->Type() = tree_l_system.getAxiom();
+    //data[0]->Type() = tree_l_system.getAxiom();
 
 }
 
@@ -111,9 +111,9 @@ void tree::generateNextLayer(int iter)
 
 void tree::generateTree(L_system lSystem,int n){
     vector<lType> phrase =  lSystem.getPhraseN(n);
-    node *newN = new node(lSystem.getAxiom());
-    node *currentNode = newN;
-    add_node(newN);
+    node *newN;
+    node *currentNode = tree_root;
+    //add_node(newN);
     float segment_length;
     float angle = currentNode->Angle();
     vector<node*> queueNode;
@@ -127,7 +127,7 @@ void tree::generateTree(L_system lSystem,int n){
             add_node(newN);
             currentNode = newN;
         }
-        else if (type == X || type == Y){
+        else if (type == X || type == Y || type == Z || type == V || type == W){
             node *newN = new node(currentNode->Coord(),type,angle,currentNode);
             newN->visibleFalse();
             newN->incrementNb_parent();

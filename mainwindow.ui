@@ -126,6 +126,16 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <string>Buisson</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Feuille</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sapin</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="Partie_Env">
     <property name="geometry">

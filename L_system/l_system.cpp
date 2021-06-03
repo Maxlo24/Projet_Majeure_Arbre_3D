@@ -6,7 +6,7 @@ L_system::L_system()
 {
 }
 
-L_system::L_system(vector<lType> alphabet, lType axiom, map<lType,vector<Rules>> rules)
+L_system::L_system(vector<lType> alphabet, vector<lType> axiom, map<lType,vector<Rules>> rules)
     :alphabet(alphabet),axiom(axiom),rules(rules)
 {}
 
@@ -37,11 +37,12 @@ Rules L_system::getOneRuleOfType(lType type){
 
 vector<lType> L_system::getAlphabet(){ return alphabet;}
 
-lType L_system::getAxiom(){ return axiom;}
+vector<lType> L_system::getAxiom(){ return axiom;}
 
 vector<lType> L_system::getPhraseN(int n)
 {
-    vector<lType> pseudoPhrases = {axiom};
+    vector<lType> pseudoPhrases = {};
+    pseudoPhrases.insert(pseudoPhrases.end(),axiom.begin(),axiom.end());
     vector<lType> pseudoPhrases1 = {};
     for (int i = 0; i < n+1; i++){
         pseudoPhrases1 = pseudoPhrases;
