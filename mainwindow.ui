@@ -148,7 +148,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </item>
     <item>
      <property name="text">
-      <string>Complexe 1</string>
+      <string>Persil</string>
      </property>
     </item>
    </widget>

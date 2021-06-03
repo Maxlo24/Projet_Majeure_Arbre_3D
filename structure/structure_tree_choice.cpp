@@ -117,16 +117,16 @@ L_system structure_tree_choice::fractal_complex1()
     rules[F] = {decryptRule("FF+[+F-F-F][-F+F+F]",0.2),decryptRule("FF",0.8)};
     return L_system(alphabet,{X},rules);
 }
-L_system structure_tree_choice::fractal_complex2()
+L_system structure_tree_choice::fractal_persil()
 {
     vector<lType> alphabet = {X,Y,Z,V,W,F};
     map<lType,vector<Rules>> rules;
     rules[V] = {decryptRule("[+++W][---W]YV")};
     rules[W] = {decryptRule("+X[-W]Z")};
-    rules[X] = {decryptRule("-W[+X]Z",0.8),decryptRule("[-FX]+FX",0.2)};
+    rules[X] = {decryptRule("-W[+X]Z",0.3),decryptRule("F[+X]F[-X]+X",0.6),decryptRule("[-FX]+FX",0.1)};
     rules[Y] = {decryptRule("YZ")};
     rules[Z] = {decryptRule("[-FFF][+FFF]F")};
-    rules[F] = {decryptRule("F")};
+    rules[F] = {decryptRule("F",0.5),decryptRule("FF",0.5)};
 
     return L_system(alphabet,{F,X},rules);
 }

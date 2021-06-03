@@ -113,7 +113,7 @@ void render_area::paintEvent(QPaintEvent*)
 
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
 
-             if(slow_draw) std::cout<<"branche : "<<(render_tree(i)->getNb_parent())<<"/"<<nbVal<<std::endl;
+//             if(slow_draw) std::cout<<"branche : "<<(render_tree(i)->getNb_parent())<<"/"<<nbVal<<std::endl;
         }
 
     }
@@ -147,6 +147,7 @@ void render_area::launch_algo(){
     this->cleanGrid();
 
     this->running = true;
+    draw_tree();
     this->setCursor(Qt::ForbiddenCursor);
     std::cout<<"Algo selected : "<<this->algo_select<<std::endl;
     std::cout<<"Searching ..."<<std::endl;
@@ -199,7 +200,7 @@ void render_area::mouseReleaseEvent(QMouseEvent*)
 
 
 void render_area::update_algo_speed(int speed){
-    this->algo_delay = 2*(speed-2);
+    this->algo_delay = 40*(speed-2);
     std::cout<<"Algo delay : "<<this->algo_delay<<std::endl;
 }
 
@@ -302,7 +303,7 @@ void render_area::update_algo_select(int select){
             render_tree.setTree_l_system(treeStructure.fractal_complex1());
             break;
         case 9:
-            render_tree.setTree_l_system(treeStructure.fractal_complex2());
+            render_tree.setTree_l_system(treeStructure.fractal_persil());
             break;
     };
     draw_tree();
