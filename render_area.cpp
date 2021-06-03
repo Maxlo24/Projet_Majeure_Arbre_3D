@@ -48,6 +48,8 @@ void render_area::init_fig()
                        0,1,0,
                        -std::sin(0),0,std::cos(0));
 
+    render_tree.setLength(0.3*6);
+
     std::cout<<"Init OK"<<std::endl;
 
 }
@@ -217,7 +219,7 @@ void render_area::update_tree_size(int size){
 
 void render_area::update_segment_size(int size){
 
-    render_tree.setLength(10*size);
+    render_tree.setLength(0.3*size);
     std::cout<<"Segment size : "<<size<<std::endl;
     draw_tree();
     repaint();

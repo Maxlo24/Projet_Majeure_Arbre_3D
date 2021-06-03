@@ -332,7 +332,7 @@ color: rgb(43, 43, 43);</string>
      <number>1</number>
     </property>
     <property name="maximum">
-     <number>10</number>
+     <number>20</number>
     </property>
     <property name="value">
      <number>6</number>
@@ -538,7 +538,7 @@ color: rgb(43, 43, 43);</string>
      <number>10</number>
     </property>
     <property name="value">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="tracking">
      <bool>true</bool>
