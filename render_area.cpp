@@ -50,9 +50,12 @@ void render_area::init_fig()
     this->render_tree = tree;
     draw_tree();
 
-    mat_rotation = mat3(std::cos(0),0,std::sin(0),
+    mat_rotation_y = mat3(std::cos(0),0,std::sin(0),
                        0,1,0,
                        -std::sin(0),0,std::cos(0));
+    mat_rotation_x = mat3(1,0,0,
+                       0,std::cos(0),-std::sin(0),
+                       0,std::sin(0),std::cos(0));
 
     std::cout<<"Init OK"<<std::endl;
 
@@ -121,8 +124,8 @@ void render_area::paintEvent(QPaintEvent*)
 void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
 //    std::cout<<p1<<p2<<std::endl;
 
-    vec3 np1 = scale*mat_rotation*p1;
-    vec3 np2 = scale*mat_rotation*p2;
+    vec3 np1 = scale*mat_rotation_x*mat_rotation_y*p1;
+    vec3 np2 = scale*mat_rotation_x*mat_rotation_y*p2;
 
     painter->drawLine(this->width/2+np1.x()+dx,this->height-20-np1.y()+dy,this->width/2+np2.x()+dx,this->height-20-np2.y()+dy);
 
@@ -200,14 +203,27 @@ void render_area::update_algo_speed(int speed){
     std::cout<<"Algo delay : "<<this->algo_delay<<std::endl;
 }
 
-void render_area::update_rotation(int angle)
+void render_area::update_rotation_y(int angle)
 {
-    rotation_theta = (float(angle)/180)*M_PI;
+    rotation_theta_y = (float(angle)/180)*M_PI;
     std::cout<<"Angle de rotation : "<<angle<<std::endl;
-    mat_rotation = mat3(std::cos(rotation_theta),0,std::sin(rotation_theta),
+    mat_rotation_y = mat3(std::cos(rotation_theta_y),0,std::sin(rotation_theta_y),
                        0,1,0,
-                       -std::sin(rotation_theta),0,std::cos(rotation_theta));
+                       -std::sin(rotation_theta_y),0,std::cos(rotation_theta_y));
     repaint();
+
+}
+
+void render_area::update_rotation_x(int angle)
+{
+    rotation_theta_x = (float(angle)/180)*M_PI;
+    std::cout<<"Angle de rotation : "<<angle<<std::endl;
+    mat_rotation_x = mat3(1,0,0,
+                       0,std::cos(rotation_theta_x),-std::sin(rotation_theta_x),
+                       0,std::sin(rotation_theta_x),std::cos(rotation_theta_x));
+    repaint();
+
+
 
 }
 
@@ -301,6 +317,8 @@ void render_area::paint(){
             dy_prec=0;
             dx=0;
             dy=0;
+            update_rotation_x(0);
+            update_rotation_y(0);
         }
         clickpos_x = i;
         clickpos_y = j;

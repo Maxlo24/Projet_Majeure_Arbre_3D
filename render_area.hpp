@@ -74,7 +74,8 @@ private slots:
     void update_ratio(int ratio);
     void update_algo_select(int select);
     void update_algo_speed(int speed);
-    void update_rotation(int angle);
+    void update_rotation_y(int angle);
+    void update_rotation_x(int angle);
     void reset_grid();
     void launch_algo();
 
@@ -88,7 +89,8 @@ private: //attributes
     void cleanGrid();
 
     float brush_size;
-    float rotation_theta;
+    float rotation_theta_y;
+    float rotation_theta_x;
     float scale;
 
     int algo_select;
@@ -109,7 +111,8 @@ private: //attributes
     /** The current position of the click of the mouse */
     vec2 mouse_point;
 
-    mat3 mat_rotation;
+    mat3 mat_rotation_y;
+    mat3 mat_rotation_x;
 
     /** Indicates if the mouse is currently clicked or not */
     bool is_left_clicked;

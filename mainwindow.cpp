@@ -27,7 +27,10 @@ MainWindow::MainWindow(QWidget *parent)
     //slider ratio
     connect(ui->ratio_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_ratio(int)));
     //Rotation
-    connect(ui->rotation_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_rotation(int)));
+    connect(ui->rotation_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_rotation_y(int)));
+    //Rotation
+    connect(ui->vertical_rotation_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_rotation_x(int)));
+
 
 
 
