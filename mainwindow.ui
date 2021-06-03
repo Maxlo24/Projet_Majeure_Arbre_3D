@@ -283,7 +283,7 @@ color: rgb(43, 43, 43);</string>
      </rect>
     </property>
     <property name="minimum">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="maximum">
      <number>10</number>
@@ -332,10 +332,16 @@ color: rgb(43, 43, 43);</string>
      <number>1</number>
     </property>
     <property name="maximum">
-     <number>20</number>
+     <number>200</number>
+    </property>
+    <property name="singleStep">
+     <number>5</number>
+    </property>
+    <property name="pageStep">
+     <number>5</number>
     </property>
     <property name="value">
-     <number>6</number>
+     <number>40</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -344,7 +350,7 @@ color: rgb(43, 43, 43);</string>
      <enum>QSlider::TicksBelow</enum>
     </property>
     <property name="tickInterval">
-     <number>1</number>
+     <number>10</number>
     </property>
    </widget>
    <widget class="QLabel" name="taillePinceauLabel_3">
