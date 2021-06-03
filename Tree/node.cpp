@@ -18,7 +18,7 @@ node::node(lType l_type)
 node::node(vec3 coord)
 {
     this->coord = coord;
-    this->l_type = lType(X);
+    this->l_type = lType(F);
     this->angle = 0;
     this->parent = this;
 }

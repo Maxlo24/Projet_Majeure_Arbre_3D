@@ -15,7 +15,7 @@ render_area::render_area(QWidget *parent)
 
     this->running = false;
     this->algo_select = 0;
-    this->algo_iter=4;
+    this->algo_iter=3;
     this->algo_delay = -1;
 
     init_fig();
@@ -37,7 +37,7 @@ void render_area::init_fig()
     slow_draw = false;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_sym());
+    tree.setTree_l_system(treeStructure.fractal_fir());
 
 
 
@@ -263,6 +263,12 @@ void render_area::update_algo_select(int select){
             break;
         case 4:
             render_tree.setTree_l_system(treeStructure.fractal_bush());
+            break;
+        case 5:
+            render_tree.setTree_l_system(treeStructure.fractal_leaf());
+            break;
+        case 6:
+            render_tree.setTree_l_system(treeStructure.fractal_fir());
             break;
     };
     draw_tree();
