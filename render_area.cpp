@@ -82,9 +82,9 @@ void render_area::paintEvent(QPaintEvent*)
 
         int nbVal = render_tree.getMaxNbrParent();
     //pour chaque canal, calcul du différenciel entre chaque teinte (nbVal est le nombre de teintes du dégradé)
-        int dr = int((r2 - r1) / nbVal);
-        int dg = int((g2 - g1) / nbVal);
-        int db = int((b2 - b1) / nbVal);
+        float dr = float(r2 - r1) / nbVal;
+        float dg = float(g2 - g1) / nbVal;
+        float db = float(b2 - b1) / nbVal;
 
     pen.setColor(Qt::black);
     painter.setPen(pen);
@@ -101,10 +101,12 @@ void render_area::paintEvent(QPaintEvent*)
         if (render_tree(i)->getVisible_node())
         {
             int nbrParent = render_tree(i)->getNb_parent();
-            pen.setColor(QColor(r1+nbrParent*dr, g1+nbrParent*dg, b1+nbrParent*db));
+            pen.setColor(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)));
             painter.setPen(pen);
 
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
+
+             if(slow_draw) std::cout<<"branche : "<<(render_tree(i)->getNb_parent())<<"/"<<nbVal<<std::endl;
         }
 
     }
@@ -187,7 +189,7 @@ void render_area::mouseReleaseEvent(QMouseEvent*)
 
 
 void render_area::update_algo_speed(int speed){
-    this->algo_delay = 20*(speed-2);
+    this->algo_delay = 2*(speed-2);
     std::cout<<"Algo delay : "<<this->algo_delay<<std::endl;
 }
 
@@ -235,7 +237,7 @@ void render_area::update_angle(int angle){
 
 void render_area::update_ratio(int ratio)
 {
-    render_tree.setRatio(float(ratio)/20);
+    render_tree.setRatio(float(ratio)/200);
     std::cout<<"Ratio : "<<float(ratio)/20<<std::endl;
     draw_tree();
     repaint();
