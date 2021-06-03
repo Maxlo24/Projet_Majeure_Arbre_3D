@@ -54,7 +54,7 @@ private:
     L_system tree_l_system;
 
     float paramAlpha = M_PI/10;
-    float paramLength;
+    float paramLength = 1;
 
     int nbr_iter=0;
     float reduction_ratio=0.;

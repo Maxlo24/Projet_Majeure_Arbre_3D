@@ -35,6 +35,7 @@ void render_area::init_fig()
     brush_size = 2;
     algo_iter = 4;
     slow_draw = false;
+    scale = 4;
     
     tree tree;
     tree.setTree_l_system(treeStructure.fractal_fir());
@@ -47,8 +48,6 @@ void render_area::init_fig()
     mat_rotation = mat3(std::cos(0),0,std::sin(0),
                        0,1,0,
                        -std::sin(0),0,std::cos(0));
-
-    render_tree.setLength(0.3*6);
 
     std::cout<<"Init OK"<<std::endl;
 
@@ -117,8 +116,8 @@ void render_area::paintEvent(QPaintEvent*)
 void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
 //    std::cout<<p1<<p2<<std::endl;
 
-    vec3 np1 = mat_rotation*p1;
-    vec3 np2 = mat_rotation*p2;
+    vec3 np1 = scale*mat_rotation*p1;
+    vec3 np2 = scale*mat_rotation*p2;
 
     painter->drawLine(this->width/2+np1.x(),this->height-20-np1.y(),this->width/2+np2.x(),this->height-20-np2.y());
 
@@ -221,7 +220,7 @@ void render_area::update_tree_size(int size){
 
 void render_area::update_segment_size(int size){
 
-    render_tree.setLength(0.3*size);
+    this->scale = float(size)/10;
     std::cout<<"Segment size : "<<size<<std::endl;
     draw_tree();
     repaint();

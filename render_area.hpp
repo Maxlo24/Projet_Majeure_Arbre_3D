@@ -89,6 +89,7 @@ private: //attributes
 
     float brush_size;
     float rotation_theta;
+    float scale;
 
     int algo_select;
     int algo_iter;
