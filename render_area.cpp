@@ -246,7 +246,6 @@ void render_area::update_segment_size(int size){
 
     this->scale = float(size)/10;
     std::cout<<"Segment size : "<<size<<std::endl;
-    draw_tree();
     repaint();
 }
 
