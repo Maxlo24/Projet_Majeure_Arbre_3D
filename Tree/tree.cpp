@@ -5,19 +5,16 @@ tree::tree()
     node *root= new node({0.f,0.f+paramLength,0});
     this->tree_root = root;
     this->data = {root};
-    this->last_data = {root};
 }
 
 tree::tree(vector<node*> data)
 {
     this->data = data;
-    this->last_data = data;
 }
 
 tree::tree(node *root,float paramAlpha,float paramLength){
     this->tree_root = root;
     this->data = {root};
-    this->last_data = {root};
     this->paramAlpha = paramAlpha;
     this->paramLength = paramLength;
 }
@@ -49,10 +46,6 @@ void tree::add_node(node *n)
     this->data.push_back(n);
 }
 
-void tree::add_node_last_data(node *n)
-{
-    this->last_data.push_back(n);
-}
 
 int tree::size() const
 {
@@ -64,10 +57,6 @@ vector<node *> tree::getData() const
     return data;
 }
 
-vector<node *> tree::getLastData() const
-{
-    return last_data;
-}
 
 void tree::setTree_l_system(const L_system &value)
 {
@@ -104,7 +93,6 @@ void tree::reset()
 {
     clearData();
     data = {tree_root};
-    last_data = {tree_root};
     nbr_iter=0;
 }
 
@@ -117,22 +105,18 @@ void tree::clearData()
 
 void tree::generateNextLayer(int iter)
 {
-    vector<node*> lastDataCopy = this->last_data;
-    last_data.clear();
     generateTree(tree_l_system,iter);
     nbr_iter+=1;
 }
 
 void tree::generateTree(L_system lSystem,int n){
     vector<lType> phrase =  lSystem.getPhraseN(n);
-    node *newN = new node(phrase[0]);
-    node *parentNode = newN;
+    node *newN = new node(lSystem.getAxiom());
+    node *currentNode = newN;
     add_node(newN);
-    add_node_last_data(newN);
     float segment_length;
-    float angle = parentNode->Angle();
+    float angle = currentNode->Angle();
     vector<node*> queueNode;
-    node *currentNode = parentNode;
     for (lType type:phrase){
         if (type == A || type == B || type == F){
             segment_length = paramLength/pow(1.0f+reduction_ratio,currentNode->getNb_parent());
@@ -143,8 +127,7 @@ void tree::generateTree(L_system lSystem,int n){
             add_node(newN);
             currentNode = newN;
         }
-
-        else if (type == X){
+        else if (type == X || type == Y){
             node *newN = new node(currentNode->Coord(),type,angle,currentNode);
             newN->visibleFalse();
             newN->incrementNb_parent();

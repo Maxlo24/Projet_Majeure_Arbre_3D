@@ -40,13 +40,11 @@ public:
 
 
     vector<node *> getData() const;
-    vector<node *> getLastData() const;
 
     void setTree_l_system(const L_system &value);
 
 private:
     vector<node*> data;
-    vector<node*> last_data;
 
     node *tree_root;
 
@@ -59,7 +57,7 @@ private:
     float paramLength = 50;
 
     int nbr_iter=0;
-    float reduction_ratio=0.5;
+    float reduction_ratio=0.;
 
 };
 
