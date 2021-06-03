@@ -23,8 +23,7 @@ vector<Rules> L_system::getRulesOfType(lType type){return rules[type];}
 
 
 Rules L_system::getOneRuleOfType(lType type){
-    QRandomGenerator generator(1);
-    int random = generator.bounded(100);
+    int random = rand()%100;
     float proba = 0;
     vector<Rules >t_rule = rules[type];
     for (Rules r:t_rule){
