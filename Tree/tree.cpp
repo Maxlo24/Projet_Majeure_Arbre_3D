@@ -105,7 +105,7 @@ void tree::clearData()
 
 void tree::generateNextLayer(int iter)
 {
-    generateTree(tree_l_system,iter);
+    generateTree(tree_l_system,2);
     nbr_iter+=1;
 }
 
