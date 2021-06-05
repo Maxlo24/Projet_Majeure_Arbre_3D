@@ -43,7 +43,7 @@ void render_area::init_fig()
     dy_prec =0;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_bush());
+    tree.setTree_l_system(treeStructure.fractal_3D_tree1());
 
 
 

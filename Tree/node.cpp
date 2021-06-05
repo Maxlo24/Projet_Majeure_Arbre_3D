@@ -6,6 +6,7 @@ node::node()
     this->coord = vec3(0,0,0);
     this->l_type = lType(X);
     this->parent = this;
+    this->multiple_scale = 1.0f;
 }
 
 node::node(lType l_type)
@@ -13,6 +14,7 @@ node::node(lType l_type)
     this->coord = vec3(0,0,0);
     this->l_type = l_type;
     this->parent = this;
+    this->multiple_scale = 1.0f;
 }
 
 node::node(vec3 coord)
@@ -21,6 +23,7 @@ node::node(vec3 coord)
     this->l_type = lType(F);
     this->angle = {0,0,0};
     this->parent = this;
+    this->multiple_scale = 1.0f;
 }
 
 node::node(lType l_type,vec3 angle)
@@ -29,6 +32,7 @@ node::node(lType l_type,vec3 angle)
     this->l_type = l_type;
     this->angle = angle;
     this->parent = this;
+    this->multiple_scale = 1.0f;
 
 }
 
@@ -38,6 +42,7 @@ node::node(lType l_type,vec3 angle, node* parent)
     this->l_type = l_type;
     this->angle = angle;
     this->parent = parent;
+    this->multiple_scale = 1.0f;
 
 }
 
@@ -47,13 +52,18 @@ node::node(vec3 coord,lType l_type, node *parent)
     this->l_type = l_type;
     this->angle = {0,0,0};
     this->parent = parent;
+    this->multiple_scale = 1.0f;
 }
-node::node(vec3 coord,lType l_type,vec3 angle , node *parent)
+node::node(vec3 coord,lType l_type,vec3 angle , node *parent, bool visible, float multiply_Scale)
 {
     this->coord = coord;
     this->l_type = l_type;
     this->angle = angle;
     this->parent = parent;
+    this->multiple_scale = 1.0f;
+    this->visible_node = visible;
+    this->multiple_scale = multiple_scale;
+
 }
 
 
@@ -127,5 +137,20 @@ void node::visibleFalse()
 bool node::getVisible_node() const
 {
     return visible_node;
+}
+
+float node::getMultiple_scale() const
+{
+    return multiple_scale;
+}
+
+void node::setMultiple_scale(float value)
+{
+    multiple_scale = value;
+}
+
+void node::modifyMultiple_scale(float value)
+{
+    multiple_scale = value*multiple_scale;
 }
 

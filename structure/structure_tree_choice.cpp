@@ -32,6 +32,7 @@ Rules structure_tree_choice::decryptRule(std::string rule,float proba){
         else if (c=='|')  translateRule.addElement(oT);
         else if (c=='[')  translateRule.addElement(oSp);
         else if (c==']')  translateRule.addElement(oRp);
+        else if (c=='"')  translateRule.addElement(mS);
     }
     return translateRule;
 }
@@ -153,11 +154,11 @@ L_system structure_tree_choice::fractal_3D_tree(){
 }
 
 L_system structure_tree_choice::fractal_3D_tree1(){
-    vector<lType> alphabet = {F,A};
+    vector<lType> alphabet = {F,X};
     map<lType,vector<Rules>> rules;
     rules[F] = {decryptRule("F")};
-    rules[A] = {decryptRule("[+FFFA]<<<[+FFFA]<<<[+FFFA]")};
+    rules[X] = {decryptRule("\"[+FFFX]<<<[+FFFX]<<<[+FFFX]")};
 
-    return L_system(alphabet,{F,F,F,A},rules);
+    return L_system(alphabet,{F,F,F,X},rules);
 }
 
