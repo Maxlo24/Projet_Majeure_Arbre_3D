@@ -54,7 +54,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>370</y>
+      <y>340</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -72,7 +72,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>440</y>
+      <y>410</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -93,7 +93,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>410</y>
+      <y>380</y>
       <width>191</width>
       <height>24</height>
      </rect>
@@ -187,7 +187,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>490</y>
+      <y>460</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -215,7 +215,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>470</y>
+      <y>440</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -279,7 +279,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>320</y>
+      <y>310</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -791,6 +791,27 @@ color: rgb(43, 43, 43);</string>
      <string>-180°</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="generateButton">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>490</y>
+      <width>191</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{border: 1px solid grey;}
+QPushButton::pressed{border: 1px solid blue;color: blue;};
+</string>
+    </property>
+    <property name="text">
+     <string>Generate .obj</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
    <zorder>verticalFrame_2</zorder>
    <zorder>quitButton</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -825,6 +846,7 @@ color: rgb(43, 43, 43);</string>
    <zorder>vertical_rotation_Slider</zorder>
    <zorder>taillePinceauLabel_16</zorder>
    <zorder>taillePinceauLabel_17</zorder>
+   <zorder>generateButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

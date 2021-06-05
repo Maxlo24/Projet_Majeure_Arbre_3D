@@ -78,6 +78,7 @@ private slots:
     void update_rotation_x(int angle);
     void reset_grid();
     void launch_algo();
+    void generate_obj();
 
 
 private: //attributes
@@ -92,6 +93,7 @@ private: //attributes
     float rotation_theta_y;
     float rotation_theta_x;
     float scale;
+    float scale_prec;
 
     int algo_select;
     int algo_iter;

@@ -69,14 +69,8 @@ void render_area::paintEvent(QPaintEvent*)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    QBrush brush = painter.brush();
-    brush.setColor(Qt::white);
-    brush.setStyle(Qt::SolidPattern);
-    painter.setBrush(brush);
 
     QPen pen;
-
-    pen.setWidth(brush_size);
 
     //couleur de départ
         int r1 = 91;
@@ -93,10 +87,6 @@ void render_area::paintEvent(QPaintEvent*)
         float dg = float(g2 - g1) / nbVal;
         float db = float(b2 - b1) / nbVal;
 
-    pen.setColor(Qt::black);
-    painter.setPen(pen);
-
-    painter.setBrush(brush);
 
     if(slow_draw){
         slow_draw_iter+=1;
@@ -109,6 +99,7 @@ void render_area::paintEvent(QPaintEvent*)
         {
             int nbrParent = render_tree(i)->getNb_parent();
             pen.setColor(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)));
+//            pen.setWidth(1+brush_size*(1-float(nbrParent)/nbVal));
             painter.setPen(pen);
 
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
@@ -167,6 +158,12 @@ void render_area::launch_algo(){
     repaint();
 }
 
+void render_area::generate_obj()
+{
+    std::cout<<"Building ..."<<std::endl;
+    std::cout<<"Done !"<<std::endl;
+}
+
 void render_area::mouseMoveEvent(QMouseEvent *event)
 {
     mouse_point=vec2(event->x(),event->y());
@@ -194,6 +191,7 @@ void render_area::mouseReleaseEvent(QMouseEvent*)
     is_right_clicked=false;
     dx_prec = dx;
     dy_prec = dy;
+    scale_prec = scale;
 //    paint();
     repaint();
 }
@@ -246,6 +244,7 @@ void render_area::update_tree_size(int size){
 void render_area::update_segment_size(int size){
 
     this->scale = float(size)/10;
+    this->scale_prec = scale;
     std::cout<<"Segment size : "<<size<<std::endl;
     repaint();
 }
@@ -279,18 +278,23 @@ void render_area::update_algo_select(int select){
             break;
         case 1:
             render_tree.setTree_l_system(treeStructure.fractal_stick());
+            scale =4;
             break;
         case 2:
             render_tree.setTree_l_system(treeStructure.fractal_plant());
+            scale =4;
             break;
         case 3:
             render_tree.setTree_l_system(treeStructure.fractal_sym());
+            scale =4;
             break;
         case 4:
             render_tree.setTree_l_system(treeStructure.fractal_bush());
+            scale =4;
             break;
         case 5:
             render_tree.setTree_l_system(treeStructure.fractal_leaf());
+            scale =4;
             break;
         case 6:
             render_tree.setTree_l_system(treeStructure.fractal_fir());
@@ -298,20 +302,25 @@ void render_area::update_algo_select(int select){
             break;
         case 7:
             render_tree.setTree_l_system(treeStructure.fractal_dragon());
+            scale =4;
             break;
         case 8:
             render_tree.setTree_l_system(treeStructure.fractal_complex1());
+            scale =4;
             break;
         case 9:
             render_tree.setTree_l_system(treeStructure.fractal_persil());
+            scale =4;
             break;
         case 10:
             render_tree.setTree_l_system(treeStructure.fractal_3D_tree());
+            scale =4;
             break;
         case 11:
             render_tree.setTree_l_system(treeStructure.fractal_3D_tree1());
             break;
     };
+    scale_prec=scale;
     draw_tree();
     repaint();
 }
@@ -326,7 +335,7 @@ void render_area::paint(){
     int i = mouse_point.x;
     int j = mouse_point.y;
 
-    if(is_left_clicked==false){
+    if(is_left_clicked==false && is_right_clicked==false){
         if(i==clickpos_x && j==clickpos_y){
             dx_prec=0;
             dy_prec=0;
@@ -334,16 +343,28 @@ void render_area::paint(){
             dy=0;
             update_rotation_x(0);
             update_rotation_y(0);
+            scale = 4;
         }
         clickpos_x = i;
         clickpos_y = j;
-//        std::cout<<i<<";"<<j<<std::endl;
+//        std::cout<<is_left_clicked<<":"<<is_right_clicked<<";"<<clickpos_y<<std::endl;
     }
+
+
     if(is_left_clicked==true){
         dx = i-clickpos_x+dx_prec;
         dy = j-clickpos_y+dy_prec;
-//        std::cout<<i<<";"<<j<<std::endl;
+
+//        std::cout<<i<<";"<<clickpos_x<<std::endl;
     }
+
+
+    if(is_right_clicked==true){
+        scale = scale_prec-0.1f*(j-clickpos_y);
+        //scale = scale_prec+j-clickpos_y;
+//        std::cout<<j<<";"<<clickpos_y<<std::endl;
+    }
+//    std::cout<<is_right_clicked<<";"<<i-clickpos_x<<std::endl;
 
 
 
