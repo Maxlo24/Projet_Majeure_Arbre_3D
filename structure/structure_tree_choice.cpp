@@ -15,7 +15,12 @@ Rules structure_tree_choice::decryptRule(std::string rule,float proba){
         else if (c=='Z')  translateRule.addElement(Z);
         else if (c=='W')  translateRule.addElement(W);
         else if (c=='V')  translateRule.addElement(V);
+        else if (c=='U')  translateRule.addElement(U);
         else if (c=='F')  translateRule.addElement(F);
+        else if (c=='C')  translateRule.addElement(C);
+        else if (c=='D')  translateRule.addElement(D);
+        else if (c=='E')  translateRule.addElement(E);
+        else if (c=='G')  translateRule.addElement(G);
         else if (c=='-')  translateRule.addElement(oG);
         else if (c=='+')  translateRule.addElement(oD);
         else if (c=='&')  translateRule.addElement(oPb);
@@ -72,7 +77,7 @@ L_system structure_tree_choice::fractal_bush()
 {
     vector<lType> alphabet = {F};
     map<lType,vector<Rules>> rules;
-    rules[F] = {decryptRule("FF+[+F-F-F][-F+F+F]")};
+    rules[F] = {decryptRule("FF+[+F-F-F]-[-F+F+F]")};
     return L_system(alphabet,{F},rules);
 }
 
@@ -134,16 +139,25 @@ L_system structure_tree_choice::fractal_persil()
 }
 
 L_system structure_tree_choice::fractal_3D_tree(){
-    vector<lType> alphabet = {F,U,V,W,X,Y,Z};
+    vector<lType> alphabet = {F,C,D,E,X,A,B,G};
     map<lType,vector<Rules>> rules;
-    rules[F] = {decryptRule("Y[++++++MF][-----NF][^^^^^OF][&&&&&PF]")};
-    rules[U] = {decryptRule("Z-U")};
-    rules[V] = {decryptRule("Z+V")};
-    rules[W] = {decryptRule("Z&W")};
-    rules[X] = {decryptRule("Z^X")};
-    rules[Y] = {decryptRule("Z-ZY+")};
-    rules[Z] = {decryptRule("ZZ")};
+    rules[F] = {decryptRule("A[++++++&CF][-^----DF][+^^^^^EF][&&&&&-GF]")};
+    rules[C] = {decryptRule("B-C")};
+    rules[D] = {decryptRule("B+D")};
+    rules[E] = {decryptRule("B&E")};
+    rules[G] = {decryptRule("B^G")};
+    rules[A] = {decryptRule("BA")};
+    rules[B] = {decryptRule("BB")};
 
     return L_system(alphabet,{F},rules);
+}
+
+L_system structure_tree_choice::fractal_3D_tree1(){
+    vector<lType> alphabet = {F,A};
+    map<lType,vector<Rules>> rules;
+    rules[F] = {decryptRule("F")};
+    rules[A] = {decryptRule("[+FFFA]<<<[+FFFA]<<<[+FFFA]")};
+
+    return L_system(alphabet,{F,F,F,A},rules);
 }
 

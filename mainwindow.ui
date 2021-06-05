@@ -156,6 +156,11 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <string>Arbre 3D</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Arbre 3D 2</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="Partie_Env">
     <property name="geometry">
