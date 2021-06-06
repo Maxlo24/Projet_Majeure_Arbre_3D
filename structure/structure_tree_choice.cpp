@@ -6,10 +6,6 @@ structure_tree_choice::structure_tree_choice()
 }
 
 
-Rules structure_tree_choice::decryptRule(string rule,float proba){
-    Rules ruleA(rule,proba);
-    return ruleA;
-}
 
 L_system structure_tree_choice::binary_tree()
 {
@@ -96,7 +92,7 @@ L_system structure_tree_choice::fractal_complex1()
     vector<char> alphabet = {'X','F'};
     map<char,vector<Rules>> rules;
     rules['X'] = {Rules("F+[[X]-X]-F[-FX]+X")};
-    rules['F'] = {Rules("FF+[+F-F-F]-[-F+F+F]",0.2),decryptRule("FF",0.8)};
+    rules['F'] = {Rules("FF+[+F-F-F]-[-F+F+F]",0.2),Rules("FF",0.8)};
     return L_system(alphabet,{'X'},rules);
 }
 L_system structure_tree_choice::fractal_persil()
