@@ -14,18 +14,18 @@ public:
     //constructor
     node();
     node(vec3 coord);
-    node(lType l_type);
-    node(lType l_type,vec3 angle);
-    node(lType l_type,vec3 angle,node *parent);
-    node(vec3 coord,lType l_type, node *parent);
-    node(vec3 coord,lType l_type,vec3 angle, node *parent, bool visible, float mutliply_scale);
+    node(char l_type);
+    node(char l_type,vec3 angle);
+    node(char l_type,vec3 angle,node *parent);
+    node(vec3 coord,char l_type, node *parent);
+    node(vec3 coord,char l_type,vec3 angle, node *parent, bool visible, float mutliply_scale);
 
     //Methodes
     vec3 Coord() const;
     vec3& Coord();
 
-    lType Type() const;
-    lType& Type();
+    char Type() const;
+    char& Type();
 
     vec3 Angle() const;
     vec3& Angle();
@@ -49,7 +49,7 @@ public:
 
 private:
     vec3 coord;
-    lType l_type;
+    char l_type;
     node *parent;
     vec3 angle = {0,0,0};
     int nb_parent = 1;

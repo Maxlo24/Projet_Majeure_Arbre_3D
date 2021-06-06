@@ -64,7 +64,6 @@ void render_area::init_fig()
 
 void render_area::paintEvent(QPaintEvent*)
 {
-
     //Initialize painters
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);

@@ -2,8 +2,9 @@
 #define RULES_H
 
 #include <vector>
+#include <string>
 using std::vector;
-
+using std::string;
 
 /*
  * oG : tourner à gauche
@@ -17,22 +18,26 @@ using std::vector;
  * oRp : restaurer la dernière position
  */
 
-enum lType {A,B,C,D,E,F,G,U,V,W,X,Y,Z,oG,oD,oPb,oPh,oRG,oRD,oBd,oBg,oT,oSp,oRp,mS};
+//enum lType {A,B,C,D,E,F,G,U,V,W,X,Y,Z,oG,oD,oPb,oPh,oRG,oRD,oBd,oBg,oT,oSp,oRp,mS};
+
 class Rules
 {
 private:
     float proba;
-    vector<lType> rule;
+    string rule;
 public:
     /** Constructor */
     Rules();
     Rules(float);
-    Rules(float,vector<lType>);
+    Rules(string,float);
+    Rules(string);
 
     /** Methods */
     float getProba();
-    vector<lType> getRule();
-    void addElement(lType);
+    string getRule();
+    void addElement(char);
+
+    void operator=(Rules);
 
 
 };
