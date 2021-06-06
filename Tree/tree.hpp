@@ -19,7 +19,9 @@ public:
     node* operator()(int index) const;
     node*& operator()(int index);
 
-    void setAngle(float angle);
+    void setAlpha(float angle);
+    void setBeta(float angle);
+    void setGamma(float angle);
     void setLength(float length);
     void setRatio(float ratio);
     void setAlphabet(vector<lType> alphabet);

@@ -122,7 +122,7 @@ L_system structure_tree_choice::fractal_complex1()
     vector<lType> alphabet = {X,F};
     map<lType,vector<Rules>> rules;
     rules[X] = {decryptRule("F+[[X]-X]-F[-FX]+X")};
-    rules[F] = {decryptRule("FF+[+F-F-F][-F+F+F]",0.2),decryptRule("FF",0.8)};
+    rules[F] = {decryptRule("FF+[+F-F-F]-[-F+F+F]",0.2),decryptRule("FF",0.8)};
     return L_system(alphabet,{X},rules);
 }
 L_system structure_tree_choice::fractal_persil()
@@ -157,7 +157,8 @@ L_system structure_tree_choice::fractal_3D_tree1(){
     vector<lType> alphabet = {F,X};
     map<lType,vector<Rules>> rules;
     rules[F] = {decryptRule("F")};
-    rules[X] = {decryptRule("\"[+FFFX]<<<[+FFFX]<<<[+FFFX]")};
+    //rules[X] = {decryptRule("\"[+FFFX]<<<[+FFFX]<<<[+FFFX]")};
+    rules[X] = {decryptRule("\"[&[-FX]+FX][^[-FX]+FX]")};
 
     return L_system(alphabet,{F,F,F,X},rules);
 }

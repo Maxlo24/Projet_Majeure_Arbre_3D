@@ -98,9 +98,11 @@ void render_area::paintEvent(QPaintEvent*)
         if (render_tree(i)->getVisible_node())
         {
             int nbrParent = render_tree(i)->getNb_parent();
-            pen.setColor(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)));
+            //pen.setColor(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)));
 //            pen.setWidth(1+brush_size*(1-float(nbrParent)/nbVal));
-            painter.setPen(pen);
+            //painter.setPen(pen);
+            painter.setPen(QPen(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)),brush_size));
+
 
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
 
@@ -249,10 +251,24 @@ void render_area::update_segment_size(int size){
     repaint();
 }
 
-void render_area::update_angle(int angle){
+void render_area::update_alpha(int angle){
 
-    render_tree.setAngle((float(angle)/45)*M_PI/2);
-    std::cout<<"Angle : "<<angle<<std::endl;
+    render_tree.setAlpha((float(angle)/45)*M_PI/2);
+    std::cout<<"Alpha : "<<angle<<std::endl;
+    draw_tree();
+    repaint();
+}
+
+void render_area::update_beta(int angle){
+    render_tree.setBeta((float(angle)/45)*M_PI/2);
+    std::cout<<"Beta : "<<angle<<std::endl;
+    draw_tree();
+    repaint();
+}
+
+void render_area::update_gamma(int angle){
+    render_tree.setGamma((float(angle)/45)*M_PI/2);
+    std::cout<<"gamma : "<<angle<<std::endl;
     draw_tree();
     repaint();
 }

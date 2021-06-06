@@ -26,9 +26,19 @@ node*& tree::operator()(int index){
     return this->data[index];
 }
 
-void tree::setAngle(float angle)
+void tree::setAlpha(float angle)
 {
     this->paramAlpha = angle;
+}
+
+void tree::setBeta(float angle)
+{
+    this->paramBeta = angle;
+}
+
+void tree::setGamma(float angle)
+{
+    this->paramGamma = angle;
 }
 
 void tree::setLength(float length)
@@ -113,12 +123,9 @@ void tree::generateTree(L_system lSystem,int n){
     vector<lType> phrase =  lSystem.getPhraseN(n);
     node *newN;
     node *currentNode = tree_root;
-    //add_node(newN);
     float segment_length;
-    float multiply_scale = 1.0f;
     vec3 angle = currentNode->Angle();
     vector<node*> queueNode;
-    vec3 dP;
     for (lType type:phrase){
         if (type == A || type == B || type == C || type == D || type == E || type == F || type == G){
             segment_length = paramLength/(1.0f+reduction_ratio*currentNode->getNb_parent());
@@ -134,33 +141,29 @@ void tree::generateTree(L_system lSystem,int n){
                                0              ,1              ,0,
                                -sin(angle.y()),0              ,cos(angle.y()));
 
-            dP = mat_Ry*mat_Rz*mat_Rx*vec3(0,segment_length*currentNode->getMultiple_scale(),0);
-            newN = new node(currentNode->Coord()+dP,type,angle,currentNode,true,multiply_scale);
-            newN->visibleTrue();
+            vec3 dP = mat_Ry*mat_Rz*mat_Rx*vec3(0,segment_length*currentNode->getMultiple_scale(),0);
+            newN = new node(currentNode->Coord()+dP,type,angle,currentNode,true,currentNode->getMultiple_scale());
             newN->incrementNb_parent();
             add_node(newN);
             currentNode = newN;
         }
         else if (type == X || type == Y || type == Z || type == U || type == V || type == W){
-            node *newN = new node(currentNode->Coord(),type,angle,currentNode,false,multiply_scale);
-            newN->visibleFalse();
+            node *newN = new node(currentNode->Coord(),type,angle,currentNode,false,currentNode->getMultiple_scale());
             newN->incrementNb_parent();
             add_node(newN);
             currentNode = newN;
         }else if (type == oG){
-            angle.z() += paramAlpha+(rand()%10-20)/100;
+            angle.z() += paramAlpha+(rand()%10-20)/20;
         }else if (type == oD){
-            angle.z() -= paramAlpha+(rand()%10-20)/100;
+            angle.z() -= paramAlpha+(rand()%10-20)/20;
         }else if (type == oPb){
-            angle.x() -= paramAlpha+(rand()%10-20)/100;
+            angle.x() -= paramGamma+(rand()%10-20)/20;
         }else if (type == oPh){
-            angle.x() += paramAlpha+(rand()%10-20)/100;
+            angle.x() += paramGamma+(rand()%10-20)/20;
         }else if (type == oRG){
-            angle.y() -= paramBeta+(rand()%10-20)/100;
-            //currentNode->Angle() = angle;
+            angle.y() -= paramBeta+(rand()%10-20)/20;
         }else if (type == oRD){
-            angle.y() += paramBeta*+(rand()%10-20)/100;
-            //currentNode->Angle() = angle;
+            angle.y() += paramBeta*+(rand()%10-20)/20;
         }else if (type == oBd){
 
         }else if (type == oBg){
@@ -169,13 +172,15 @@ void tree::generateTree(L_system lSystem,int n){
             angle.z() += M_PI;
         }else if (type == oSp){
             currentNode->Angle() = angle;
-            queueNode.push_back(currentNode);
+            node *nodecopied = new node();
+            nodecopied->copyNode(currentNode);
+            queueNode.push_back(nodecopied);
         }else if (type == oRp){
             currentNode = queueNode.back();
             queueNode.pop_back();
             angle = currentNode->Angle();
         }else if (type == mS){
-            multiply_scale *= 0.8;
+            currentNode->modifyMultiple_scale(0.9f);
         }
     }
 }

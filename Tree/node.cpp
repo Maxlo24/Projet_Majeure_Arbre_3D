@@ -62,7 +62,7 @@ node::node(vec3 coord,lType l_type,vec3 angle , node *parent, bool visible, floa
     this->parent = parent;
     this->multiple_scale = 1.0f;
     this->visible_node = visible;
-    this->multiple_scale = multiple_scale;
+    this->multiple_scale = multiply_Scale;
 
 }
 
@@ -152,5 +152,16 @@ void node::setMultiple_scale(float value)
 void node::modifyMultiple_scale(float value)
 {
     multiple_scale = value*multiple_scale;
+}
+
+void node::copyNode(node *copiedNode)
+{
+    coord = copiedNode->coord;
+    l_type = copiedNode->l_type;
+    angle = copiedNode->angle;
+    parent = copiedNode->parent;
+    visible_node = copiedNode->visible_node;
+    multiple_scale = copiedNode->multiple_scale;
+    nb_parent = copiedNode->nb_parent;
 }
 

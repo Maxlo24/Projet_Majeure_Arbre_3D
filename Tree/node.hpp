@@ -45,6 +45,8 @@ public:
     void setMultiple_scale(float value);
     void modifyMultiple_scale(float value);
 
+    void copyNode(node *);
+
 private:
     vec3 coord;
     lType l_type;
