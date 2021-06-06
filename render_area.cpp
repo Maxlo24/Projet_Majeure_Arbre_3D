@@ -163,6 +163,8 @@ void render_area::launch_algo(){
 void render_area::generate_obj()
 {
     std::cout<<"Building ..."<<std::endl;
+    obj_generator mesh = obj_generator(render_tree,"test");
+    mesh.generate();
     std::cout<<"Done !"<<std::endl;
 }
 

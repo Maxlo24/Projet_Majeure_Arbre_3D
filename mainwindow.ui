@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1360</width>
+    <width>1334</width>
     <height>646</height>
    </rect>
   </property>
@@ -25,7 +25,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>1120</x>
-      <y>200</y>
+      <y>560</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -279,7 +279,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>540</y>
+      <y>560</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -741,7 +741,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>1120</x>
-      <y>160</y>
+      <y>310</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -922,6 +922,81 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <string>0°</string>
     </property>
    </widget>
+   <widget class="QLabel" name="Partie_Algo_3">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>190</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Save tree</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>10</y>
+      <width>20</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Partie_Algo_4">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>230</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Tree name</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>260</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>160</y>
+      <width>191</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
    <zorder>verticalFrame_2</zorder>
    <zorder>quitButton</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -961,13 +1036,18 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <zorder>taillePinceauLabel_24</zorder>
    <zorder>gamma_Slider</zorder>
    <zorder>taillePinceauLabel_25</zorder>
+   <zorder>Partie_Algo_3</zorder>
+   <zorder>line</zorder>
+   <zorder>Partie_Algo_4</zorder>
+   <zorder>textEdit</zorder>
+   <zorder>line_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1360</width>
+     <width>1334</width>
      <height>20</height>
     </rect>
    </property>

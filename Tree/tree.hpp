@@ -42,6 +42,7 @@ public:
 
 
     vector<node *> getData() const;
+    node *  getNode(int i) const;
 
     void setTree_l_system(const L_system &value);
 

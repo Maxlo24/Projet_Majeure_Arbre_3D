@@ -22,6 +22,7 @@
 #include "vec2.hpp"
 #include "3D/vec3.hpp"
 #include "3D/mat3.hpp"
+#include "3D/obj_generator.hpp"
 
 
 using std::vector;

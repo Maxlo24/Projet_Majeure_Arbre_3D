@@ -67,6 +67,11 @@ vector<node *> tree::getData() const
     return data;
 }
 
+node *tree::getNode(int i) const
+{
+    return data[i];
+}
+
 
 void tree::setTree_l_system(const L_system &value)
 {
