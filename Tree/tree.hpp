@@ -24,8 +24,8 @@ public:
     void setGamma(float angle);
     void setLength(float length);
     void setRatio(float ratio);
-    void setAlphabet(vector<lType> alphabet);
-    void setRules(lType key, vector<Rules> velue);
+    void setAlphabet(vector<char> alphabet);
+    void setRules(char key, vector<Rules> velue);
     int getNbrIter() const;
     int getMaxNbrParent() const;
 
@@ -50,8 +50,8 @@ private:
 
     node *tree_root;
 
-    vector<lType> tree_alphabet;
-    map<lType,vector<Rules>> tree_rules;
+    vector<char> tree_alphabet;
+    map<char,vector<Rules>> tree_rules;
 
     L_system tree_l_system;
 

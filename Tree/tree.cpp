@@ -75,12 +75,12 @@ void tree::setTree_l_system(const L_system &value)
 
 }
 
-void tree::setAlphabet(vector<lType> alphabet)
+void tree::setAlphabet(vector<char> alphabet)
 {
     this->tree_alphabet = alphabet;
 }
 
-void tree::setRules(lType key, vector<Rules> value)
+void tree::setRules(char key, vector<Rules> value)
 {
     this->tree_rules[key]=value;
 }
@@ -120,14 +120,14 @@ void tree::generateNextLayer(int iter)
 }
 
 void tree::generateTree(L_system lSystem,int n){
-    vector<lType> phrase =  lSystem.getPhraseN(n);
+    string phrase =  lSystem.getPhraseN(n);
     node *newN;
     node *currentNode = tree_root;
     float segment_length;
     vec3 angle = currentNode->Angle();
     vector<node*> queueNode;
-    for (lType type:phrase){
-        if (type == A || type == B || type == C || type == D || type == E || type == F || type == G){
+    for (char type:phrase){
+        if (type == 'A' || type == 'B' || type == 'C' || type == 'D' || type == 'E' || type == 'F' || type == 'G'){
             segment_length = paramLength/(1.0f+reduction_ratio*currentNode->getNb_parent());
             //vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
             mat3 mat_Rz = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
@@ -147,39 +147,39 @@ void tree::generateTree(L_system lSystem,int n){
             add_node(newN);
             currentNode = newN;
         }
-        else if (type == X || type == Y || type == Z || type == U || type == V || type == W){
+        else if (type == 'X' || type == 'Y' || type == 'Z' || type == 'U' || type == 'V' || type == 'W'){
             node *newN = new node(currentNode->Coord(),type,angle,currentNode,false,currentNode->getMultiple_scale());
             newN->incrementNb_parent();
             add_node(newN);
             currentNode = newN;
-        }else if (type == oG){
-            angle.z() += paramAlpha+(rand()%10-20)/20;
-        }else if (type == oD){
-            angle.z() -= paramAlpha+(rand()%10-20)/20;
-        }else if (type == oPb){
-            angle.x() -= paramGamma+(rand()%10-20)/20;
-        }else if (type == oPh){
-            angle.x() += paramGamma+(rand()%10-20)/20;
-        }else if (type == oRG){
-            angle.y() -= paramBeta+(rand()%10-20)/20;
-        }else if (type == oRD){
-            angle.y() += paramBeta*+(rand()%10-20)/20;
-        }else if (type == oBd){
+        }else if (type == '+'){
+            angle.z() += paramAlpha+0*(rand()%10-20)/20;
+        }else if (type == '-'){
+            angle.z() -= paramAlpha+0*(rand()%10-20)/20;
+        }else if (type == '&'){
+            angle.x() -= paramGamma+0*(rand()%10-20)/20;
+        }else if (type == '^'){
+            angle.x() += paramGamma+0*(rand()%10-20)/20;
+        }else if (type == '/'){
+            angle.y() -= paramBeta+0*(rand()%10-20)/20;
+        }else if (type == '\\'){
+            angle.y() += paramBeta*+0*(rand()%10-20)/20;
+        }else if (type == '_'){
 
-        }else if (type == oBg){
+        }else if (type == '-'){
 
-        }else if (type == oT){
+        }else if (type == '|'){
             angle.z() += M_PI;
-        }else if (type == oSp){
+        }else if (type == '['){
             currentNode->Angle() = angle;
             node *nodecopied = new node();
             nodecopied->copyNode(currentNode);
             queueNode.push_back(nodecopied);
-        }else if (type == oRp){
+        }else if (type == ']'){
             currentNode = queueNode.back();
             queueNode.pop_back();
             angle = currentNode->Angle();
-        }else if (type == mS){
+        }else if (type == '"'){
             currentNode->modifyMultiple_scale(0.9f);
         }
     }

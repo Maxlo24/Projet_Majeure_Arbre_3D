@@ -6,23 +6,23 @@ L_system::L_system()
 {
 }
 
-L_system::L_system(vector<lType> alphabet, vector<lType> axiom, map<lType,vector<Rules>> rules)
+L_system::L_system(vector<char> alphabet, vector<char> axiom, map<char,vector<Rules>> rules)
     :alphabet(alphabet),axiom(axiom),rules(rules)
 {}
 
 int L_system::getNumberOfRules(){
     int number = 0;
-    for(map<lType,vector<Rules>>::iterator it=rules.begin() ; it!=rules.end() ; ++it)
+    for(map<char,vector<Rules>>::iterator it=rules.begin() ; it!=rules.end() ; ++it)
     {
         number += it->second.size();
     }
     return number;
 }
 
-vector<Rules> L_system::getRulesOfType(lType type){return rules[type];}
+vector<Rules> L_system::getRulesOfType(char type){return rules[type];}
 
 
-Rules L_system::getOneRuleOfType(lType type){
+Rules L_system::getOneRuleOfType(char type){
     int random = rand()%100;
     float proba = 0;
     vector<Rules >t_rule = rules[type];
@@ -34,21 +34,21 @@ Rules L_system::getOneRuleOfType(lType type){
     return t_rule.back();
 }
 
-vector<lType> L_system::getAlphabet(){ return alphabet;}
+vector<char> L_system::getAlphabet(){ return alphabet;}
 
-vector<lType> L_system::getAxiom(){ return axiom;}
+vector<char> L_system::getAxiom(){ return axiom;}
 
-vector<lType> L_system::getPhraseN(int n)
+string L_system::getPhraseN(int n)
 {
-    vector<lType> pseudoPhrases = {};
+    string pseudoPhrases = "";
     pseudoPhrases.insert(pseudoPhrases.end(),axiom.begin(),axiom.end());
-    vector<lType> pseudoPhrases1 = {};
+    string pseudoPhrases1 = "";
     for (int i = 0; i < n+1; i++){
         pseudoPhrases1 = pseudoPhrases;
         pseudoPhrases = {};
-        for (std::vector<lType>::iterator it = pseudoPhrases1.begin() ; it != pseudoPhrases1.end(); ++it){
+        for (string::iterator it = pseudoPhrases1.begin() ; it != pseudoPhrases1.end(); ++it){
             if (std::find(alphabet.begin(), alphabet.end(),*it)!=alphabet.end()){
-                vector<lType> paragraph = getOneRuleOfType(*it).getRule();
+                string paragraph = getOneRuleOfType(*it).getRule();
                 pseudoPhrases.insert(pseudoPhrases.end(),paragraph.begin(),paragraph.end());
             } else{
                 pseudoPhrases.push_back(*it);

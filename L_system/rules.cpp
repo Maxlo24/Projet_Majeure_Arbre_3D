@@ -8,12 +8,22 @@ Rules::Rules(float proba)
     :proba(proba)
 { rule = {};}
 
-Rules::Rules(float proba, vector<lType> rule)
+Rules::Rules(string rule,float proba)
     :proba(proba),rule(rule)
 {}
+Rules::Rules(string rule)
+    :proba(1),rule(rule)
+{}
+
 
 float Rules::getProba(){return proba;}
 
-vector<lType> Rules::getRule(){ return rule;}
+string Rules::getRule(){ return rule;}
 
-void Rules::addElement(lType E){rule.push_back(E);}
+void Rules::addElement(char E){rule.push_back(E);}
+
+void Rules::operator=(Rules Rule)
+{
+    proba = Rule.proba;
+    rule = Rule.rule;
+}
