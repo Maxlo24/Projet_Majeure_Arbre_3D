@@ -45,7 +45,16 @@ void render_area::init_fig()
     tree tree;
     tree.setTree_l_system(treeStructure.fractal_custom());
 
+    //couleur de départ
+    int r1 = 91;
+    int g1 = 32;
+    int b1 = 0;
+    //couleur d'arrivée
+    int r2 = 0;
+    int g2 = 174;
+    int b2 = 6;
 
+    tree.Color() = {{r1,g1,b1},{r2,g2,b2}};
 
     this->render_tree = tree;
 
@@ -84,20 +93,13 @@ void render_area::paintEvent(QPaintEvent*)
 
     QPen pen;
 
-    //couleur de départ
-        int r1 = 91;
-        int g1 = 32;
-        int b1 = 0;
-    //couleur d'arrivée
-        int r2 = 0;
-        int g2 = 174;
-        int b2 = 6;
+    vector<vector<int>> c = render_tree.Color();
 
-        int nbVal = render_tree.getMaxNbrParent();
+     int nbVal = render_tree.getMaxNbrParent();
     //pour chaque canal, calcul du différenciel entre chaque teinte (nbVal est le nombre de teintes du dégradé)
-        float dr = float(r2 - r1) / nbVal;
-        float dg = float(g2 - g1) / nbVal;
-        float db = float(b2 - b1) / nbVal;
+    float dr = float(c[1][0] - c[0][0]) / nbVal;
+    float dg = float(c[1][1] - c[0][1]) / nbVal;
+    float db = float(c[1][2] - c[0][2]) / nbVal;
 
 
 
@@ -115,17 +117,14 @@ void render_area::paintEvent(QPaintEvent*)
             //pen.setColor(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)));
 //            pen.setWidth(1+brush_size*(1-float(nbrParent)/nbVal));
             //painter.setPen(pen);
-            painter.setPen(QPen(QColor(int(r1+nbrParent*dr), int(g1+nbrParent*dg), int(b1+nbrParent*db)),brush_size));
-
+            float degrade = (float(nbrParent)/nbVal);
+            degrade = degrade*degrade;
+            painter.setPen(QPen(QColor(int(c[0][0]+degrade*nbrParent*dr), int(c[0][1]+degrade*nbrParent*dg), int(c[0][2]+degrade*nbrParent*db)),brush_size));
 
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
-
 //             if(slow_draw) std::cout<<"branche : "<<(render_tree(i)->getNb_parent())<<"/"<<nbVal<<std::endl;
         }
-
     }
-
-
 }
 
 void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
@@ -133,7 +132,6 @@ void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
     vec3 np2 = scale*mat_rotation_x*mat_rotation_y*p2;
 
     painter->drawLine(this->width/2+np1.x()+dx,this->height-20-np1.y()+dy,this->width/2+np2.x()+dx,this->height-20-np2.y()+dy);
-
 }
 
 void render_area::draw_tree()
@@ -211,7 +209,7 @@ void render_area::launch_algo(){
 
     slow_draw_iter = 0;
     if(this->algo_delay >= 0){
-        for (int i=0;i<render_tree.getData().size() ;i++ ) {
+        for (auto i=0u;i<render_tree.getData().size() ;i++ ) {
             repaint();
             Sleep(this->algo_delay);
         }
