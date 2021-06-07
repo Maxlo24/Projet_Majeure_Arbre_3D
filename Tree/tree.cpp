@@ -100,6 +100,36 @@ void tree::setParamScale(float value)
     paramScale = value;
 }
 
+float tree::getParamAlphaRandom() const
+{
+    return paramAlphaRandom;
+}
+
+void tree::setParamAlphaRandom(float value)
+{
+    paramAlphaRandom = value;
+}
+
+float tree::getParamBetaRandom() const
+{
+    return paramBetaRandom;
+}
+
+void tree::setParamBetaRandom(float value)
+{
+    paramBetaRandom = value;
+}
+
+float tree::getParamGammaRandom() const
+{
+    return paramGammaRandom;
+}
+
+void tree::setParamGammaRandom(float value)
+{
+    paramGammaRandom = value;
+}
+
 void tree::setAlphabet(vector<char> alphabet)
 {
     this->tree_alphabet = alphabet;
@@ -178,17 +208,17 @@ void tree::generateTree(L_system lSystem,int n){
             add_node(newN);
             currentNode = newN;
         }else if (type == '+'){
-            angle.z() += paramAlpha+0*(rand()%10-20)/20;
+            angle.z() += paramAlpha+paramAlphaRandom*(rand()%21-10)/200;
         }else if (type == '-'){
-            angle.z() -= paramAlpha+0*(rand()%10-20)/20;
+            angle.z() -= paramAlpha+paramAlphaRandom*(rand()%21-10)/200;
         }else if (type == '&'){
-            angle.x() -= paramGamma+0*(rand()%10-20)/20;
+            angle.x() -= paramGamma+paramGammaRandom*(rand()%21-10)/200;
         }else if (type == '^'){
-            angle.x() += paramGamma+0*(rand()%10-20)/20;
+            angle.x() += paramGamma+paramGammaRandom*(rand()%21-10)/200;
         }else if (type == '/'){
-            angle.y() -= paramBeta+0*(rand()%10-20)/20;
+            angle.y() -= paramBeta+paramBetaRandom*(rand()%21-10)/200;
         }else if (type == '\\'){
-            angle.y() += paramBeta*+0*(rand()%10-20)/20;
+            angle.y() += paramBeta+paramBetaRandom*(rand()%21-10)/200;
         }else if (type == '_'){
 
         }else if (type == '-'){

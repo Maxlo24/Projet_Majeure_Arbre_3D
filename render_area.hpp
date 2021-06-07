@@ -72,8 +72,11 @@ private slots:
     void update_tree_size(int );
     void update_segment_size(int );
     void update_alpha(int );
+    void update_alpha_random(int );
     void update_beta(int );
+    void update_beta_random(int );
     void update_gamma(int );
+    void update_gamma_random(int );
     void update_ratio(int );
     void update_algo_select(int );
     void update_algo_speed(int );

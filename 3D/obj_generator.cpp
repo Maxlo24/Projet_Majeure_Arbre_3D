@@ -75,7 +75,6 @@ void obj_generator::build(int i , node *n)
 
     vec3 angle = n->Angle();
 
-
     mat3 mat_Rz = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
                        -sin(angle.z()),cos(angle.z()) ,0         ,
                        0              ,0              ,1         );

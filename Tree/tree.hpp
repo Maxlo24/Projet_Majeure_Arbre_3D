@@ -51,6 +51,15 @@ public:
     float getParamScale() const;
     void setParamScale(float value);
 
+    float getParamAlphaRandom() const;
+    void setParamAlphaRandom(float value);
+
+    float getParamBetaRandom() const;
+    void setParamBetaRandom(float value);
+
+    float getParamGammaRandom() const;
+    void setParamGammaRandom(float value);
+
 private:
     vector<node*> data;
 
@@ -64,8 +73,11 @@ private:
     L_system tree_l_system;
 
     float paramAlpha = M_PI/10;
+    float paramAlphaRandom = 0.f;
     float paramBeta = M_PI/5;
+    float paramBetaRandom = 0.f;
     float paramGamma = M_PI/10;
+    float paramGammaRandom = 0.f;
     float paramLength = 1;
 
     float paramScale = 1.0f;
