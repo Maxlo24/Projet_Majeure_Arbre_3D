@@ -260,6 +260,13 @@ void render_area::update_alpha(int angle){
     repaint();
 }
 
+void render_area::update_alpha_random(int coeff)
+{
+    render_tree.setParamAlphaRandom(float(coeff)/5);
+    draw_tree();
+    repaint();
+}
+
 void render_area::update_beta(int angle){
     render_tree.setBeta((float(angle)/45)*M_PI/2);
     std::cout<<"Beta : "<<angle<<std::endl;
@@ -267,9 +274,23 @@ void render_area::update_beta(int angle){
     repaint();
 }
 
+void render_area::update_beta_random(int coeff)
+{
+    render_tree.setParamBetaRandom(float(coeff)/5);
+    draw_tree();
+    repaint();
+}
+
 void render_area::update_gamma(int angle){
     render_tree.setGamma((float(angle)/45)*M_PI/2);
     std::cout<<"gamma : "<<angle<<std::endl;
+    draw_tree();
+    repaint();
+}
+
+void render_area::update_gamma_random(int coeff)
+{
+    render_tree.setParamGammaRandom(float(coeff)/5);
     draw_tree();
     repaint();
 }

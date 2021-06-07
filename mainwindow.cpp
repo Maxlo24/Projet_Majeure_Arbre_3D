@@ -24,10 +24,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->segment_Size_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_segment_size(int)));
     //slider alpha
     connect(ui->alpha_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_alpha(int)));
+    connect(ui->alpha_random,SIGNAL(valueChanged(int)),this->render ,SLOT(update_alpha_random(int)));
     //slider beta
     connect(ui->beta_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_beta(int)));
+    connect(ui->beta_random,SIGNAL(valueChanged(int)),this->render ,SLOT(update_beta_random(int)));
     //slider gamma
     connect(ui->gamma_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_gamma(int)));
+    connect(ui->gamma_random,SIGNAL(valueChanged(int)),this->render ,SLOT(update_gamma_random(int)));
     //slider ratio
     connect(ui->ratio_Slider,SIGNAL(valueChanged(int)),this->render ,SLOT(update_ratio(int)));
     //Rotation

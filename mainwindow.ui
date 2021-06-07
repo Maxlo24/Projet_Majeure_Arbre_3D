@@ -448,7 +448,7 @@ color: rgb(43, 43, 43);</string>
      <rect>
       <x>870</x>
       <y>170</y>
-      <width>121</width>
+      <width>181</width>
       <height>21</height>
      </rect>
     </property>
@@ -458,7 +458,7 @@ color: rgb(43, 43, 43);</string>
      </font>
     </property>
     <property name="text">
-     <string>Angle alpha</string>
+     <string>Angle alpha / randomisation</string>
     </property>
    </widget>
    <widget class="QLabel" name="taillePinceauLabel_9">
@@ -762,8 +762,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>210</y>
-      <width>121</width>
+      <y>230</y>
+      <width>171</width>
       <height>21</height>
      </rect>
     </property>
@@ -773,14 +773,14 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Angle beta</string>
+     <string>Angle beta  / randomisation</string>
     </property>
    </widget>
    <widget class="QSlider" name="beta_Slider">
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>230</y>
+      <y>250</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -817,7 +817,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1040</x>
-      <y>290</y>
+      <y>350</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -835,7 +835,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>290</y>
+      <y>350</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -853,8 +853,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>250</y>
-      <width>121</width>
+      <y>290</y>
+      <width>181</width>
       <height>21</height>
      </rect>
     </property>
@@ -864,14 +864,14 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Angle gamma</string>
+     <string>Angle gamma  / randomisation</string>
     </property>
    </widget>
    <widget class="QSlider" name="gamma_Slider">
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>270</y>
+      <y>310</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -887,6 +887,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <property name="maximum">
      <number>45</number>
+    </property>
+    <property name="pageStep">
+     <number>10</number>
     </property>
     <property name="value">
      <number>22</number>
@@ -908,7 +911,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>960</x>
-      <y>290</y>
+      <y>350</y>
       <width>21</width>
       <height>21</height>
      </rect>
@@ -944,7 +947,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1080</x>
-      <y>10</y>
+      <y>50</y>
       <width>20</width>
       <height>581</height>
      </rect>
@@ -997,6 +1000,129 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
+   <widget class="QSlider" name="alpha_random">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>210</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <strikeout>false</strikeout>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>40</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="pageStep">
+     <number>5</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="tracking">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="beta_random">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>270</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <strikeout>false</strikeout>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>40</number>
+    </property>
+    <property name="pageStep">
+     <number>5</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="tracking">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="gamma_random">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>330</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <strikeout>false</strikeout>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>40</number>
+    </property>
+    <property name="pageStep">
+     <number>5</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="tracking">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
    <zorder>verticalFrame_2</zorder>
    <zorder>quitButton</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -1041,6 +1167,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <zorder>Partie_Algo_4</zorder>
    <zorder>textEdit</zorder>
    <zorder>line_2</zorder>
+   <zorder>alpha_random</zorder>
+   <zorder>beta_random</zorder>
+   <zorder>gamma_random</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
