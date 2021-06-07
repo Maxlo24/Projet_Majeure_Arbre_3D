@@ -5,6 +5,7 @@ tree::tree()
     node *root= new node({0.f,0.f+paramLength,0});
     this->tree_root = root;
     this->data = {root};
+    this->radius = {1.0,0.01};
 }
 
 tree::tree(vector<node*> data)
@@ -19,131 +20,51 @@ tree::tree(node *root,float paramAlpha,float paramLength){
     this->paramLength = paramLength;
 }
 
-node* tree::operator()(int index) const{
-    return this->data[index];
-}
-node*& tree::operator()(int index){
-    return this->data[index];
-}
+node* tree::operator()(int index) const {return this->data[index];}
+node*& tree::operator()(int index) {return this->data[index];}
 
-void tree::setAlpha(float angle)
-{
-    this->paramAlpha = angle;
-}
+void tree::setAlpha(float angle) {this->paramAlpha = angle;}
+void tree::setBeta(float angle) {this->paramBeta = angle;}
+void tree::setGamma(float angle ) {this->paramGamma = angle;}
 
-void tree::setBeta(float angle)
-{
-    this->paramBeta = angle;
-}
+void tree::setLength(float length) {this->paramLength = length;}
+void tree::setRatio(float ratio) {this->reduction_ratio = ratio;}
 
-void tree::setGamma(float angle)
-{
-    this->paramGamma = angle;
-}
+void tree::add_node(node *n) {this->data.push_back(n);}
 
-void tree::setLength(float length)
-{
-    this->paramLength = length;
-}
-
-void tree::setRatio(float ratio)
-{
-    this->reduction_ratio = ratio;
-}
-
-void tree::add_node(node *n)
-{
-    this->data.push_back(n);
-}
+int tree::size() const {return this->data.size();}
 
 
-int tree::size() const
-{
-    return this->data.size();
-}
+vector<vector<int> > tree::Color() const {return color;}
+vector<vector<int> > &tree::Color() {return color;}
 
-vector<vector<int> > tree::Color() const
-{
-    return color;
-}
-
-vector<vector<int> > &tree::Color()
-{
-    return color;
-}
-
-vector<node *> tree::getData() const
-{
-    return data;
-}
-
-node *tree::getNode(int i) const
-{
-    return data[i];
-}
+vector<float> tree::Radius() const {return radius;}
+vector<float> &tree::Radius() {return radius;}
 
 
-void tree::setTree_l_system(const L_system &value)
-{
-    tree_l_system = value;
-    //data[0]->Type() = tree_l_system.getAxiom();
+vector<node *> tree::getData() const {return data;}
+node *tree::getNode(int i) const {return data[i];}
 
-}
 
-float tree::getParamScale() const
-{
-    return paramScale;
-}
+void tree::setTree_l_system(const L_system &value) {tree_l_system = value;}
 
-void tree::setParamScale(float value)
-{
-    paramScale = value;
-}
+float tree::getParamScale() const {return paramScale;}
+void tree::setParamScale(float value) {paramScale = value;}
 
-float tree::getParamAlphaRandom() const
-{
-    return paramAlphaRandom;
-}
+float tree::getParamAlphaRandom() const {return paramAlphaRandom;}
+void tree::setParamAlphaRandom(float value){paramAlphaRandom = value;}
 
-void tree::setParamAlphaRandom(float value)
-{
-    paramAlphaRandom = value;
-}
+float tree::getParamBetaRandom() const{return paramBetaRandom;}
+void tree::setParamBetaRandom(float value) {paramBetaRandom = value;}
 
-float tree::getParamBetaRandom() const
-{
-    return paramBetaRandom;
-}
+float tree::getParamGammaRandom() const {return paramGammaRandom;}
+void tree::setParamGammaRandom(float value) {paramGammaRandom = value;}
 
-void tree::setParamBetaRandom(float value)
-{
-    paramBetaRandom = value;
-}
+void tree::setAlphabet(vector<char> alphabet){this->tree_alphabet = alphabet;}
 
-float tree::getParamGammaRandom() const
-{
-    return paramGammaRandom;
-}
+void tree::setRules(char key, vector<Rules> value) {this->tree_rules[key]=value;}
 
-void tree::setParamGammaRandom(float value)
-{
-    paramGammaRandom = value;
-}
-
-void tree::setAlphabet(vector<char> alphabet)
-{
-    this->tree_alphabet = alphabet;
-}
-
-void tree::setRules(char key, vector<Rules> value)
-{
-    this->tree_rules[key]=value;
-}
-
-int tree::getNbrIter() const
-{
-    return nbr_iter;
-}
+int tree::getNbrIter() const{return nbr_iter;}
 
 int tree::getMaxNbrParent() const
 {
@@ -237,5 +158,15 @@ void tree::generateTree(L_system lSystem,int n){
         }else if (type == '"'){
             currentNode->modifyMultiple_scale(paramScale);
         }
+    }
+    setNodeRadius();
+}
+
+void tree::setNodeRadius()
+{
+    int Nr = getMaxNbrParent();
+    float dr = (radius[0]-radius[1])/Nr;
+    for(auto n : data){
+        n->Radius() = radius[0]-dr*n->getNb_parent();
     }
 }

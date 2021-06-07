@@ -63,7 +63,11 @@ void obj_generator::build(int i , node *n)
 
     int Nu = 5;
     int Nv = 2;
-    float r=0.05;
+    float r1= n->Radius();
+    float r2= n->Parent()->Radius();
+    float dr = (r2-r1)/(Nv-1);
+    float r;
+
     float h = 1;
 
     int d_face = Nu*(Nv-1);
@@ -90,6 +94,7 @@ void obj_generator::build(int i , node *n)
     {
         for(int v=0 ; v<Nv ; ++v)
         {
+            r = r2-v*dr;
             x = r*std::cos(2*M_PI*float(u)/Nu);
             y = h*float(v)/(Nv-1);
             z = r*std::sin(2*M_PI*float(u)/Nu);

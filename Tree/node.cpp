@@ -9,12 +9,9 @@ node::node()
     this->multiple_scale = 1.0f;
 }
 
-node::node(char l_type)
+node::node(char l_type):node()
 {
-    this->coord = vec3(0,0,0);
     this->l_type = l_type;
-    this->parent = this;
-    this->multiple_scale = 1.0f;
 }
 
 node::node(vec3 coord)
@@ -66,93 +63,35 @@ node::node(vec3 coord,char l_type,vec3 angle , node *parent, bool visible, float
 
 }
 
+vec3 node::Coord() const {return this->coord;}
+vec3& node::Coord(){return this->coord;}
 
 
-vec3 node::Coord() const
-{
-    return this->coord;
-}
+char node::Type() const {return this->l_type;}
+char& node::Type() {return this->l_type;}
 
-vec3& node::Coord()
-{
-    return this->coord;
-}
+vec3 node::Angle() const {return this->angle;}
+vec3& node::Angle() {return this->angle;}
 
+float node::Radius() const {return radius;}
+float& node::Radius() {return radius;}
 
-char node::Type() const
-{
-    return this->l_type;
-}
+const node* node::Parent() const{return this->parent;}
 
-char& node::Type()
-{
-    return this->l_type;
-}
+node*& node::Parent() {return this->parent;}
 
-vec3 node::Angle() const
-{
-    return this->angle;
-}
+int node::getNb_parent() const {return nb_parent;}
+void node::setNb_parent(int value) {nb_parent = value;}
+void node::incrementNb_parent() {nb_parent = parent->getNb_parent() +1;}
 
-vec3& node::Angle()
-{
-    return this->angle;
-}
+void node::visibleTrue() {visible_node = true;}
+void node::visibleFalse() {visible_node = false;}
 
-const node* node::Parent() const
-{
-    return this->parent;
-}
+bool node::getVisible_node() const {return visible_node;}
 
-node*& node::Parent()
-{
-    return this->parent;
-}
-
-int node::getNb_parent() const
-{
-    return nb_parent;
-}
-
-void node::setNb_parent(int value)
-{
-    nb_parent = value;
-}
-
-void node::incrementNb_parent()
-{
-    nb_parent = parent->getNb_parent() +1;
-}
-
-void node::visibleTrue()
-{
-    visible_node = true;
-}
-
-void node::visibleFalse()
-{
-    visible_node = false;
-}
-
-bool node::getVisible_node() const
-{
-    return visible_node;
-}
-
-float node::getMultiple_scale() const
-{
-    return multiple_scale;
-}
-
-void node::setMultiple_scale(float value)
-{
-    multiple_scale = value;
-}
-
-void node::modifyMultiple_scale(float value)
-{
-    multiple_scale = value*multiple_scale;
-}
+float node::getMultiple_scale() const {return multiple_scale;}
+void node::setMultiple_scale(float value) {multiple_scale = value;}
+void node::modifyMultiple_scale(float value) {multiple_scale = value*multiple_scale;}
 
 void node::copyNode(node *copiedNode)
 {

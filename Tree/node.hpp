@@ -30,6 +30,9 @@ public:
     vec3 Angle() const;
     vec3& Angle();
 
+    float Radius() const;
+    float& Radius();
+
     const node* Parent() const;
     node*& Parent();
 
@@ -49,6 +52,7 @@ public:
 
 private:
     vec3 coord;
+    float radius;
     char l_type;
     node *parent;
     vec3 angle = {0,0,0};

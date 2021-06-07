@@ -56,6 +56,8 @@ void render_area::init_fig()
 
     tree.Color() = {{r1,g1,b1},{r2,g2,b2}};
 
+    tree.Radius() = {1.0,0.1};
+
     this->render_tree = tree;
     draw_tree();
 

@@ -43,6 +43,9 @@ public:
     vector<vector<int>> Color() const;
     vector<vector<int>>& Color();
 
+    vector<float> Radius() const;
+    vector<float>& Radius();
+
     vector<node *> getData() const;
     node *  getNode(int i) const;
 
@@ -61,9 +64,14 @@ public:
     void setParamGammaRandom(float value);
 
 private:
+    void setNodeRadius();
+
+
     vector<node*> data;
 
     vector<vector<int>> color;
+
+    vector<float> radius;
 
     node *tree_root;
 
