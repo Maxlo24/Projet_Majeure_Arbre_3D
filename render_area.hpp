@@ -12,6 +12,7 @@
 #include <QThread>
 
 #include <list>
+#include <iostream>
 #include <vector>
 #include <string>
 #include <windows.h>
@@ -43,7 +44,7 @@ class render_area : public QWidget
     Q_OBJECT
 public:
     //constructor
-    render_area(QPlainTextEdit *,QWidget *parent = 0);
+    render_area(QPlainTextEdit *,QPlainTextEdit *,QPlainTextEdit *,QWidget *parent = 0);
     ~render_area();
 
     void init_fig();
@@ -52,9 +53,12 @@ public:
     void give_TextEdit(QPlainTextEdit *text);
 
     QString description_rule();
+    QString description_alphabet();
+    QString description_axiom();
+    void displayRule();
 
-    void addLetter(char);
-    void addRule(char,string);
+    void changeAlphabet(string);
+    void changeRules(string);
     void changeAxiom(string);
     void resetRule();
 
@@ -146,6 +150,8 @@ private: //attributes
     int slow_draw_iter;
 
     QPlainTextEdit *ruleText;
+    QPlainTextEdit *axiomText;
+    QPlainTextEdit *alphabetText;
 
     tree render_tree;
     structure_tree_choice treeStructure;

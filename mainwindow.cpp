@@ -1,4 +1,4 @@
-
+#include <QDebug>
 #include "ui_mainwindow.h"
 
 #include "mainwindow.hpp"
@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowTitle("Projet Tree Generator");
 
 
-    render = new render_area(ui->ruleDescription);
+    render = new render_area(ui->ruleDescription,ui->axiomDescription,ui->alphabetDescription);
     ui->main_Layout->addWidget(render);
     //render->giveDescriptionText(ui->ruleDescription);
 
@@ -66,24 +66,21 @@ MainWindow::~MainWindow()
 
 
 
-void MainWindow::on_addLetter_clicked()
+void MainWindow::on_changeAlphabet_clicked()
 {
-    QString letter = ui->addLettert->toPlainText();
-    const char *c= letter.toStdString().c_str();
-    render->addLetter(*c);
+    QString alphabet = ui->alphabetDescription->toPlainText();
+    render->changeAlphabet(alphabet.toStdString());
 }
 
-void MainWindow::on_addRule_clicked()
+void MainWindow::on_changeRule_clicked()
 {
-    QString letter = ui->letter_rulet->toPlainText();
-    const char *c= letter.toStdString().c_str();
-    QString rule = ui->rulet->toPlainText();
-    render->addRule(*c,rule.toStdString());
+    QString rule = ui->ruleDescription->toPlainText();
+    render->changeRules(rule.toStdString());
 }
 
 void MainWindow::on_changeAxiom_clicked()
 {
-    QString axiom = ui->axiom->toPlainText();
+    QString axiom = ui->axiomDescription->toPlainText();
     render->changeAxiom(axiom.toStdString());
 }
 

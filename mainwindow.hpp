@@ -23,9 +23,9 @@ public:
 
 
 private slots:
-    void on_addLetter_clicked();
+    void on_changeAlphabet_clicked();
 
-    void on_addRule_clicked();
+    void on_changeRule_clicked();
 
     void on_changeAxiom_clicked();
 

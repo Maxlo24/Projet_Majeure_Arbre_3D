@@ -30,6 +30,11 @@ void L_system::addRuleOfType(char l, std::string rule, float p)
     (rules[l]).push_back(Rules(rule,p));
 }
 
+void L_system::clearRules()
+{
+    rules.clear();
+}
+
 L_system::L_system()
 {
 }

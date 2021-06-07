@@ -40,6 +40,7 @@ public:
     void setAlphabet(const vector<char> &value);
     void addLetter(char);
     void addRuleOfType(char,string,float p =1.0f);
+    void clearRules();
 };
 
 #endif // L_SYSTEM_H
