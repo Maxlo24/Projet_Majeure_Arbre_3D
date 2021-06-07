@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->setWindowTitle("Projet Path Finding");
+    this->setWindowTitle("Projet Tree Generator");
 
     ui->main_Layout->addWidget(render);
 

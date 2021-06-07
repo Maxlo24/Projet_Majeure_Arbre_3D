@@ -24,7 +24,8 @@ public:
 
 private:
     void build(int i,node *n);
-    void write(int i);
+    void write_obj(int nbObj, int node_index);
+    void write_mtl();
 
 
     tree tree_to_generate;
@@ -34,12 +35,14 @@ private:
     vector<string> lst_normal;
     vector<string> lst_face;
 
+    vector<string> lst_material;
+
 //    int last_vertex=0;
 //    int last_norm=0;
 //    int last_face=0;
 
 
-    ofstream f;
+    ofstream obj_f;
 };
 
 #endif // OBJ_GENERATOR_HPP

@@ -40,6 +40,8 @@ public:
 
     int size() const;
 
+    vector<vector<int>> Color() const;
+    vector<vector<int>>& Color();
 
     vector<node *> getData() const;
     node *  getNode(int i) const;
@@ -51,6 +53,8 @@ public:
 
 private:
     vector<node*> data;
+
+    vector<vector<int>> color;
 
     node *tree_root;
 

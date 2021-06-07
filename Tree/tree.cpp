@@ -62,6 +62,16 @@ int tree::size() const
     return this->data.size();
 }
 
+vector<vector<int> > tree::Color() const
+{
+    return color;
+}
+
+vector<vector<int> > &tree::Color()
+{
+    return color;
+}
+
 vector<node *> tree::getData() const
 {
     return data;
@@ -123,7 +133,7 @@ void tree::reset()
 
 void tree::clearData()
 {
-    for(auto i = 1; i < data.size();i++){
+    for(auto i = 1u; i < data.size();i++){
         delete data[i];
     }
 }
