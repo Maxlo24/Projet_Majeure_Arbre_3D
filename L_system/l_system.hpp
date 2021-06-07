@@ -17,7 +17,7 @@ class L_system
 {
 private:
     vector<char> alphabet;
-    vector<char> axiom;
+    string axiom;
     map<char,vector<Rules>> rules;
     vector<char> Phrase = {};
 
@@ -25,16 +25,21 @@ private:
 public:
     /** Constructor */
     L_system();
-    L_system(vector<char>, vector<char>, map<char,vector<Rules>>);
+    L_system(vector<char>, string, map<char,vector<Rules>>);
 
     /** Methods */
     int getNumberOfRules();
     vector<Rules> getRulesOfType(char);
     Rules getOneRuleOfType(char);
     vector<char> getAlphabet();
-    vector<char> getAxiom();
+    string getAxiom();
 
     string getPhraseN(int n);
+    map<char, vector<Rules> > getRules() const;
+    void setAxiom(const string &value);
+    void setAlphabet(const vector<char> &value);
+    void addLetter(char);
+    void addRuleOfType(char,string,float p =1.0f);
 };
 
 #endif // L_SYSTEM_H

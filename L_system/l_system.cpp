@@ -2,11 +2,39 @@
 
 #include <QRandomGenerator>
 
+
+
+map<char, vector<Rules> > L_system::getRules() const
+{
+    return rules;
+}
+
+void L_system::setAxiom(const string &value)
+{
+    axiom = value;
+}
+
+void L_system::setAlphabet(const vector<char> &value)
+{
+    alphabet = value;
+}
+
+void L_system::addLetter(char l)
+{
+    if ( std::find(alphabet.begin(), alphabet.end(), l) == alphabet.end()) alphabet.push_back(l);
+
+}
+
+void L_system::addRuleOfType(char l, std::string rule, float p)
+{
+    (rules[l]).push_back(Rules(rule,p));
+}
+
 L_system::L_system()
 {
 }
 
-L_system::L_system(vector<char> alphabet, vector<char> axiom, map<char,vector<Rules>> rules)
+L_system::L_system(vector<char> alphabet, string axiom, map<char,vector<Rules>> rules)
     :alphabet(alphabet),axiom(axiom),rules(rules)
 {}
 
@@ -36,12 +64,12 @@ Rules L_system::getOneRuleOfType(char type){
 
 vector<char> L_system::getAlphabet(){ return alphabet;}
 
-vector<char> L_system::getAxiom(){ return axiom;}
+string L_system::getAxiom(){ return axiom;}
 
 string L_system::getPhraseN(int n)
 {
     string pseudoPhrases = "";
-    pseudoPhrases.insert(pseudoPhrases.end(),axiom.begin(),axiom.end());
+    pseudoPhrases.append(axiom);
     string pseudoPhrases1 = "";
     for (int i = 0; i < n+1; i++){
         pseudoPhrases1 = pseudoPhrases;

@@ -19,6 +19,18 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
+
+
+private slots:
+    void on_addLetter_clicked();
+
+    void on_addRule_clicked();
+
+    void on_changeAxiom_clicked();
+
+    void on_resetRule_clicked();
+
 private:
     Ui::MainWindow *ui;
     render_area *render;

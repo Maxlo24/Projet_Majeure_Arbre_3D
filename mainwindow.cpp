@@ -6,13 +6,18 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , render(new render_area)
+
 {
     ui->setupUi(this);
 
     this->setWindowTitle("Projet Tree Generator");
 
+
+    render = new render_area(ui->ruleDescription);
     ui->main_Layout->addWidget(render);
+    //render->giveDescriptionText(ui->ruleDescription);
+
+
 
     //Connection with signals
 
@@ -57,4 +62,32 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+
+void MainWindow::on_addLetter_clicked()
+{
+    QString letter = ui->addLettert->toPlainText();
+    const char *c= letter.toStdString().c_str();
+    render->addLetter(*c);
+}
+
+void MainWindow::on_addRule_clicked()
+{
+    QString letter = ui->letter_rulet->toPlainText();
+    const char *c= letter.toStdString().c_str();
+    QString rule = ui->rulet->toPlainText();
+    render->addRule(*c,rule.toStdString());
+}
+
+void MainWindow::on_changeAxiom_clicked()
+{
+    QString axiom = ui->axiom->toPlainText();
+    render->changeAxiom(axiom.toStdString());
+}
+
+void MainWindow::on_resetRule_clicked()
+{
+    render->resetRule();
 }

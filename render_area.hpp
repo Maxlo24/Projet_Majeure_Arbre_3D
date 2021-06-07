@@ -13,9 +13,13 @@
 
 #include <list>
 #include <vector>
+#include <string>
 #include <windows.h>
 #include <stdlib.h>
 #include <iostream>
+#include <QPlainTextEdit>
+#include <QString>
+
 
 #include "./Tree/tree.hpp"
 #include "structure/structure_tree_choice.hpp"
@@ -26,6 +30,8 @@
 
 
 using std::vector;
+using std::string;
+
 
 //forward declaration of QLabel
 class QLabel;
@@ -37,13 +43,20 @@ class render_area : public QWidget
     Q_OBJECT
 public:
     //constructor
-    render_area(QWidget *parent = 0);
+    render_area(QPlainTextEdit *,QWidget *parent = 0);
     ~render_area();
 
     void init_fig();
 
-    void give_label(QLabel *label);
+    void giveDescriptionText(QPlainTextEdit *);
+    void give_TextEdit(QPlainTextEdit *text);
 
+    QString description_rule();
+
+    void addLetter(char);
+    void addRule(char,string);
+    void changeAxiom(string);
+    void resetRule();
 
 protected:
     /** Actual drawing function */
@@ -60,6 +73,8 @@ protected:
     void paint_segment(QPainter *painter,vec3 p1,vec3 p2);
 
     void draw_tree();
+
+
 
     /** Function to get the cell wher the mouse is*/
     void paint();
@@ -85,6 +100,7 @@ private slots:
     void reset_grid();
     void launch_algo();
     void generate_obj();
+
 
 
 private: //attributes
@@ -129,7 +145,7 @@ private: //attributes
     bool slow_draw;
     int slow_draw_iter;
 
-    QLabel *cpt_label;
+    QPlainTextEdit *ruleText;
 
     tree render_tree;
     structure_tree_choice treeStructure;

@@ -5,6 +5,11 @@ structure_tree_choice::structure_tree_choice()
 
 }
 
+L_system structure_tree_choice::fractal_custom()
+{
+    return L_system();
+}
+
 
 
 L_system structure_tree_choice::binary_tree()

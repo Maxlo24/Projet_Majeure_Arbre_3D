@@ -61,10 +61,13 @@ float tree::getParamGammaRandom() const {return paramGammaRandom;}
 void tree::setParamGammaRandom(float value) {paramGammaRandom = value;}
 
 void tree::setAlphabet(vector<char> alphabet){this->tree_alphabet = alphabet;}
+L_system tree::getTree_l_system() const {return tree_l_system;}
+
+L_system &tree::getTree_l_system() {return tree_l_system;}
+
+void tree::setAlphabet(vector<char> alphabet) {this->tree_alphabet = alphabet;}
 
 void tree::setRules(char key, vector<Rules> value) {this->tree_rules[key]=value;}
-
-int tree::getNbrIter() const{return nbr_iter;}
 
 int tree::getMaxNbrParent() const
 {
@@ -79,7 +82,6 @@ void tree::reset()
 {
     clearData();
     data = {tree_root};
-    nbr_iter=0;
 }
 
 void tree::clearData()
@@ -89,23 +91,17 @@ void tree::clearData()
     }
 }
 
-void tree::generateNextLayer(int iter)
-{
-    generateTree(tree_l_system,iter);
-    nbr_iter+=1;
-}
 
-void tree::generateTree(L_system lSystem,int n){
-    string phrase =  lSystem.getPhraseN(n);
+
+void tree::generateTree(int n){
+    string phrase =  tree_l_system.getPhraseN(n);
     node *newN;
     node *currentNode = tree_root;
-    float segment_length;
     vec3 angle = currentNode->Angle();
     vector<node*> queueNode;
     for (char type:phrase){
         if (type == 'A' || type == 'B' || type == 'C' || type == 'D' || type == 'E' || type == 'F' || type == 'G'){
-            segment_length = paramLength/(1.0f+reduction_ratio*currentNode->getNb_parent());
-            //vec3 dP = vec3(segment_length*sin(angle),segment_length*cos(angle),segment_length*(rand()%50-25)/25);
+
             mat3 mat_Rz = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
                                -sin(angle.z()),cos(angle.z()) ,0         ,
                                0              ,0              ,1         );
@@ -117,7 +113,7 @@ void tree::generateTree(L_system lSystem,int n){
                                0              ,1              ,0,
                                -sin(angle.y()),0              ,cos(angle.y()));
 
-            vec3 dP = mat_Ry*mat_Rz*mat_Rx*vec3(0,segment_length*currentNode->getMultiple_scale(),0);
+            vec3 dP = mat_Ry*mat_Rz*mat_Rx*vec3(0,currentNode->getMultiple_scale(),0);
             newN = new node(currentNode->Coord()+dP,type,angle,currentNode,true,currentNode->getMultiple_scale());
             newN->incrementNb_parent();
             add_node(newN);

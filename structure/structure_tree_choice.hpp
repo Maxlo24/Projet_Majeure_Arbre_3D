@@ -11,6 +11,7 @@ class structure_tree_choice
 public:
     structure_tree_choice();
 
+    L_system fractal_custom();
 
     L_system binary_tree();
     L_system fractal_plant();
