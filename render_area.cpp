@@ -43,7 +43,7 @@ void render_area::init_fig()
     dy_prec =0;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_3D_tree1());
+    tree.setTree_l_system(treeStructure.fractal_bush());
 
 
 
@@ -276,7 +276,7 @@ void render_area::update_gamma(int angle){
 
 void render_area::update_ratio(int ratio)
 {
-    render_tree.setRatio(float(ratio)/200);
+    render_tree.setParamScale(1.0f-float(ratio)/100);
     std::cout<<"Ratio : "<<float(ratio)/20<<std::endl;
     draw_tree();
     repaint();

@@ -1,5 +1,7 @@
 #include "obj_generator.hpp"
 
+#include <QDebug>
+
 obj_generator::obj_generator()
 {
     this->name = "untitled";
@@ -71,6 +73,9 @@ void obj_generator::build(int i , node *n)
     float z;
 
     vec3 angle = n->Angle();
+
+    qDebug() << angle.z() << angle.y() << angle.x();
+
     mat3 mat_Rz = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
                        -sin(angle.z()),cos(angle.z()) ,0         ,
                        0              ,0              ,1         );

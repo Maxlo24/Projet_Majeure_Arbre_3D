@@ -80,6 +80,16 @@ void tree::setTree_l_system(const L_system &value)
 
 }
 
+float tree::getParamScale() const
+{
+    return paramScale;
+}
+
+void tree::setParamScale(float value)
+{
+    paramScale = value;
+}
+
 void tree::setAlphabet(vector<char> alphabet)
 {
     this->tree_alphabet = alphabet;
@@ -176,16 +186,16 @@ void tree::generateTree(L_system lSystem,int n){
         }else if (type == '|'){
             angle.z() += M_PI;
         }else if (type == '['){
-            currentNode->Angle() = angle;
             node *nodecopied = new node();
             nodecopied->copyNode(currentNode);
+            nodecopied->Angle() = angle;
             queueNode.push_back(nodecopied);
         }else if (type == ']'){
             currentNode = queueNode.back();
             queueNode.pop_back();
             angle = currentNode->Angle();
         }else if (type == '"'){
-            currentNode->modifyMultiple_scale(0.9f);
+            currentNode->modifyMultiple_scale(paramScale);
         }
     }
 }

@@ -46,6 +46,9 @@ public:
 
     void setTree_l_system(const L_system &value);
 
+    float getParamScale() const;
+    void setParamScale(float value);
+
 private:
     vector<node*> data;
 
@@ -60,6 +63,8 @@ private:
     float paramBeta = M_PI/5;
     float paramGamma = M_PI/10;
     float paramLength = 1;
+
+    float paramScale = 1.0f;
 
     int nbr_iter=0;
     float reduction_ratio=0.;
