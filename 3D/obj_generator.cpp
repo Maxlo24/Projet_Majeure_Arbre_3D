@@ -36,6 +36,7 @@ void obj_generator::generate()
     else
      {
         f<<"# Tree generator V1.0 OBJ File: " << endl << "# Autors : Julien Chaize , Henri Berthelot, Maxime Gillot" << endl;
+        f << "o" << " " << name << "_branche_" << nbr_obj << endl;
 
         for(int i = 0; i<tree_to_generate.getData().size(); ++i){
             if(tree_to_generate(i)->getVisible_node()){
@@ -62,7 +63,7 @@ void obj_generator::build(int i , node *n)
 
     int Nu = 5;
     int Nv = 2;
-    float r=0.05;
+    float r=0.3;
     float h = 1;
 
     int d_face = Nu*(Nv-1);
@@ -138,7 +139,7 @@ void obj_generator::build(int i , node *n)
 
 void obj_generator::write(int i)
 {
-    f << "o" << " " << name << "_branche_" << i << endl;
+    f << "#o" << " " << name << "_branche_" << i << endl;
     for(string coord : lst_coord){
         f << "v" << " " << coord << endl;
     }
