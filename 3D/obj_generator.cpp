@@ -137,10 +137,11 @@ void obj_generator::build(int i , node *n)
 
 void obj_generator::write_obj(int nbObj, int i)
 {
-    obj_f << "#o" << " " << name << "_branche_" << nbObj << endl;
+    obj_f << "#" << name << "_branche_" << nbObj << endl;
     for(auto &coord : lst_coord){
         obj_f << "v" << " " << coord << endl;
     }
+    obj_f<<endl;
 
     for(auto &normal : lst_normal){
         obj_f << "vn" << " " << normal << endl;
@@ -150,6 +151,7 @@ void obj_generator::write_obj(int nbObj, int i)
     for(auto &face : lst_face){
         obj_f << "f" << " " << face << endl;
     }
+    obj_f<<endl;
 }
 
 void obj_generator::write_mtl()
@@ -160,9 +162,6 @@ void obj_generator::write_mtl()
     float dr = float(c[1][0] - c[0][0]) / nbCol /255;
     float dg = float(c[1][1] - c[0][1]) / nbCol /255;
     float db = float(c[1][2] - c[0][2]) / nbCol /255;
-//    dr = dr*dr;
-//    dg = dg*dg;
-//    db = db*db;
 
     ofstream mtl_f = ofstream(name + ".mtl");
 
@@ -174,9 +173,11 @@ void obj_generator::write_mtl()
         mtl_f<<"# Tree generator V1.0 MTL File: " << endl << "# Autors : Julien Chaize , Henri Berthelot, Maxime Gillot" << endl;
 
         for(int i=0; i<nbCol ;++i){
+            float degrade = (float(i)/nbCol);
+            degrade = degrade*degrade;
 
             mtl_f<< "newmtl "<< "Mat_" << i << endl;
-            mtl_f<< "Kd " << float(c[0][0])/255 + i*dr <<" "<< float(c[0][1])/255 + i*dg <<" "<< float(c[0][2])/255 + i*db <<endl;
+            mtl_f<< "Kd " << float(c[0][0])/255 + degrade*i*dr <<" "<< float(c[0][1])/255 + degrade*i*dg <<" "<< float(c[0][2])/255 + degrade*i*db <<endl;
 
             mtl_f<<endl;
         }

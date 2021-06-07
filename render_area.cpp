@@ -106,15 +106,10 @@ void render_area::paintEvent(QPaintEvent*)
             degrade = degrade*degrade;
             painter.setPen(QPen(QColor(int(c[0][0]+degrade*nbrParent*dr), int(c[0][1]+degrade*nbrParent*dg), int(c[0][2]+degrade*nbrParent*db)),brush_size));
 
-
             paint_segment(&painter,render_tree(i)->Coord(),render_tree(i)->Parent()->Coord());
-
 //             if(slow_draw) std::cout<<"branche : "<<(render_tree(i)->getNb_parent())<<"/"<<nbVal<<std::endl;
         }
-
     }
-
-
 }
 
 void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
@@ -124,7 +119,6 @@ void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
     vec3 np2 = scale*mat_rotation_x*mat_rotation_y*p2;
 
     painter->drawLine(this->width/2+np1.x()+dx,this->height-20-np1.y()+dy,this->width/2+np2.x()+dx,this->height-20-np2.y()+dy);
-
 }
 
 void render_area::draw_tree()
