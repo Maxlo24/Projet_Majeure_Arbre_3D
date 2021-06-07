@@ -9,8 +9,11 @@ node::node()
     this->multiple_scale = 1.0f;
 }
 
-node::node(char l_type):node()
+node::node(char l_type)
 {
+    this->coord = vec3(0,0,0);
+    this->parent = this;
+    this->multiple_scale = 1.0f;
     this->l_type = l_type;
 }
 

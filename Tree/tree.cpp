@@ -161,6 +161,7 @@ void tree::setNodeRadius()
     int Nr = getMaxNbrParent();
     float dr = (radius[0]-radius[1])/Nr;
     for(auto n : data){
-        n->Radius() = radius[0]-dr*n->getNb_parent();
+        n->Radius() = radius[0]-dr*(n->getNb_parent());
+        n->Parent()->Radius() = radius[0]-dr*(n->getNb_parent()-1);
     }
 }
