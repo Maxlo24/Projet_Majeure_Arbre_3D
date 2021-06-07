@@ -31,12 +31,10 @@ public:
 
     void add_node(node *n);
     void add_node_last_data(node *n);
-    void generateTree(L_system lSystem,int n);
+    void generateTree(int n);
 
     void reset();
     void clearData();
-
-    void generateNextLayer(int iter);
 
     int size() const;
 
@@ -58,6 +56,9 @@ public:
     float getParamGammaRandom() const;
     void setParamGammaRandom(float value);
 
+    L_system getTree_l_system() const;
+    L_system& getTree_l_system();
+
 private:
     vector<node*> data;
 
@@ -78,7 +79,6 @@ private:
 
     float paramScale = 1.0f;
 
-    int nbr_iter=0;
     float reduction_ratio=0.;
 
 };

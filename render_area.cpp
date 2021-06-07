@@ -1,7 +1,6 @@
 #include "render_area.hpp"
-#include <QDebug>
 
-render_area::render_area(QWidget *parent)
+render_area::render_area(QPlainTextEdit * text,QWidget *parent)
     :QWidget(parent),mouse_point(),is_left_clicked(),is_right_clicked()
 {
     this->width = 790; //this->size().width();
@@ -9,6 +8,7 @@ render_area::render_area(QWidget *parent)
 
     std::cout<<width<<std::endl;
     std::cout<<height<<std::endl;
+    ruleText = text;
 
     this->brush_size = 2;
 
@@ -43,11 +43,12 @@ void render_area::init_fig()
     dy_prec =0;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_bush());
+    tree.setTree_l_system(treeStructure.fractal_custom());
 
 
 
     this->render_tree = tree;
+
     draw_tree();
 
     mat_rotation_y = mat3(std::cos(0),0,std::sin(0),
@@ -59,6 +60,18 @@ void render_area::init_fig()
 
     std::cout<<"Init OK"<<std::endl;
 
+    ruleText->setPlainText(description_rule());
+
+}
+
+void render_area::giveDescriptionText(QPlainTextEdit *text)
+{
+    ruleText = text;
+}
+
+void render_area::give_TextEdit(QPlainTextEdit *text)
+{
+    ruleText = text;
 }
 
 
@@ -85,6 +98,8 @@ void render_area::paintEvent(QPaintEvent*)
         float dr = float(r2 - r1) / nbVal;
         float dg = float(g2 - g1) / nbVal;
         float db = float(b2 - b1) / nbVal;
+
+
 
 
     if(slow_draw){
@@ -114,8 +129,6 @@ void render_area::paintEvent(QPaintEvent*)
 }
 
 void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
-//    std::cout<<p1<<p2<<std::endl;
-
     vec3 np1 = scale*mat_rotation_x*mat_rotation_y*p1;
     vec3 np2 = scale*mat_rotation_x*mat_rotation_y*p2;
 
@@ -126,8 +139,59 @@ void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
 void render_area::draw_tree()
 {
     render_tree.reset();
-    render_tree.generateNextLayer(algo_iter);
+    render_tree.generateTree(algo_iter);
 
+}
+
+QString render_area::description_rule()
+{
+
+    QString description ="";
+    description.append("Alphabet : ");
+    string alphabet;
+    vector<char> alph = render_tree.getTree_l_system().getAlphabet();
+    if (!alph.empty()) {
+        for (auto i=0u; i<alph.size()-1;i++){
+            description += alph[i];
+            description += ", ";
+        }
+        description += alph.back() + QString("\n") + "Axiome : ";
+        description += QString::fromStdString(render_tree.getTree_l_system().getAxiom());
+        description += QString("\n") + "Règles : " + QString("\n");
+        map<char,vector<Rules>> rules = render_tree.getTree_l_system().getRules();
+        for(map<char,vector<Rules>>::const_iterator it=rules.begin() ; it!=rules.end() ; ++it)
+        {
+            for (Rules r: it->second){
+                description += QString(it->first) + " -> " + QString::fromStdString(r.getRule()) + " p=" + QString::number(r.getProba()) + QString("\n");
+            }
+        }
+    }
+
+    return description;
+}
+
+void render_area::addLetter(char l)
+{
+    render_tree.getTree_l_system().addLetter(l);
+    ruleText->setPlainText(description_rule());
+}
+
+void render_area::addRule(char l, std::string rule)
+{
+    render_tree.getTree_l_system().addRuleOfType(l,rule);
+    ruleText->setPlainText(description_rule());
+}
+
+void render_area::changeAxiom(std::string axiom)
+{
+    render_tree.getTree_l_system().setAxiom(axiom);
+    ruleText->setPlainText(description_rule());
+}
+
+void render_area::resetRule()
+{
+    render_tree.setTree_l_system(treeStructure.fractal_custom());
+    ruleText->setPlainText(description_rule());
 }
 
 void render_area::cleanGrid() {
@@ -311,54 +375,61 @@ void render_area::update_algo_select(int select){
     init_fig();
     switch(algo_select){
         case 0:
+            render_tree.setTree_l_system(treeStructure.fractal_custom());
+            scale=20;
+        break;
+        case 1:
             render_tree.setTree_l_system(treeStructure.binary_tree());
             scale=20;
             break;
-        case 1:
+        case 2:
             render_tree.setTree_l_system(treeStructure.fractal_stick());
             scale =4;
             break;
-        case 2:
+        case 3:
             render_tree.setTree_l_system(treeStructure.fractal_plant());
             scale =4;
             break;
-        case 3:
+        case 4:
             render_tree.setTree_l_system(treeStructure.fractal_sym());
             scale =4;
             break;
-        case 4:
+        case 5:
             render_tree.setTree_l_system(treeStructure.fractal_bush());
             scale =4;
             break;
-        case 5:
+        case 6:
             render_tree.setTree_l_system(treeStructure.fractal_leaf());
             scale =4;
             break;
-        case 6:
+        case 7:
             render_tree.setTree_l_system(treeStructure.fractal_fir());
             scale=20;
             break;
-        case 7:
+        case 8:
             render_tree.setTree_l_system(treeStructure.fractal_dragon());
             scale =4;
             break;
-        case 8:
+        case 9:
             render_tree.setTree_l_system(treeStructure.fractal_complex1());
             scale =4;
             break;
-        case 9:
+        case 10:
             render_tree.setTree_l_system(treeStructure.fractal_persil());
             scale =4;
             break;
-        case 10:
+        case 11:
             render_tree.setTree_l_system(treeStructure.fractal_3D_tree());
             scale =4;
             break;
-        case 11:
+        case 12:
             render_tree.setTree_l_system(treeStructure.fractal_3D_tree1());
+            scale =10;
             break;
     };
     scale_prec=scale;
+
+    ruleText->setPlainText(description_rule());
     draw_tree();
     repaint();
 }
@@ -409,7 +480,3 @@ void render_area::paint(){
 
 }
 
-
-void render_area::give_label(QLabel *label){
-    this->cpt_label = label;
-}
