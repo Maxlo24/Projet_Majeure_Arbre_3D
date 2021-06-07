@@ -38,11 +38,15 @@ public:
 
     int size() const;
 
+    string Name() const;
+    string& Name();
+
     vector<vector<int>> Color() const;
     vector<vector<int>>& Color();
 
     vector<float> Radius() const;
-    vector<float>& Radius();
+    void  setRadius(float r1, float r2);
+    void setNodeRadius();
 
     vector<node *> getData() const;
     node *  getNode(int i) const;
@@ -65,8 +69,9 @@ public:
     L_system& getTree_l_system();
 
 private:
-    void setNodeRadius();
 
+
+    string name;
 
     vector<node*> data;
 

@@ -251,10 +251,19 @@ void render_area::resetRule()
     ruleText->setPlainText(description_rule());
 }
 
-void render_area::cleanGrid() {
-
-    repaint();
+void render_area::update_tree_name(std::string name) {
+    render_tree.Name() = name;
+    std::cout<<"Tree name : "<<name<<std::endl;
 }
+
+void render_area::update_tree_radius(float r_start, float r_end)
+{
+    render_tree.setRadius(r_start,r_end);
+    render_tree.setNodeRadius();
+    std::cout<<"Tree redius : Start "<<r_start<<" ; End "<<r_end<<std::endl;
+}
+
+void render_area::cleanGrid() {repaint();}
 
 void render_area::launch_algo(){
     this->cleanGrid();
@@ -283,7 +292,7 @@ void render_area::launch_algo(){
 void render_area::generate_obj()
 {
     std::cout<<"Building ..."<<std::endl;
-    obj_generator mesh = obj_generator(render_tree,"test");
+    obj_generator mesh = obj_generator(render_tree);
     mesh.generate();
     std::cout<<"Done !"<<std::endl;
 }

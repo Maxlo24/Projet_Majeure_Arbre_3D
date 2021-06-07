@@ -34,12 +34,15 @@ void tree::add_node(node *n) {this->data.push_back(n);}
 
 int tree::size() const {return this->data.size();}
 
+string tree::Name() const {return name;}
+string &tree::Name() {return name;}
+
 
 vector<vector<int> > tree::Color() const {return color;}
 vector<vector<int> > &tree::Color() {return color;}
 
 vector<float> tree::Radius() const {return radius;}
-vector<float> &tree::Radius() {return radius;}
+void tree::setRadius(float r1, float r2) {radius[0]= r1;radius[1]= r2;}
 
 
 vector<node *> tree::getData() const {return data;}

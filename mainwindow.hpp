@@ -31,6 +31,8 @@ private slots:
 
     void on_resetRule_clicked();
 
+    void on_generateButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     render_area *render;

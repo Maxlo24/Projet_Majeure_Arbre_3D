@@ -50,8 +50,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->resetButton,SIGNAL(clicked()), this->render, SLOT(reset_grid()));
     //button search
     connect(ui->searchButton,SIGNAL(clicked()), this->render, SLOT(launch_algo()));
-    //button generate
-    connect(ui->generateButton,SIGNAL(clicked()), this->render, SLOT(generate_obj()));
     //algo select
     connect(ui->Algo_select,SIGNAL(activated(int)), this->render, SLOT(update_algo_select(int)));
     //Slider speed
@@ -87,4 +85,13 @@ void MainWindow::on_changeAxiom_clicked()
 void MainWindow::on_resetRule_clicked()
 {
     render->resetRule();
+}
+
+void MainWindow::on_generateButton_clicked()
+{
+    QString name = ui->nameTextEdit->toPlainText();
+    render->update_tree_name(name.toStdString());
+    render->update_tree_radius(float(ui->radiusSSpinBox->value()),float(ui->radiusESpinBox->value()));
+    render->generate_obj();
+
 }
