@@ -65,8 +65,6 @@ L_system tree::getTree_l_system() const {return tree_l_system;}
 
 L_system &tree::getTree_l_system() {return tree_l_system;}
 
-void tree::setAlphabet(vector<char> alphabet) {this->tree_alphabet = alphabet;}
-
 void tree::setRules(char key, vector<Rules> value) {this->tree_rules[key]=value;}
 
 int tree::getMaxNbrParent() const
