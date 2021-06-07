@@ -1,6 +1,6 @@
 #include "render_area.hpp"
 
-render_area::render_area(QPlainTextEdit * text,QWidget *parent)
+render_area::render_area(QPlainTextEdit * rule,QPlainTextEdit * axiom,QPlainTextEdit * alphabet,QWidget *parent)
     :QWidget(parent),mouse_point(),is_left_clicked(),is_right_clicked()
 {
     this->width = 790; //this->size().width();
@@ -8,7 +8,9 @@ render_area::render_area(QPlainTextEdit * text,QWidget *parent)
 
     std::cout<<width<<std::endl;
     std::cout<<height<<std::endl;
-    ruleText = text;
+    ruleText = rule;
+    axiomText = axiom;
+    alphabetText = alphabet;
 
     this->brush_size = 2;
 
@@ -71,7 +73,7 @@ void render_area::init_fig()
 
     std::cout<<"Init OK"<<std::endl;
 
-    ruleText->setPlainText(description_rule());
+    displayRule();
 
 }
 
@@ -142,50 +144,105 @@ void render_area::draw_tree()
     render_tree.generateTree(algo_iter);
 
 }
-
-QString render_area::description_rule()
+QString render_area::description_alphabet()
 {
-
     QString description ="";
-    description.append("Alphabet : ");
-    string alphabet;
     vector<char> alph = render_tree.getTree_l_system().getAlphabet();
     if (!alph.empty()) {
         for (auto i=0u; i<alph.size()-1;i++){
             description += alph[i];
-            description += ", ";
+            description += ",";
         }
-        description += alph.back() + QString("\n") + "Axiome : ";
-        description += QString::fromStdString(render_tree.getTree_l_system().getAxiom());
-        description += QString("\n") + "Règles : " + QString("\n");
-        map<char,vector<Rules>> rules = render_tree.getTree_l_system().getRules();
-        for(map<char,vector<Rules>>::const_iterator it=rules.begin() ; it!=rules.end() ; ++it)
-        {
-            for (Rules r: it->second){
-                description += QString(it->first) + " -> " + QString::fromStdString(r.getRule()) + " p=" + QString::number(r.getProba()) + QString("\n");
-            }
-        }
+        description += alph.back();
     }
-
     return description;
 }
 
-void render_area::addLetter(char l)
+QString render_area::description_axiom()
 {
-    render_tree.getTree_l_system().addLetter(l);
-    ruleText->setPlainText(description_rule());
+    QString description ="";
+    description += QString::fromStdString(render_tree.getTree_l_system().getAxiom());
+    return description;
 }
 
-void render_area::addRule(char l, std::string rule)
+
+QString render_area::description_rule()
 {
-    render_tree.getTree_l_system().addRuleOfType(l,rule);
+    QString description ="";
+    "Règles : " + QString("\n");
+    map<char,vector<Rules>> rules = render_tree.getTree_l_system().getRules();
+    for(map<char,vector<Rules>>::const_iterator it=rules.begin() ; it!=rules.end() ; ++it)
+    {
+        for (Rules r: it->second){
+            description += QString(it->first) + " -> " + QString::fromStdString(r.getRule()) + " p=" + QString::number(r.getProba()) + QString("\n");
+        }
+    }
+    return description;
+}
+
+void render_area::displayRule()
+{
     ruleText->setPlainText(description_rule());
+    axiomText->setPlainText(description_axiom());
+    alphabetText->setPlainText(description_alphabet());
+}
+
+void render_area::changeAlphabet(string alph)
+{
+    render_tree.getTree_l_system().setAlphabet({});
+    for (char l:alph){
+        if (l != ',') render_tree.getTree_l_system().addLetter(l);
+    }
+    displayRule();
+}
+
+void render_area::changeRules(std::string rules)
+{
+    render_tree.getTree_l_system().clearRules();
+    int nb_space = 0;
+    char letter;
+    float proba = 1.0f;
+    string rule = "";
+    auto i=0u;
+    while ( i<rules.length())
+    {
+
+        if (rules[i] == ' ') ++nb_space;
+        else if (rules[i] == '\n' || i == rules.length()-1) {
+
+            render_tree.getTree_l_system().addRuleOfType(letter,rule,proba);
+            nb_space = 0;
+            nb_space = 0;
+            proba = 1.0f;
+            rule = "";
+        }
+        else if (nb_space == 0) letter = rules[i];
+        else if (nb_space == 2){
+            while (rules[i] != ' '){
+                rule += rules[i];
+                i++;
+            }
+            i--;
+        }
+        else if (rules[i] == 'p') {
+            auto j = i+2;
+            string probaF = "";
+            while (rules[j] != '\n' || j < rules.length()){
+                probaF += rules[j];
+                j++;
+            }
+            proba = std::stof(probaF);
+        }
+        i++;
+    }
+    displayRule();
+
 }
 
 void render_area::changeAxiom(std::string axiom)
 {
     render_tree.getTree_l_system().setAxiom(axiom);
-    ruleText->setPlainText(description_rule());
+    displayRule();
 }
 
 void render_area::resetRule()
@@ -429,7 +486,7 @@ void render_area::update_algo_select(int select){
     };
     scale_prec=scale;
 
-    ruleText->setPlainText(description_rule());
+    displayRule();
     draw_tree();
     repaint();
 }
