@@ -193,7 +193,6 @@ void render_area::changeAlphabet(string alph)
     for (char l:alph){
         if (l != ',') render_tree.getTree_l_system().addLetter(l);
     }
-    displayRule();
 }
 
 void render_area::changeRules(std::string rules)
@@ -235,20 +234,20 @@ void render_area::changeRules(std::string rules)
         }
         i++;
     }
-    displayRule();
 
 }
 
 void render_area::changeAxiom(std::string axiom)
 {
     render_tree.getTree_l_system().setAxiom(axiom);
-    displayRule();
 }
 
 void render_area::resetRule()
 {
     render_tree.setTree_l_system(treeStructure.fractal_custom());
     ruleText->setPlainText(description_rule());
+    axiomText->setPlainText(description_axiom());
+    alphabetText->setPlainText(description_alphabet());
 }
 
 void render_area::update_tree_name(std::string name) {

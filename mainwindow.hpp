@@ -23,11 +23,7 @@ public:
 
 
 private slots:
-    void on_changeAlphabet_clicked();
-
     void on_changeRule_clicked();
-
-    void on_changeAxiom_clicked();
 
     void on_resetRule_clicked();
 
