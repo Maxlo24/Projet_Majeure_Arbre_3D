@@ -107,6 +107,7 @@ void tree::generateTree(int n){
             mat3 mat_Rx = mat3(1          ,0              ,0              ,
                                0          ,cos(angle.x()) ,-sin(angle.x()),
                                0          ,sin(angle.x()) ,cos(angle.x()) );
+
             mat3 mat_Ry = mat3(cos(angle.y()) ,0              ,sin(angle.y()),
                                0              ,1              ,0,
                                -sin(angle.y()),0              ,cos(angle.y()));
