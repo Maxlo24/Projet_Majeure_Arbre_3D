@@ -15,7 +15,7 @@ class obj_generator
 {
 public:
     obj_generator();
-    obj_generator(tree tree,string tree_name);
+    obj_generator(tree tree);
 
     void setTree(tree tree);
     void setName(string name);

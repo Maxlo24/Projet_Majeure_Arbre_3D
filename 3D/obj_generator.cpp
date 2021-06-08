@@ -6,9 +6,9 @@ obj_generator::obj_generator()
     this->tree_to_generate = tree();
 }
 
-obj_generator::obj_generator(tree tree, std::string tree_name)
+obj_generator::obj_generator(tree tree)
 {
-    this->name = tree_name;
+    this->name = tree.Name();
     this->tree_to_generate = tree;
 }
 
@@ -61,14 +61,14 @@ void obj_generator::build(int i , node *n)
     vector<vec3> mesh_vertices;
     vector<vector<int>> mesh_connectivity;
 
-    int Nu = 5;
+    int Nu = 6;
     int Nv = 2;
     float r1= n->Radius();
     float r2= n->Parent()->Radius();
     float dr = (r2-r1)/(Nv-1);
     float r;
 
-    float h = 1;
+    float h = n->Parent()->getMultiple_scale();
 
     int d_face = Nu*(Nv-1);
     int d_vert = Nu*Nv;
@@ -137,6 +137,13 @@ void obj_generator::build(int i , node *n)
         s.pop_back();
         lst_face.push_back(s);
     }
+//    if(i>0){
+//        for(int u=1; u<Nu;++u){
+//            s = ""+ to_string((u)*Nv+(i-1)*d_vert) +" "+ to_string((u)*Nv-1+i*d_vert) +" "+ to_string((u+1)*Nv-1+i*d_vert) +" "+ to_string((u+1)*Nv+(i-1)*d_vert);
+//            lst_face.push_back(s);
+//        }
+//    }
+
 //    lst_normal.push_back("1.0 0.0 0.0");
 }
 

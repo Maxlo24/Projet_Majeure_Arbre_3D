@@ -62,6 +62,10 @@ public:
     void changeAxiom(string);
     void resetRule();
 
+    void update_tree_name(string);
+    void update_tree_radius(float r_start,float r_end);
+    void generate_obj();
+
 protected:
     /** Actual drawing function */
     void paintEvent(QPaintEvent *event);
@@ -78,10 +82,9 @@ protected:
 
     void draw_tree();
 
-
-
     /** Function to get the cell wher the mouse is*/
     void paint();
+
 
 
 
@@ -103,7 +106,6 @@ private slots:
     void update_rotation_x(int );
     void reset_grid();
     void launch_algo();
-    void generate_obj();
 
 
 

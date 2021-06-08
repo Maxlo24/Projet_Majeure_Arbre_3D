@@ -25,7 +25,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>500</y>
+      <y>560</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -72,7 +72,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>300</y>
+      <y>280</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -284,7 +284,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>540</y>
+      <y>560</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -746,7 +746,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>460</y>
+      <y>500</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -934,7 +934,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>360</y>
+      <y>330</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -954,7 +954,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <x>1080</x>
       <y>-50</y>
       <width>20</width>
-      <height>581</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="orientation">
@@ -968,7 +968,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>390</y>
+      <y>370</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -982,11 +982,11 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <string>Tree name</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="nameTextEdit">
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>420</y>
+      <y>400</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -995,15 +995,15 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;tree_name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>340</y>
+      <y>310</y>
       <width>191</width>
       <height>21</height>
      </rect>
@@ -1207,7 +1207,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>250</y>
+      <y>240</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -1225,7 +1225,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1210</x>
-      <y>250</y>
+      <y>240</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -1265,6 +1265,80 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <property name="text">
      <string>Axiom</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="radiusSSpinBox">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>470</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+    <property name="value">
+     <double>1.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="radiusESpinBox">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>470</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+    <property name="value">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Partie_Algo_5">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>440</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Start radius</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Partie_Algo_6">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>440</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>End radius</string>
     </property>
    </widget>
    <zorder>verticalFrame_2</zorder>
@@ -1309,7 +1383,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <zorder>Partie_Algo_3</zorder>
    <zorder>line</zorder>
    <zorder>Partie_Algo_4</zorder>
-   <zorder>textEdit</zorder>
+   <zorder>nameTextEdit</zorder>
    <zorder>line_2</zorder>
    <zorder>alpha_random</zorder>
    <zorder>beta_random</zorder>
@@ -1322,6 +1396,10 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <zorder>resetRule</zorder>
    <zorder>axiomDescription</zorder>
    <zorder>changeAxiom</zorder>
+   <zorder>radiusSSpinBox</zorder>
+   <zorder>radiusESpinBox</zorder>
+   <zorder>Partie_Algo_5</zorder>
+   <zorder>Partie_Algo_6</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
