@@ -1276,6 +1276,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <height>22</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>3</number>
+    </property>
     <property name="singleStep">
      <double>0.100000000000000</double>
     </property>
@@ -1291,6 +1294,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <width>91</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="decimals">
+     <number>3</number>
     </property>
     <property name="singleStep">
      <double>0.100000000000000</double>

@@ -2,7 +2,7 @@
 
 tree::tree()
 {
-    node *root= new node({0.f,0.f+paramLength,0});
+    node *root= new node({0.f,0.f,0.f});
     this->tree_root = root;
     this->data = {root};
     this->radius = {1.0,0.01};

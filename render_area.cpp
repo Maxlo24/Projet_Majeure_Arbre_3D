@@ -47,16 +47,18 @@ void render_area::init_fig()
     tree tree;
     tree.setTree_l_system(treeStructure.fractal_custom());
 
-    //couleur de départ
-    int r1 = 91;
-    int g1 = 32;
-    int b1 = 0;
-    //couleur d'arrivée
-    int r2 = 0;
-    int g2 = 174;
-    int b2 = 6;
 
-    tree.Color() = {{r1,g1,b1},{r2,g2,b2}};
+    vector<vector<int>> lst_color = {
+        {91,32,0}, //Maron 0
+        {0,174,6}, //Vert 1
+        {119,100,0}, //Vert/maron 2
+        {0,119,93}, //cyan 3
+        {188,92,182}, //violet 4
+
+
+    };
+
+    tree.Color() = {lst_color[0],lst_color[1]};
 
     tree.Radius() = {1.0,0.1};
 
