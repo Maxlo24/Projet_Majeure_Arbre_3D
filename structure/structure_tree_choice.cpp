@@ -132,7 +132,7 @@ L_system structure_tree_choice::fractal_3D_tree1(){
     vector<char> alphabet = {'F','X'};
     map<char,vector<Rules>> rules;
     rules['F'] = {Rules("F")};
-    //rules[X] = {Rules("\"[+FFFX]<<<[+FFFX]<<<[+FFFX]")};
+    //rules['X'] = {Rules("\"[+FFFX]<<<[+FFFX]<<<[+FFFX]")};
     rules['X'] = {Rules("\"[&[-FX]+FX][^[-FX]+FX]")};
 
     return L_system(alphabet,{'F','F','F','X'},rules);

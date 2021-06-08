@@ -64,22 +64,15 @@ MainWindow::~MainWindow()
 
 
 
-void MainWindow::on_changeAlphabet_clicked()
-{
-    QString alphabet = ui->alphabetDescription->toPlainText();
-    render->changeAlphabet(alphabet.toStdString());
-}
-
 void MainWindow::on_changeRule_clicked()
 {
     QString rule = ui->ruleDescription->toPlainText();
     render->changeRules(rule.toStdString());
-}
-
-void MainWindow::on_changeAxiom_clicked()
-{
     QString axiom = ui->axiomDescription->toPlainText();
     render->changeAxiom(axiom.toStdString());
+    QString alphabet = ui->alphabetDescription->toPlainText();
+    render->changeAlphabet(alphabet.toStdString());
+    render->displayRule();
 }
 
 void MainWindow::on_resetRule_clicked()
@@ -93,5 +86,4 @@ void MainWindow::on_generateButton_clicked()
     render->update_tree_name(name.toStdString());
     render->update_tree_radius(float(ui->radiusSSpinBox->value()),float(ui->radiusESpinBox->value()));
     render->generate_obj();
-
 }
