@@ -20,6 +20,18 @@ render_area::render_area(QPlainTextEdit * rule,QPlainTextEdit * axiom,QPlainText
     this->algo_iter=3;
     this->algo_delay = -1;
 
+    lst_color = {
+        {91,32,0}, //Maron 0
+        {0,174,6}, //Vert 1
+        {119,100,0}, //Vert/maron 2
+        {0,119,93}, //cyan 3
+        {188,92,182}, //violet 4
+        {255,255,255}, //blanc 5
+        {0,0,0} //noir 6
+
+    };
+
+
     init_fig();
 }
 
@@ -47,18 +59,8 @@ void render_area::init_fig()
     tree tree;
     tree.setTree_l_system(treeStructure.fractal_custom());
 
-
-    vector<vector<int>> lst_color = {
-        {91,32,0}, //Maron 0
-        {0,174,6}, //Vert 1
-        {119,100,0}, //Vert/maron 2
-        {0,119,93}, //cyan 3
-        {188,92,182}, //violet 4
-
-
-    };
-
-    tree.Color() = {lst_color[0],lst_color[1]};
+    color_selected = {0,1};
+    tree.Color() = {lst_color[color_selected[0]],lst_color[color_selected[1]]};
 
     tree.Radius() = {1.0,0.1};
 
@@ -358,6 +360,20 @@ void render_area::update_rotation_x(int angle)
 
 
 
+}
+
+void render_area::update_startColor(int i)
+{
+    color_selected[0] = i;
+    render_tree.Color() = {lst_color[color_selected[0]],lst_color[color_selected[1]]};
+    repaint();
+}
+
+void render_area::update_endColor(int i)
+{
+    color_selected[1] = i;
+    render_tree.Color() = {lst_color[color_selected[0]],lst_color[color_selected[1]]};
+    repaint();
 }
 
 void render_area::update_brush_size(int size){

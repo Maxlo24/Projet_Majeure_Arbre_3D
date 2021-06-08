@@ -52,6 +52,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->searchButton,SIGNAL(clicked()), this->render, SLOT(launch_algo()));
     //algo select
     connect(ui->Algo_select,SIGNAL(activated(int)), this->render, SLOT(update_algo_select(int)));
+    //start colot select
+    connect(ui->Start_color_select,SIGNAL(activated(int)), this->render, SLOT(update_startColor(int)));
+    //end color select
+    connect(ui->End_color_select,SIGNAL(activated(int)), this->render, SLOT(update_endColor(int)));
+
     //Slider speed
     connect(ui->speedSlider,SIGNAL(valueChanged(int)), this->render, SLOT(update_algo_speed(int)));
 }

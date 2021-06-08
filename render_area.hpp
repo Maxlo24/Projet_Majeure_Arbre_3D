@@ -104,6 +104,8 @@ private slots:
     void update_algo_speed(int );
     void update_rotation_y(int );
     void update_rotation_x(int );
+    void update_startColor(int);
+    void update_endColor(int);
     void reset_grid();
     void launch_algo();
 
@@ -157,6 +159,8 @@ private: //attributes
 
     tree render_tree;
     structure_tree_choice treeStructure;
+    vector<vector<int>> lst_color;
+    vector<int> color_selected;
 
 };
 
