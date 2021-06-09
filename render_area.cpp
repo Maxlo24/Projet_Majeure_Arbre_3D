@@ -45,7 +45,7 @@ void render_area::init_fig()
     dy_prec =0;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_custom());
+    tree.setTree_l_system(treeStructure.fractal_3D_tree1());
 
     //couleur de départ
     int r1 = 91;
@@ -141,7 +141,7 @@ void render_area::paint_segment(QPainter *painter,vec3 p1, vec3 p2){
 void render_area::draw_tree()
 {
     render_tree.reset();
-    render_tree.generateTree(algo_iter);
+    render_tree.generateTree(algo_iter-1);
 
 }
 QString render_area::description_alphabet()

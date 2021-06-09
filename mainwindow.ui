@@ -584,9 +584,9 @@ color: rgb(43, 43, 43);</string>
    <widget class="QLabel" name="taillePinceauLabel_8">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>570</y>
-      <width>51</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -711,7 +711,7 @@ color: rgb(43, 43, 43);</string>
      <rect>
       <x>810</x>
       <y>0</y>
-      <width>31</width>
+      <width>41</width>
       <height>21</height>
      </rect>
     </property>
@@ -729,7 +729,7 @@ color: rgb(43, 43, 43);</string>
      <rect>
       <x>810</x>
       <y>550</y>
-      <width>31</width>
+      <width>41</width>
       <height>21</height>
      </rect>
     </property>
@@ -1413,7 +1413,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <x>0</x>
      <y>0</y>
      <width>1334</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
