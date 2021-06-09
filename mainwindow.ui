@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1334</width>
-    <height>646</height>
+    <height>673</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>870</x>
       <y>420</y>
-      <width>181</width>
+      <width>211</width>
       <height>31</height>
      </rect>
     </property>
@@ -225,7 +225,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>870</x>
       <y>490</y>
-      <width>121</width>
+      <width>151</width>
       <height>21</height>
      </rect>
     </property>
@@ -457,7 +457,7 @@ color: rgb(43, 43, 43);</string>
      <rect>
       <x>870</x>
       <y>160</y>
-      <width>181</width>
+      <width>211</width>
       <height>21</height>
      </rect>
     </property>
@@ -467,7 +467,7 @@ color: rgb(43, 43, 43);</string>
      </font>
     </property>
     <property name="text">
-     <string>Angle alpha / randomisation</string>
+     <string>Angle alpha / random</string>
     </property>
    </widget>
    <widget class="QLabel" name="taillePinceauLabel_9">
@@ -636,7 +636,7 @@ color: rgb(43, 43, 43);</string>
      <rect>
       <x>80</x>
       <y>590</y>
-      <width>31</width>
+      <width>51</width>
       <height>21</height>
      </rect>
     </property>
@@ -654,8 +654,8 @@ color: rgb(43, 43, 43);</string>
      <rect>
       <x>780</x>
       <y>590</y>
-      <width>31</width>
-      <height>21</height>
+      <width>41</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -772,7 +772,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>870</x>
       <y>220</y>
-      <width>171</width>
+      <width>211</width>
       <height>21</height>
      </rect>
     </property>
@@ -782,7 +782,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Angle beta  / randomisation</string>
+     <string>Angle beta  / random</string>
     </property>
    </widget>
    <widget class="QSlider" name="beta_Slider">
@@ -863,7 +863,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>870</x>
       <y>280</y>
-      <width>181</width>
+      <width>211</width>
       <height>21</height>
      </rect>
     </property>
@@ -873,7 +873,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      </font>
     </property>
     <property name="text">
-     <string>Angle gamma  / randomisation</string>
+     <string>Angle gamma  / random</string>
     </property>
    </widget>
    <widget class="QSlider" name="gamma_Slider">
@@ -1001,7 +1001,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;tree_name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
@@ -1168,7 +1168,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>1110</x>
       <y>56</y>
-      <width>71</width>
+      <width>111</width>
       <height>20</height>
      </rect>
     </property>
@@ -1283,13 +1283,13 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>1110</x>
       <y>380</y>
-      <width>41</width>
-      <height>16</height>
+      <width>71</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -1304,7 +1304,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>1110</x>
       <y>0</y>
-      <width>51</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -1325,7 +1325,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>1210</x>
       <y>0</y>
-      <width>41</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -1448,13 +1448,13 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <rect>
       <x>1210</x>
       <y>380</y>
-      <width>41</width>
-      <height>16</height>
+      <width>71</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">

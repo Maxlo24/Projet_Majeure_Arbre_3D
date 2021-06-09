@@ -57,7 +57,7 @@ void render_area::init_fig()
     dy_prec =0;
     
     tree tree;
-    tree.setTree_l_system(treeStructure.fractal_3D_tree1());
+    tree.setTree_l_system(treeStructure.fractal_custom());
 
     color_selected = {0,1};
     tree.Color() = {lst_color[color_selected[0]],lst_color[color_selected[1]]};
