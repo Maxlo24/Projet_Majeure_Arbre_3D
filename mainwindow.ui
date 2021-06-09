@@ -1350,6 +1350,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="styleSheet">
      <string notr="true">border: 1px solid grey;</string>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <item>
      <property name="text">
       <string>Brown</string>

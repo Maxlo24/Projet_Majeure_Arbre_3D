@@ -1,6 +1,7 @@
 #include <QDebug>
 #include "ui_mainwindow.h"
 
+
 #include "mainwindow.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -10,10 +11,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->setWindowTitle("Projet Tree Generator");
+    this->setWindowTitle("Tree Generator");
+    win = new BuildWindow;
 
 
-    render = new render_area(ui->ruleDescription,ui->axiomDescription,ui->alphabetDescription);
+    render = new render_area(ui->ruleDescription,ui->axiomDescription,ui->alphabetDescription,ui);
     ui->main_Layout->addWidget(render);
     //render->giveDescriptionText(ui->ruleDescription);
 
@@ -65,6 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete win;
 }
 
 
@@ -90,5 +93,8 @@ void MainWindow::on_generateButton_clicked()
     QString name = ui->nameTextEdit->toPlainText();
     render->update_tree_name(name.toStdString());
     render->update_tree_radius(float(ui->radiusSSpinBox->value()),float(ui->radiusESpinBox->value()));
-    render->generate_obj();
+
+    win->set_tree(render->get_tree());
+    win->show();
+
 }

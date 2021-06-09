@@ -1,6 +1,7 @@
 #ifndef RENDER_AREA_HPP
 #define RENDER_AREA_HPP
 
+#include "ui_mainwindow.h"
 #include <QWidget>
 #include <QTimer>
 #include <QTime>
@@ -44,7 +45,7 @@ class render_area : public QWidget
     Q_OBJECT
 public:
     //constructor
-    render_area(QPlainTextEdit *,QPlainTextEdit *,QPlainTextEdit *,QWidget *parent = 0);
+    render_area(QPlainTextEdit *,QPlainTextEdit *,QPlainTextEdit *, Ui::MainWindow *,QWidget *parent = 0);
     ~render_area();
 
     void init_fig();
@@ -64,7 +65,7 @@ public:
 
     void update_tree_name(string);
     void update_tree_radius(float r_start,float r_end);
-    void generate_obj();
+    tree get_tree();
 
 protected:
     /** Actual drawing function */
@@ -156,6 +157,7 @@ private: //attributes
     QPlainTextEdit *ruleText;
     QPlainTextEdit *axiomText;
     QPlainTextEdit *alphabetText;
+    Ui::MainWindow *ui;
 
     tree render_tree;
     structure_tree_choice treeStructure;

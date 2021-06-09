@@ -1,7 +1,7 @@
 #include "render_area.hpp"
 
-render_area::render_area(QPlainTextEdit * rule,QPlainTextEdit * axiom,QPlainTextEdit * alphabet,QWidget *parent)
-    :QWidget(parent),mouse_point(),is_left_clicked(),is_right_clicked()
+render_area::render_area(QPlainTextEdit * rule,QPlainTextEdit * axiom,QPlainTextEdit * alphabet,Ui::MainWindow *ui,QWidget *parent)
+    :QWidget(parent),mouse_point(),is_left_clicked(),is_right_clicked(),ui(ui)
 {
     this->width = 790; //this->size().width();
     this->height = 550;//this->size().height();
@@ -31,8 +31,7 @@ render_area::render_area(QPlainTextEdit * rule,QPlainTextEdit * axiom,QPlainText
 
     };
 
-
-    init_fig();
+    reset_grid();
 }
 
 render_area::~render_area()
@@ -48,6 +47,7 @@ void render_area::init_fig()
 
     brush_size = 2;
     algo_iter = 4;
+
     slow_draw = false;
     scale = 4;
 
@@ -292,12 +292,13 @@ void render_area::launch_algo(){
     repaint();
 }
 
-void render_area::generate_obj()
+tree  render_area::get_tree()
 {
-    std::cout<<"Building ..."<<std::endl;
-    obj_generator mesh = obj_generator(render_tree);
-    mesh.generate();
-    std::cout<<"Done !"<<std::endl;
+//    std::cout<<"Building ..."<<std::endl;
+//    obj_generator mesh = obj_generator(render_tree);
+//    mesh.generate();
+//    std::cout<<"Done !"<<std::endl
+    return render_tree;
 }
 
 void render_area::mouseMoveEvent(QMouseEvent *event)
@@ -475,7 +476,7 @@ void render_area::update_algo_select(int select){
             break;
         case 4:
             render_tree.setTree_l_system(treeStructure.fractal_sym());
-            scale =4;
+            scale =10;
             break;
         case 5:
             render_tree.setTree_l_system(treeStructure.fractal_bush());
@@ -483,7 +484,7 @@ void render_area::update_algo_select(int select){
             break;
         case 6:
             render_tree.setTree_l_system(treeStructure.fractal_leaf());
-            scale =4;
+            scale =22;
             break;
         case 7:
             render_tree.setTree_l_system(treeStructure.fractal_fir());
@@ -503,13 +504,14 @@ void render_area::update_algo_select(int select){
             break;
         case 11:
             render_tree.setTree_l_system(treeStructure.fractal_3D_tree());
-            scale =4;
+            scale =10;
             break;
         case 12:
             render_tree.setTree_l_system(treeStructure.fractal_3D_tree1());
-            scale =10;
+            scale =30;
             break;
     };
+    ui->segment_Size_Slider->setValue(scale*10);
     scale_prec=scale;
 
     displayRule();
@@ -519,6 +521,28 @@ void render_area::update_algo_select(int select){
 
 void render_area::reset_grid(){
     init_fig();
+    ui->brush_Size_Slider->setValue(brush_size);
+    ui->tree_Size_Slider->setValue(algo_iter);
+    ui->alpha_Slider->setValue(9);
+    ui->beta_Slider->setValue(18);
+    ui->gamma_Slider->setValue(9);
+
+    ui->ratio_Slider->setValue(0);
+
+    ui->speedSlider->setValue(0);
+
+    ui->alpha_random->setValue(0);
+    ui->beta_random->setValue(0);
+    ui->gamma_random->setValue(0);
+
+    ui->rotation_Slider->setValue(0);
+    ui->vertical_rotation_Slider->setValue(0);
+
+    ui->Start_color_select->setCurrentIndex(0);
+    ui->End_color_select->setCurrentIndex(1);
+    ui->Algo_select->setCurrentIndex(0);
+
+    ui->segment_Size_Slider->setValue(scale*10);
     repaint();
 }
 

@@ -22,12 +22,13 @@ void obj_generator::setName(std::string name)
     this->name = name;
 }
 
-void obj_generator::generate()
+void obj_generator::generate(QProgressBar *progress)
 {
     write_mtl();
 
     obj_f = ofstream(name + ".obj");
     int nbr_obj = 0;
+    int nbr_node = tree_to_generate.getData().size();
 
     if (!obj_f.is_open())
      cout << "Impossible d'ouvrir le fichier en écriture !" << endl;
@@ -37,7 +38,7 @@ void obj_generator::generate()
         obj_f<<"# Tree generator V1.0 OBJ File: " << endl << "# Autors : Julien Chaize , Henri Berthelot, Maxime Gillot" << endl;
         obj_f << "o" << " " << name << "_branche_" << nbr_obj << endl;
 
-        for(auto i=0u; i<tree_to_generate.getData().size(); ++i){
+        for(auto i=0u; i<nbr_node; ++i){
             if(tree_to_generate(i)->getVisible_node()){
                 lst_coord.clear();
                 lst_normal.clear();
@@ -46,6 +47,8 @@ void obj_generator::generate()
                 write_obj(nbr_obj,i);
                 ++nbr_obj;
             }
+            progress->setValue(int(float(i)/nbr_node*100));
+//            cout<<int(float(i)/nbr_node*100)<<endl;
         }
      }
     obj_f.close();
