@@ -5,6 +5,7 @@
 #include <QPainter>
 
 #include "render_area.hpp"
+#include "popup_Windows/buildwindow.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,7 +34,7 @@ private:
     Ui::MainWindow *ui;
     render_area *render;
 
-
+    BuildWindow *win;
 
 };
 #endif // MAINWINDOW_H

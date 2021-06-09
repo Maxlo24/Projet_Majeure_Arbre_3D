@@ -4,7 +4,10 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <QProgressBar>
+//#include <filesystem>
 
+//namespace fs = std::filesystem;
 using std::string;
 using std::ofstream;
 using std::cout;
@@ -20,7 +23,7 @@ public:
     void setTree(tree tree);
     void setName(string name);
 
-    void generate();
+    void generate(QProgressBar *progress);
 
 private:
     void build(int i,node *n);

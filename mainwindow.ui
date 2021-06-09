@@ -25,7 +25,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>520</y>
+      <y>560</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -62,6 +62,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="font">
      <font>
       <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -179,10 +181,12 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="font">
      <font>
       <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>2D Tree generator</string>
+     <string>3D Tree generator</string>
     </property>
    </widget>
    <widget class="QSlider" name="speedSlider">
@@ -746,7 +750,7 @@ color: rgb(43, 43, 43);</string>
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>460</y>
+      <y>520</y>
       <width>191</width>
       <height>25</height>
      </rect>
@@ -934,7 +938,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>290</y>
+      <y>280</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -942,6 +946,8 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="font">
      <font>
       <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -968,9 +974,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>330</y>
+      <y>320</y>
       <width>121</width>
-      <height>21</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
@@ -986,7 +992,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>360</y>
+      <y>340</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -995,7 +1001,7 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;tree_name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
@@ -1005,7 +1011,7 @@ p, li { white-space: pre-wrap; }
       <x>1110</x>
       <y>270</y>
       <width>191</width>
-      <height>21</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="orientation">
@@ -1240,6 +1246,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <height>22</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>3</number>
+    </property>
     <property name="singleStep">
      <double>0.100000000000000</double>
     </property>
@@ -1256,6 +1265,9 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
       <height>22</height>
      </rect>
     </property>
+    <property name="decimals">
+     <number>3</number>
+    </property>
     <property name="singleStep">
      <double>0.100000000000000</double>
     </property>
@@ -1270,39 +1282,18 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     <property name="geometry">
      <rect>
       <x>1110</x>
-      <y>400</y>
-      <width>71</width>
-      <height>21</height>
+      <y>380</y>
+      <width>41</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>13</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Start radius</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Partie_Algo_6">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>1210</x>
-      <y>400</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>End radius</string>
+     <string>Start</string>
     </property>
    </widget>
    <widget class="QLabel" name="Partie_Algo_7">
@@ -1345,6 +1336,171 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
     </property>
     <property name="text">
      <string>Axiom:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Start_color_select">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>480</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid grey;</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>Brown</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Green</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>khaki green</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>cyan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>purple</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>White</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Black</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="End_color_select">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>480</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid grey;</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>Brown</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Green</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>khaki green</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>cyan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>purple</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>White</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Black</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="Partie_Algo_6">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>380</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>End</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Partie_Algo_9">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>410</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Radius</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Partie_Algo_10">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>460</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Color</string>
     </property>
    </widget>
    <zorder>verticalFrame_2</zorder>
@@ -1403,9 +1559,13 @@ QPushButton::pressed{border: 1px solid blue;color: blue;};
    <zorder>radiusSSpinBox</zorder>
    <zorder>radiusESpinBox</zorder>
    <zorder>Partie_Algo_5</zorder>
-   <zorder>Partie_Algo_6</zorder>
    <zorder>Partie_Algo_7</zorder>
    <zorder>Partie_Algo_8</zorder>
+   <zorder>Start_color_select</zorder>
+   <zorder>End_color_select</zorder>
+   <zorder>Partie_Algo_6</zorder>
+   <zorder>Partie_Algo_9</zorder>
+   <zorder>Partie_Algo_10</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

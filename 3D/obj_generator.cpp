@@ -22,12 +22,13 @@ void obj_generator::setName(std::string name)
     this->name = name;
 }
 
-void obj_generator::generate()
+void obj_generator::generate(QProgressBar *progress)
 {
     write_mtl();
 
     obj_f = ofstream(name + ".obj");
     int nbr_obj = 0;
+    int nbr_node = tree_to_generate.getData().size();
 
     if (!obj_f.is_open())
      cout << "Impossible d'ouvrir le fichier en écriture !" << endl;
@@ -37,7 +38,7 @@ void obj_generator::generate()
         obj_f<<"# Tree generator V1.0 OBJ File: " << endl << "# Autors : Julien Chaize , Henri Berthelot, Maxime Gillot" << endl;
         obj_f << "o" << " " << name << "_branche_" << nbr_obj << endl;
 
-        for(auto i=0u; i<tree_to_generate.getData().size(); ++i){
+        for(auto i=0u; i<nbr_node; ++i){
             if(tree_to_generate(i)->getVisible_node()){
                 lst_coord.clear();
                 lst_normal.clear();
@@ -46,6 +47,8 @@ void obj_generator::generate()
                 write_obj(nbr_obj,i);
                 ++nbr_obj;
             }
+            progress->setValue(int(float(i)/nbr_node*100));
+//            cout<<int(float(i)/nbr_node*100)<<endl;
         }
      }
     obj_f.close();
@@ -68,17 +71,16 @@ void obj_generator::build(int i , node *n)
     float dr = (r2-r1)/(Nv-1);
     float r;
 
-    float h = n->Parent()->getMultiple_scale();
+    float h = n->Parent()->getMultiple_scale()/2;
 
     int d_face = Nu*(Nv-1);
-    int d_vert = Nu*Nv;
+    int d_vert = Nu*(Nv+1);
 
     float x;
     float y;
     float z;
 
     vec3 angle = n->Angle();
-
     mat3 mat_Rz = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
                        -sin(angle.z()),cos(angle.z()) ,0         ,
                        0              ,0              ,1         );
@@ -90,20 +92,46 @@ void obj_generator::build(int i , node *n)
                        0              ,1              ,0,
                        -sin(angle.y()),0              ,cos(angle.y()));
 
+    angle = n->Parent()->Angle();
+    mat3 mat_Rz_p = mat3(cos(angle.z()) ,sin(angle.z()) ,0         ,
+                       -sin(angle.z()),cos(angle.z()) ,0         ,
+                       0              ,0              ,1         );
+
+    mat3 mat_Rx_p = mat3(1          ,0              ,0              ,
+                       0          ,cos(angle.x()) ,-sin(angle.x()),
+                       0          ,sin(angle.x()) ,cos(angle.x()) );
+    mat3 mat_Ry_p = mat3(cos(angle.y()) ,0              ,sin(angle.y()),
+                       0              ,1              ,0,
+                       -sin(angle.y()),0              ,cos(angle.y()));
+
     for(int u=0 ; u<Nu ; ++u)
     {
-        for(int v=0 ; v<Nv ; ++v)
+        int v=0;
+        r = r2-v*dr;
+        x = r*std::cos(2*M_PI*float(u)/Nu);
+        y = -h*float(1)/(Nv-1);
+        z = r*std::sin(2*M_PI*float(u)/Nu);
+
+        vec3 point = {x,y,z};
+        point = mat_Rz_p*mat_Ry_p*mat_Rx_p*point;
+        mesh_vertices.push_back(point+parent_coord);
+
+        for(v=0 ; v<Nv ; ++v)
         {
-            r = r2-v*dr;
+            r = r2-(v+1)*dr/2;
             x = r*std::cos(2*M_PI*float(u)/Nu);
             y = h*float(v)/(Nv-1);
             z = r*std::sin(2*M_PI*float(u)/Nu);
 
-            vec3 point = {x,y,z};
+            point = {x,y,z};
             point = mat_Rz*mat_Ry*mat_Rx*point;
             mesh_vertices.push_back(point+parent_coord);
         }
     }
+
+
+
+
 //    s = to_string(actual_coord.x()) + " " + to_string(actual_coord.y()) + " " + to_string(actual_coord.z());
 //    lst_coord.push_back(s);
 
@@ -114,16 +142,28 @@ void obj_generator::build(int i , node *n)
     }
 
 
+//    for(int u=0 ; u<Nu-1 ; ++u)
+//    {
+//        for(int v=0 ; v<Nv-1 ; ++v)
+//        {
+//            mesh_connectivity.push_back({u*Nv+v+1,u*Nv+v+2,(u+1)*Nv+v+2,(u+1)*Nv+v+1});
+//        }
+//    }
+//    for(int v=0 ; v<Nv-1 ; ++v)
+//    {
+//        mesh_connectivity.push_back({(Nu-1)*Nv+v+1,(Nu-1)*Nv+v+2,v+2,v+1});
+//    }
+
     for(int u=0 ; u<Nu-1 ; ++u)
     {
-        for(int v=0 ; v<Nv-1 ; ++v)
+        for(int v=0 ; v<Nv ; ++v)
         {
-            mesh_connectivity.push_back({u*Nv+v+1,u*Nv+v+2,(u+1)*Nv+v+2,(u+1)*Nv+v+1});
+            mesh_connectivity.push_back({u*(Nv+1)+v+1,u*(Nv+1)+v+2,(u+1)*(Nv+1)+v+2,(u+1)*(Nv+1)+v+1});
         }
     }
-    for(int v=0 ; v<Nv-1 ; ++v)
+    for(int v=0 ; v<Nv ; ++v)
     {
-        mesh_connectivity.push_back({(Nu-1)*Nv+v+1,(Nu-1)*Nv+v+2,v+2,v+1});
+        mesh_connectivity.push_back({(Nu-1)*(Nv+1)+v+1,(Nu-1)*(Nv+1)+v+2,v+2,v+1});
     }
 
 
